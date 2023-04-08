@@ -60,12 +60,13 @@
     display: inline-block;
     width: 22% !important;
     min-width: 300px;
-    margin: 0 2rem 0 2rem;
+    margin: 0 2rem 2rem 2rem;
 }
 
-.emergency-events {
-    font-family: 'Caveat', sans-serif;
-    font-weight: 600;
-    font-size: 2rem;
-    color: #EA7317;
+.emergency-events-header {
+    font-family: 'Caveat', cursive;
+    font-weight: 400;
+    font-size: 3vw;
+    color: #519872;
+    margin: 4rem 0 2rem 0;
 }
