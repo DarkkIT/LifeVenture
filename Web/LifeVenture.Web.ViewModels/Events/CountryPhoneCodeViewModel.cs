@@ -1,10 +1,11 @@
-﻿namespace LifeVenture.Data.Models.Events
+﻿namespace LifeVenture.Web.ViewModels.Events
 {
     using System.ComponentModel.DataAnnotations;
 
-    using LifeVenture.Data.Common.Models;
+    using LifeVenture.Data.Models.Events;
+    using LifeVenture.Services.Mapping;
 
-    public class CountryPhoneCode : BaseDeletableModel<int>
+    public class CountryPhoneCodeViewModel : IMapFrom<CountryPhoneCode>
     {
         [Required]
         [MaxLength(10)]
