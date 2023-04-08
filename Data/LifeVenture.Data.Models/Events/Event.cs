@@ -5,12 +5,14 @@
     using System.ComponentModel.DataAnnotations;
 
     using LifeVenture.Data.Common.Models;
+    using LifeVenture.Data.Models.Common;
 
     public class Event : BaseDeletableModel<int>
     {
         public Event()
         {
             this.Locations = new HashSet<Location>();
+            this.Images = new HashSet<Image>();
         }
 
         [Required]
@@ -20,8 +22,6 @@
         [Required]
         [MaxLength(3000)]
         public string Description { get; set; }
-
-        public byte[] Image { get; set; }
 
         public DateTime StartDate { get; set; }
 
@@ -53,6 +53,8 @@
 
         public virtual Category Category { get; set; }
 
-        public virtual IEnumerable<Location> Locations { get; set; }
+        public virtual ICollection<Location> Locations { get; set; }
+
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

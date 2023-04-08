@@ -19,6 +19,6 @@
         [MaxLength(1000)]
         public string Description { get; set; }
 
-        public virtual IEnumerable<Event> Events { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
     }
 }
