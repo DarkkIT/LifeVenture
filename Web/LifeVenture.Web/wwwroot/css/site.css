@@ -90,6 +90,7 @@ body {
     --bs-navbar-padding-x: 0;
     --bs-navbar-padding-y: 0;
     border-bottom: none !important;
+    background-color: #aab8c3 !important;
 }
 
 .navbar-brand {
