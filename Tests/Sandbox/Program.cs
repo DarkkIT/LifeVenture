@@ -5,6 +5,7 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using CommandLine;
     using LifeVenture.Data;
     using LifeVenture.Data.Common;
     using LifeVenture.Data.Common.Repositories;
@@ -13,9 +14,6 @@
     using LifeVenture.Data.Seeding;
     using LifeVenture.Services.Data;
     using LifeVenture.Services.Messaging;
-
-    using CommandLine;
-
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;

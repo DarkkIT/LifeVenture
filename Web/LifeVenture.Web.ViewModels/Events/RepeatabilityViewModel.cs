@@ -1,10 +1,11 @@
-﻿namespace LifeVenture.Data.Models.Events
+﻿namespace LifeVenture.Web.ViewModels.Events
 {
     using System.ComponentModel.DataAnnotations;
 
-    using LifeVenture.Data.Common.Models;
+    using LifeVenture.Data.Models.Events;
+    using LifeVenture.Services.Mapping;
 
-    public class Repeatability : BaseDeletableModel<int>
+    public class RepeatabilityViewModel : IMapFrom<Repeatability>
     {
         [Required]
         [MaxLength(300)]
