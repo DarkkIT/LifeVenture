@@ -1,5 +1,4 @@
-﻿// ReSharper disable VirtualMemberCallInConstructor
-namespace LifeVenture.Data.Models
+﻿namespace LifeVenture.Data.Models
 {
     using System;
     using System.Collections.Generic;

@@ -12,6 +12,8 @@
             this.Images = new HashSet<Image>();
         }
 
+        public StatisticalInfo StatisticalInfo { get; set; }
+
         public virtual ICollection<Image> Images { get; set; }
     }
 }
