@@ -8,7 +8,9 @@
 
     using LifeVenture.Data.Common.Models;
     using LifeVenture.Data.Models;
-
+    using LifeVenture.Data.Models.Common;
+    using LifeVenture.Data.Models.Events;
+    using LifeVenture.Data.Models.Home;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +27,22 @@
         }
 
         public DbSet<Setting> Settings { get; set; }
+
+        public DbSet<Event> Events { get; set; }
+
+        public DbSet<Image> Images { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<CountryPhoneCode> CountriesPhoneCodes { get; set; }
+
+        public DbSet<Location> Locations { get; set; }
+
+        public DbSet<Phone> Phones { get; set; }
+
+        public DbSet<Repeatability> Repeatabilities { get; set; }
+
+        public DbSet<HomeModel> HomeModels { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
