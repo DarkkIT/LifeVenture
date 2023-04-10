@@ -17,7 +17,7 @@
 
         public int EventId { get; set; }
 
-        public Event Events { get; set; }
+        public Event Event { get; set; }
 
         public virtual ICollection<HomeModel> HomeModels { get; set; }
     }

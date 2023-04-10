@@ -10,7 +10,7 @@
     {
         public CategoryViewModel()
         {
-            this.Events = new HashSet<EventViewModel>();
+            this.Events = new HashSet<EventDetailsViewModel>();
         }
 
         [Required]
@@ -20,6 +20,6 @@
         [MaxLength(1000)]
         public string Description { get; set; }
 
-        public virtual ICollection<EventViewModel> Events { get; set; }
+        public virtual ICollection<EventDetailsViewModel> Events { get; set; }
     }
 }

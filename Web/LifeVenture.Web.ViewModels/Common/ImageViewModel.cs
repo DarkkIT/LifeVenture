@@ -16,9 +16,7 @@
 
         public byte[] Data { get; set; }
 
-        public int EventId { get; set; }
-
-        public EventViewModel Events { get; set; }
+        public EventDetailsViewModel Events { get; set; }
 
         public virtual ICollection<HomeViewModel> HomeModels { get; set; }
     }

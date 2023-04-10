@@ -1,5 +1,7 @@
 ﻿namespace LifeVenture.Web.Controllers
 {
+    using LifeVenture.Services.Data;
+    using LifeVenture.Web.ViewModels.Settings;
     using Microsoft.AspNetCore.Mvc;
 
     public class EventsController : BaseController
@@ -13,6 +15,7 @@
 
         public IActionResult Index()
         {
+            //var events = this.eventsService.GetAll<>();
             return this.View();
         }
     }
