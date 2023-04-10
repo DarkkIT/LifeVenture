@@ -1,9 +1,8 @@
 ﻿namespace LifeVenture.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using LifeVenture.Data.Models;
     using LifeVenture.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

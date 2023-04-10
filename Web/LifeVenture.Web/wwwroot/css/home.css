@@ -7,9 +7,10 @@
         border-radius: 5px;
     }
 
-.home-content {
+.home-info {
     width: 100%;
-    height: 25rem;
+    justify-self: auto;
+    margin-bottom: 2.5rem;
 }
 
 .nums-container {
@@ -53,4 +54,19 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: .8rem;
+}
+
+.event-card {
+    display: inline-block;
+    width: 22% !important;
+    min-width: 300px;
+    margin: 0 2rem 2rem 2rem;
+}
+
+.emergency-events-header {
+    font-family: 'Caveat', cursive;
+    font-weight: 400;
+    font-size: 3vw;
+    color: #519872;
+    margin: 4rem 0 2rem 0;
 }

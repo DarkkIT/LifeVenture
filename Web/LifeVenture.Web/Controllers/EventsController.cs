@@ -1,7 +1,5 @@
 ﻿namespace LifeVenture.Web.Controllers
 {
-    using LifeVenture.Services.Data;
-
     using Microsoft.AspNetCore.Mvc;
 
     public class EventsController : BaseController

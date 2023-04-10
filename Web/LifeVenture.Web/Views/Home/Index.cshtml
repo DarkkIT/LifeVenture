@@ -1,10 +1,15 @@
-﻿@using LifeVenture.Common
+﻿@model HomeViewModel;
+@using LifeVenture.Common;
+@using LifeVenture.Web.ViewModels.Home;
 @{
     this.ViewData["Title"] = "Home Page";
 }
 
 <head>
     <link href="~/css/home.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
 </head>
 
 <div class="text-center bg-basic-color">
@@ -49,7 +54,7 @@
         </button>
     </div>
 
-    <div class="home-content">
+    <div class="home-info">
         <div class="nums-container">
             <div class="item1">
                 <div class="home-number">2000</div>
@@ -72,7 +77,17 @@
                 <div class="home-label">ДОБРОВОЛЦИ</div>
             </div>
         </div>
+    </div>
 
+    <div class="emergency-events-header">
+        <div>Децата, нашето наследство и бъдеще.</div>
+        <div>Нека им дадем шанс за един по добър живот</div>
+    </div>
+
+    <div class="home-events">
+        <partial name="_EventCardPatrial" model="Model" />
+        <partial name="_EventCardPatrial" model="Model" />
+        <partial name="_EventCardPatrial" model="Model" />
     </div>
 
 </div>

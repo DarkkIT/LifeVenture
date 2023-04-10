@@ -1,5 +1,4 @@
-﻿// ReSharper disable VirtualMemberCallInConstructor
-namespace LifeVenture.Data.Models
+﻿namespace LifeVenture.Data.Models
 {
     using System;
     using System.Collections.Generic;
@@ -17,6 +16,12 @@ namespace LifeVenture.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
         }
+
+        public string Name { get; set; }
+
+        public int Age { get; set; }
+
+        public string Nationality { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }
