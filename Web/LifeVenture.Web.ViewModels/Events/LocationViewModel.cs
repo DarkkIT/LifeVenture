@@ -9,9 +9,9 @@
     {
         public LocationViewModel()
         {
-            this.Events = new HashSet<EventViewModel>();
+            this.Events = new HashSet<EventDetailsViewModel>();
         }
 
-        public virtual ICollection<EventViewModel> Events { get; set; }
+        public virtual ICollection<EventDetailsViewModel> Events { get; set; }
     }
 }

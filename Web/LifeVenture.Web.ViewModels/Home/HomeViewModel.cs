@@ -18,6 +18,6 @@
 
         public virtual ICollection<ImageViewModel> Images { get; set; }
 
-        public virtual ICollection<EventViewModel> Events { get; set; }
+        public virtual ICollection<EventDetailsViewModel> Events { get; set; }
     }
 }
