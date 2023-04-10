@@ -56,13 +56,6 @@
     font-size: .8rem;
 }
 
-.event-card {
-    display: inline-block;
-    width: 22% !important;
-    min-width: 300px;
-    margin: 0 2rem 2rem 2rem;
-}
-
 .emergency-events-header {
     font-family: 'Caveat', cursive;
     font-weight: 400;
