@@ -5,7 +5,33 @@
 
 <head>
     <link href="~/css/card.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/event.css" rel="stylesheet" asp-append-version="true" />
 </head>
+
+<div class="text-center row filters-container">
+    <div class="col-sm">
+        <select class="event-select" id="categories">
+            <option>--Категория--</option>
+            <option>Място</option>
+            <option>Място</option>
+            <option>Място</option>
+        </select>
+        <select class="event-select" id="locations">
+            <option>Място</option>
+            <option>Място</option>
+            <option>Място</option>
+            <option>Място</option>
+        </select>
+        <label>От</label>
+        <input class="event-select" id="from-date" type="date" min="2023-01-01">
+        <label>До</label>
+        <input class="event-select" id="to-date" type="date" min="2023-01-01">
+    </div>
+    <div class="col-sm">
+        <button class="btn-basic-color event-button" id="recent-events" type="button">Най-скорошни</button>
+        <button class="btn-basic-color event-button" id="recommended" type="button">Препоръчани</button>
+    </div>
+</div>
 
 @foreach (var eventObj in Model)
 {
@@ -14,6 +40,8 @@
     </div>
 }
 
-<div class="text-center">
+<div class="text-center events-container">
+    <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
+    <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
     <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
 </div>

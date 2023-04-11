@@ -1,0 +1,27 @@
+﻿.filters-container {
+    padding-top: 2rem;
+    padding-left: 6rem;
+    padding-bottom: 2rem;
+}
+
+.event-select {
+    width: 7.1rem;
+    background-color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #474747;
+    height: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.event-button {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 800;
+}
