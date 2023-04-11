@@ -4,26 +4,21 @@
     using System.Linq;
 
     using LifeVenture.Data.Common.Repositories;
-    using LifeVenture.Data.Models;
+    using LifeVenture.Data.Models.Events;
     using LifeVenture.Services.Mapping;
 
     public class EventsService : IEventsService
     {
-        private readonly IDeletableEntityRepository<Setting> settingsRepository;
+        private readonly IDeletableEntityRepository<Event> eventsRepository;
 
-        public EventsService(IDeletableEntityRepository<Setting> settingsRepository)
+        public EventsService(IDeletableEntityRepository<Event> eventsRepository)
         {
-            this.settingsRepository = settingsRepository;
-        }
-
-        public int GetCount()
-        {
-            return this.settingsRepository.AllAsNoTracking().Count();
+            this.eventsRepository = eventsRepository;
         }
 
         public IEnumerable<T> GetAll<T>()
         {
-            return this.settingsRepository.All().To<T>().ToList();
+            return this.eventsRepository.All().To<T>().ToList();
         }
     }
 }

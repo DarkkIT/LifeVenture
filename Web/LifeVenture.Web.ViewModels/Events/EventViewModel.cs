@@ -1,8 +1,10 @@
 ﻿namespace LifeVenture.Web.ViewModels.Events
 {
+    using LifeVenture.Data.Models.Events;
+    using LifeVenture.Services.Mapping;
     using LifeVenture.Web.ViewModels.Common;
 
-    public class EventViewModel
+    public class EventViewModel : IMapFrom<Event>
     {
         public string Title { get; set; }
 

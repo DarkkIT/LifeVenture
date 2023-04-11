@@ -1,12 +1,12 @@
-﻿@model HomeViewModel
-@using LifeVenture.Web.ViewModels.Home;
+﻿@using LifeVenture.Web.ViewModels.Events;
 
-@*Event Card Patrial*@
+@model EventViewModel
+
 <div class="card event-card" style="width: 18rem;">
     <img src="~/images/image2.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.Description</p>
     </div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">An item</li>

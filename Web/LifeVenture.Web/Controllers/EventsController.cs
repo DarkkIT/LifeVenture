@@ -1,6 +1,7 @@
 ﻿namespace LifeVenture.Web.Controllers
 {
     using LifeVenture.Services.Data;
+    using LifeVenture.Web.ViewModels.Events;
     using LifeVenture.Web.ViewModels.Settings;
     using Microsoft.AspNetCore.Mvc;
 
@@ -15,8 +16,8 @@
 
         public IActionResult Index()
         {
-            //var events = this.eventsService.GetAll<>();
-            return this.View();
+            var events = this.eventsService.GetAll<EventViewModel>();
+            return this.View(events);
         }
     }
 }
