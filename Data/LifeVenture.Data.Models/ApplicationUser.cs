@@ -2,9 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
-
+    using System.Diagnostics.CodeAnalysis;
     using LifeVenture.Data.Common.Models;
-
+    using LifeVenture.Data.Models.Events;
+    using LifeVenture.Data.Models.People;
     using Microsoft.AspNetCore.Identity;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
@@ -17,21 +18,34 @@
             this.Logins = new HashSet<IdentityUserLogin<string>>();
         }
 
-        public string Name { get; set; }
+        public string FirstName { get; set; }
 
+        public string LastName { get; set; }
+
+        [AllowNull]
         public int Age { get; set; }
+
+        public Phone Phone { get; set; }
 
         public string Nationality { get; set; }
 
-        // Audit info
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
 
-        // Deletable entity
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        [AllowNull]
+        public int PersonOfGoodnessId { get; set; }
+
+        public virtual PersonOfGoodness PersonOfGoodness { get; set; }
+
+        [AllowNull]
+        public int VolunteerId { get; set; }
+
+        public virtual Volunteer Volunteer { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

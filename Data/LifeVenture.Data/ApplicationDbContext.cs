@@ -11,6 +11,7 @@
     using LifeVenture.Data.Models.Common;
     using LifeVenture.Data.Models.Events;
     using LifeVenture.Data.Models.Home;
+    using LifeVenture.Data.Models.People;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
@@ -32,6 +33,8 @@
 
         public DbSet<Image> Images { get; set; }
 
+        public DbSet<ImagePeople> ImagePeoples { get; set; }
+
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<CountryPhoneCode> CountriesPhoneCodes { get; set; }
@@ -43,6 +46,10 @@
         public DbSet<Repeatability> Repeatabilities { get; set; }
 
         public DbSet<HomeModel> HomeModels { get; set; }
+
+        public DbSet<Volunteer> Volunteers { get; set; }
+
+        public DbSet<PersonOfGoodness> PeopleOfGoodness { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -65,6 +72,36 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Phone>()
+                .HasOne(x => x.Event)
+                .WithOne(x => x.Phone)
+                .HasForeignKey<Phone>(x => x.EventId);
+
+            builder.Entity<Phone>()
+                .HasOne(x => x.User)
+                .WithOne(x => x.Phone)
+                .HasForeignKey<Phone>(x => x.UserId);
+
+            builder.Entity<ImagePeople>()
+                .HasOne(x => x.PersonOfGoodnes)
+                .WithOne(x => x.Image)
+                .HasForeignKey<ImagePeople>(x => x.PersonOfGoodnesId);
+
+            builder.Entity<ImagePeople>()
+                .HasOne(x => x.Volunteer)
+                .WithOne(x => x.Image)
+                .HasForeignKey<ImagePeople>(x => x.VolunteerId);
+
+            builder.Entity<ApplicationUser>()
+                .HasOne(x => x.Volunteer)
+                .WithOne(x => x.User)
+                .HasForeignKey<ApplicationUser>(x => x.VolunteerId);
+
+            builder.Entity<ApplicationUser>()
+                .HasOne(x => x.PersonOfGoodness)
+                .WithOne(x => x.User)
+                .HasForeignKey<ApplicationUser>(x => x.PersonOfGoodnessId);
+
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 
