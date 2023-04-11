@@ -86,9 +86,10 @@
     </div>
 
     <div class="home-events">
-        <partial name="_EventCardPatrial" model="Model" />
-        <partial name="_EventCardPatrial" model="Model" />
-        <partial name="_EventCardPatrial" model="Model" />
+        @foreach (var eventModel in Model.Events)
+        {
+            <partial name="_EventCardPatrial" model="eventModel" />
+        }
     </div>
 
 </div>
