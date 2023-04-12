@@ -8,26 +8,25 @@
     <link href="~/css/event.css" rel="stylesheet" asp-append-version="true" />
 </head>
 
-<div class="text-center row filters-container">
-    <div class="col-sm">
-        <select class="event-select" id="categories">
+<div class="text-center filters-container">
+    <div>
+        <select class="event-filter" id="categories">
             <option>--Категория--</option>
+            <option>Много дълга категория</option>
+            <option>Втора много дълга категория</option>
+            <option>Място</option>
+        </select>
+        <select class="event-filter" id="locations">
+            <option>Място</option>
             <option>Място</option>
             <option>Място</option>
             <option>Място</option>
         </select>
-        <select class="event-select" id="locations">
-            <option>Място</option>
-            <option>Място</option>
-            <option>Място</option>
-            <option>Място</option>
-        </select>
-        <label>От</label>
-        <input class="event-select" id="from-date" type="date" min="2023-01-01">
-        <label>До</label>
-        <input class="event-select" id="to-date" type="date" min="2023-01-01">
+        <label for="from-date">От <input class="event-filter" id="from-date" type="date" min="2023-01-01"></label>
+        <label for="to-date">До <input class="event-filter" id="to-date" type="date" min="2023-01-01"></label>
+        
     </div>
-    <div class="col-sm">
+    <div class="event-buttons">
         <button class="btn-basic-color event-button" id="recent-events" type="button">Най-скорошни</button>
         <button class="btn-basic-color event-button" id="recommended" type="button">Препоръчани</button>
     </div>
