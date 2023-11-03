@@ -49,7 +49,7 @@
 
         public DbSet<Volunteer> Volunteers { get; set; }
 
-        public DbSet<PersonOfGoodness> PeopleOfGoodness { get; set; }
+        public DbSet<PersonOfGoodness> PersonOfGoodnesses { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

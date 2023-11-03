@@ -31,9 +31,13 @@
 }
 
 .card-body {
-    padding-top: 0.5rem;
+    padding-top: 0.3rem;
 }
 
 #card-author-link {
     padding-top: 0;
+}
+
+.progress {
+    background-color: white;
 }

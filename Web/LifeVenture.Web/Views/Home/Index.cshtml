@@ -59,23 +59,23 @@
     <div class="home-info">
         <div class="nums-container">
             <div class="item1">
-                <div class="home-number">2000</div>
+                <div class="home-number">@Model.StatisticalInfo.ActiveEvents</div>
                 <div class="home-label">АКТИВНИ ДЕЙНОСТИ</div>
             </div>
             <div class="item2">
-                <div class="home-number">1000</div>
+                <div class="home-number">@Model.StatisticalInfo.EndedEvents</div>
                 <div class="home-label">ЗАВЪРШЕНИ ДЕЙНОСТИ</div>
             </div>
             <div class="item3">
-                <div class="home-number">123000</div>
+                <div class="home-number">@Model.StatisticalInfo.TotalGoodDeeds</div>
                 <div class="home-label">ИЗВЪРШЕНИ ДОБРИ ДЕЛА</div>
             </div>
             <div class="item4">
-                <div class="home-number">123</div>
+                <div class="home-number">@Model.StatisticalInfo.PeopleOfGoodness</div>
                 <div class="home-label">ХОРА НА ДОБРОТО</div>
             </div>
             <div class="item5">
-                <div class="home-number">723</div>
+                <div class="home-number">@Model.StatisticalInfo.Volunteers</div>
                 <div class="home-label">ДОБРОВОЛЦИ</div>
             </div>
         </div>
@@ -93,10 +93,10 @@
     </div>*@
 
     <div class="home-events">
-        @foreach (var eventModel in Model.Events)
+        @*@foreach (var eventModel in Model.Events)
         {
             <partial name="_EventCardPatrial" model="eventModel" />
-        }
+        }*@
 
         <partial name="_EventCardPatrial" model="new EventViewModel()" />
         <partial name="_EventCardPatrial" model="new EventViewModel()" />

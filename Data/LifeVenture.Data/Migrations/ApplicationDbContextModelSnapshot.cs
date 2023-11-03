@@ -153,7 +153,7 @@ namespace LifeVenture.Data.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PersonOfGoodnessId")
+                    b.Property<int?>("PersonOfGoodnessId")
                         .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
@@ -172,7 +172,7 @@ namespace LifeVenture.Data.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<int>("VolunteerId")
+                    b.Property<int?>("VolunteerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -188,10 +188,12 @@ namespace LifeVenture.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.HasIndex("PersonOfGoodnessId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[PersonOfGoodnessId] IS NOT NULL");
 
                     b.HasIndex("VolunteerId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[VolunteerId] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -626,7 +628,7 @@ namespace LifeVenture.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("PeopleOfGoodness");
+                    b.ToTable("PersonOfGoodnesses");
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.People.Volunteer", b =>
@@ -832,15 +834,11 @@ namespace LifeVenture.Data.Migrations
                 {
                     b.HasOne("LifeVenture.Data.Models.People.PersonOfGoodness", "PersonOfGoodness")
                         .WithOne("User")
-                        .HasForeignKey("LifeVenture.Data.Models.ApplicationUser", "PersonOfGoodnessId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("LifeVenture.Data.Models.ApplicationUser", "PersonOfGoodnessId");
 
                     b.HasOne("LifeVenture.Data.Models.People.Volunteer", "Volunteer")
                         .WithOne("User")
-                        .HasForeignKey("LifeVenture.Data.Models.ApplicationUser", "VolunteerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("LifeVenture.Data.Models.ApplicationUser", "VolunteerId");
 
                     b.Navigation("PersonOfGoodness");
 

@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+
     using LifeVenture.Data.Common.Models;
     using LifeVenture.Data.Models.Events;
     using LifeVenture.Data.Models.People;
@@ -37,13 +38,11 @@
 
         public DateTime? DeletedOn { get; set; }
 
-        [AllowNull]
-        public int PersonOfGoodnessId { get; set; }
+        public int? PersonOfGoodnessId { get; set; }
 
         public virtual PersonOfGoodness PersonOfGoodness { get; set; }
 
-        [AllowNull]
-        public int VolunteerId { get; set; }
+        public int? VolunteerId { get; set; }
 
         public virtual Volunteer Volunteer { get; set; }
 
