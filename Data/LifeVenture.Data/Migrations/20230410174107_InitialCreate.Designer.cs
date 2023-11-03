@@ -4,6 +4,7 @@ using LifeVenture.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LifeVenture.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230410174107_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,14 +124,8 @@ namespace LifeVenture.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -138,6 +135,9 @@ namespace LifeVenture.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nationality")
                         .HasColumnType("nvarchar(max)");
@@ -152,9 +152,6 @@ namespace LifeVenture.Data.Migrations
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PersonOfGoodnessId")
-                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
@@ -172,9 +169,6 @@ namespace LifeVenture.Data.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<int>("VolunteerId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
@@ -186,12 +180,6 @@ namespace LifeVenture.Data.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("PersonOfGoodnessId")
-                        .IsUnique();
-
-                    b.HasIndex("VolunteerId")
-                        .IsUnique();
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -221,48 +209,6 @@ namespace LifeVenture.Data.Migrations
                     b.HasIndex("EventId");
 
                     b.ToTable("Images");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Common.ImagePeople", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<byte[]>("Data")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PersonOfGoodnesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VolunteerId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("PersonOfGoodnesId")
-                        .IsUnique();
-
-                    b.HasIndex("VolunteerId")
-                        .IsUnique();
-
-                    b.ToTable("ImagePeoples");
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.Events.Category", b =>
@@ -412,6 +358,8 @@ namespace LifeVenture.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
+                    b.HasIndex("PhoneId");
+
                     b.HasIndex("RepeatabilityId");
 
                     b.ToTable("Events");
@@ -461,9 +409,6 @@ namespace LifeVenture.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("EventId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -475,21 +420,11 @@ namespace LifeVenture.Data.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CodeId");
 
-                    b.HasIndex("EventId")
-                        .IsUnique();
-
                     b.HasIndex("IsDeleted");
-
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Phones");
                 });
@@ -594,69 +529,6 @@ namespace LifeVenture.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("StatisticalInfo");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.People.PersonOfGoodness", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FieldOfWork")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("PeopleOfGoodness");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.People.Volunteer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Volunteers");
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.Setting", b =>
@@ -828,25 +700,6 @@ namespace LifeVenture.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("LifeVenture.Data.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("LifeVenture.Data.Models.People.PersonOfGoodness", "PersonOfGoodness")
-                        .WithOne("User")
-                        .HasForeignKey("LifeVenture.Data.Models.ApplicationUser", "PersonOfGoodnessId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("LifeVenture.Data.Models.People.Volunteer", "Volunteer")
-                        .WithOne("User")
-                        .HasForeignKey("LifeVenture.Data.Models.ApplicationUser", "VolunteerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("PersonOfGoodness");
-
-                    b.Navigation("Volunteer");
-                });
-
             modelBuilder.Entity("LifeVenture.Data.Models.Common.Image", b =>
                 {
                     b.HasOne("LifeVenture.Data.Models.Events.Event", "Event")
@@ -856,25 +709,6 @@ namespace LifeVenture.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Event");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Common.ImagePeople", b =>
-                {
-                    b.HasOne("LifeVenture.Data.Models.People.PersonOfGoodness", "PersonOfGoodnes")
-                        .WithOne("Image")
-                        .HasForeignKey("LifeVenture.Data.Models.Common.ImagePeople", "PersonOfGoodnesId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("LifeVenture.Data.Models.People.Volunteer", "Volunteer")
-                        .WithOne("Image")
-                        .HasForeignKey("LifeVenture.Data.Models.Common.ImagePeople", "VolunteerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("PersonOfGoodnes");
-
-                    b.Navigation("Volunteer");
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.Events.Event", b =>
@@ -893,6 +727,12 @@ namespace LifeVenture.Data.Migrations
                         .WithMany("Events")
                         .HasForeignKey("HomeModelId");
 
+                    b.HasOne("LifeVenture.Data.Models.Events.Phone", "Phone")
+                        .WithMany()
+                        .HasForeignKey("PhoneId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("LifeVenture.Data.Models.Events.Repeatability", "Repeatability")
                         .WithMany()
                         .HasForeignKey("RepeatabilityId")
@@ -902,6 +742,8 @@ namespace LifeVenture.Data.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("CreatedBy");
+
+                    b.Navigation("Phone");
 
                     b.Navigation("Repeatability");
                 });
@@ -914,21 +756,7 @@ namespace LifeVenture.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("LifeVenture.Data.Models.Events.Event", "Event")
-                        .WithOne("Phone")
-                        .HasForeignKey("LifeVenture.Data.Models.Events.Phone", "EventId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("LifeVenture.Data.Models.ApplicationUser", "User")
-                        .WithOne("Phone")
-                        .HasForeignKey("LifeVenture.Data.Models.Events.Phone", "UserId");
-
                     b.Navigation("Code");
-
-                    b.Navigation("Event");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.Home.HomeModel", b =>
@@ -997,8 +825,6 @@ namespace LifeVenture.Data.Migrations
 
                     b.Navigation("Logins");
 
-                    b.Navigation("Phone");
-
                     b.Navigation("Roles");
                 });
 
@@ -1010,27 +836,11 @@ namespace LifeVenture.Data.Migrations
             modelBuilder.Entity("LifeVenture.Data.Models.Events.Event", b =>
                 {
                     b.Navigation("Images");
-
-                    b.Navigation("Phone");
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.Home.HomeModel", b =>
                 {
                     b.Navigation("Events");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.People.PersonOfGoodness", b =>
-                {
-                    b.Navigation("Image");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.People.Volunteer", b =>
-                {
-                    b.Navigation("Image");
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

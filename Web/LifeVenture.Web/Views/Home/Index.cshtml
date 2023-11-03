@@ -1,5 +1,6 @@
 ﻿@model HomeViewModel;
 @using LifeVenture.Common;
+@using LifeVenture.Web.ViewModels.Events;
 @using LifeVenture.Web.ViewModels.Home;
 @{
     this.ViewData["Title"] = "Home Page";
@@ -7,12 +8,16 @@
 
 <head>
     <link href="~/css/home.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/card.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
-<div class="text-center bg-basic-color">
-    @*<h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>*@
+<div class="text-center">
 
-    <div id="carouselExampleIndicators" class="carousel custom-carusel slide" data-bs-ride="true">
+    <h1 id="home-welcome" class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
+
+    @*<div id="carouselExampleIndicators" class="carousel custom-carusel slide" data-bs-ride="true">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -49,7 +54,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-    </div>
+    </div>*@
 
     <div class="home-info">
         <div class="nums-container">
@@ -76,12 +81,20 @@
         </div>
     </div>
 
-    <div class="emergency-events">Нека нашите деца да са с предимство</div>
+    <div class="emergency-events-header">
+        <div class="test1">Тука нещо Кали ще измисли</div>
+        <div>Бля, бля, бля</div>
+    </div>
 
     <div class="home-events">
-        <partial name="_EventCardPatrial" model="Model" />
-        <partial name="_EventCardPatrial" model="Model" />
-        <partial name="_EventCardPatrial" model="Model" />
+        @foreach (var eventModel in Model.Events)
+        {
+            <partial name="_EventCardPatrial" model="eventModel" />
+        }
+
+        <partial name="_EventCardPatrial" model="new EventViewModel()" />
+        <partial name="_EventCardPatrial" model="new EventViewModel()" />
+        <partial name="_EventCardPatrial" model="new EventViewModel()" />
     </div>
 
 </div>

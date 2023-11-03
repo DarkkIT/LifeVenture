@@ -12,6 +12,7 @@
         public HomeViewModel()
         {
             this.Images = new HashSet<ImageViewModel>();
+            this.Events = new HashSet<EventViewModel>();
         }
 
         public StatisticalInfo StatisticalInfo { get; set; }

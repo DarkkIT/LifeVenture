@@ -1,11 +1,11 @@
-﻿.carousel {
+﻿/*.carousel {
     width: 100%;
 }
 
     .carousel img {
         height: 20rem;
         border-radius: 5px;
-    }
+    }*/
 
 .home-info {
     width: 100%;
@@ -51,21 +51,29 @@
 }
 
 .home-label {
-    font-family: 'Poppins', sans-serif;
+    /*font-family: 'Poppins', sans-serif;*/
     font-weight: 600;
     font-size: .8rem;
 }
 
-.event-card {
-    display: inline-block;
-    width: 22% !important;
-    min-width: 300px;
-    margin: 0 2rem 0 2rem;
+.emergency-events-header {
+    font-family: 'Caveat', cursive;
+    font-weight: 400;
+    font-size: 3vw;
+    color: #519872;
+    margin: 4rem 0 2rem 0;
 }
 
-.emergency-events {
-    font-family: 'Caveat', sans-serif;
+#home-welcome {
+    padding: 4rem;
     font-weight: 600;
-    font-size: 2rem;
-    color: #EA7317;
+    font-size: 5rem;
+}
+
+.emergency-events-header, #home-welcome {
+    font-family: 'Anastasia-1';
+}
+
+.home-label, .home-number {
+    font-family: 'Gabriela-regular', serif;
 }
