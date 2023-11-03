@@ -1,0 +1,41 @@
+﻿
+#leayout-logo {
+    height: 3rem;
+    width: 7rem;
+    /*border: 2px solid black;*/
+    font-family: 'Gabriela-regular', serif;
+    background-size: cover;
+    padding: 0;
+    line-height: 70%;
+    display: grid;
+    grid-template-areas:
+        'one two'
+        'three three';
+    column-gap: 1px;
+    row-gap: 1px;
+    text-align: start;
+    font-size: 1.7rem;
+    color: cornflowerblue
+}
+
+#logo-part-one {
+    grid-area: one;
+    height: 1.5rem;
+    /*border: 1px solid blue;*/
+    width: 3.5rem;
+    font-weight: 900;
+}
+#logo-part-two {
+    grid-area: two;
+    height: 1.5rem;
+    /*border: 1px solid blue;*/
+    width: 3.5rem;
+    line-height: 80%;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+#logo-part-three {
+    grid-area: three;
+    height: 1.5rem;
+    /*border: 1px solid blue;*/
+}

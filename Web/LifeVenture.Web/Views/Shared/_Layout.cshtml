@@ -7,10 +7,7 @@
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-
-@*    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gabriela&display=swap" rel="stylesheet">*@
+    <link rel="stylesheet" href="~/css/main-logo.css" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -18,9 +15,9 @@
             <div class="custom-body">
 
                 <a id="leayout-logo" class="navbar-brand" asp-area="" asp-controller="Home">
-                    <div>Life</div>
-                    <div>Life</div>
-                    <div>venture</div>
+                    <div id="logo-part-one">Life</div>
+                    <div id="logo-part-two">&infin;</div>
+                    <div id="logo-part-three">venture</div>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
