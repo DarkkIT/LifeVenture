@@ -15,7 +15,7 @@
             this.Events = new HashSet<EventViewModel>();
         }
 
-        public StatisticalInfo StatisticalInfo { get; set; }
+        public StatisticalInfoViewModel StatisticalInfo { get; set; }
 
         public virtual ICollection<ImageViewModel> Images { get; set; }
 

@@ -11,6 +11,7 @@
         public IActionResult Index()
         {
             var viewModel = new HomeViewModel();
+            viewModel.StatisticalInfo = new StatisticalInfoViewModel();
 
             return this.View(viewModel);
         }
