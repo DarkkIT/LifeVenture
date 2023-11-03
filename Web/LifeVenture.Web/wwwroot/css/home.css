@@ -56,24 +56,37 @@
     font-size: .8rem;
 }
 
-.emergency-events-header {
+.home-info-container {
     font-family: 'Caveat', cursive;
     font-weight: 400;
     font-size: 3vw;
     color: #519872;
-    margin: 4rem 0 2rem 0;
+    margin: 0 0 2rem 0;
 }
 
 #home-welcome {
-    padding: 4rem;
+    padding: 2rem;
     font-weight: 600;
     font-size: 5rem;
+    margin-bottom: 0;
 }
 
-.emergency-events-header, #home-welcome {
+.home-info-container, #home-welcome {
     font-family: 'Anastasia-1';
 }
 
 .home-label, .home-number {
     font-family: 'Gabriela-regular', serif;
+}
+
+.events-header {
+    margin: 0 0 1rem 0;
+}
+.event-header-inner {
+    font-family: 'Gabriela-regular', serif;
+    font-weight: 600;
+    color: cornflowerblue;
+    margin: auto;
+    width: 73%;
+    text-align: end;
 }
