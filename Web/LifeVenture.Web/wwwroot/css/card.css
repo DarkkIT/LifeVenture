@@ -4,3 +4,36 @@
     min-width: 300px;
     margin: 0 2rem 2rem 2rem;
 }
+
+#card-progress-bar {
+
+}
+
+.card-title-top, .card-title-mid {
+    font-family: 'Gabriela-regular', serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: cornflowerblue;
+}
+
+.card {
+    background-color: transparent;
+    border: none;
+}
+
+.list-group {
+    border-radius: 0 0 5px 5px;
+}
+
+.list-group-item {
+    padding: 0.2rem;
+    font-weight: 600;
+}
+
+.card-body {
+    padding-top: 0.5rem;
+}
+
+#card-author-link {
+    padding-top: 0;
+}
