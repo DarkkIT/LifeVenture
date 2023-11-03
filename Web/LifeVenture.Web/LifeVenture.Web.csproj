@@ -40,8 +40,4 @@
     <ProjectReference Include="..\LifeVenture.Web.Infrastructure\LifeVenture.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\LifeVenture.Web.ViewModels\LifeVenture.Web.ViewModels.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\fonts\" />
-  </ItemGroup>
 </Project>

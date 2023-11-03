@@ -118,3 +118,25 @@ body {
     --bs-gutter-y: 0;
     background-color: #DCECF9;
 }
+@font-face {
+    font-family: 'Gabriela-regular';
+    src: url('../fonts/gabriela-regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Anastasia-1';
+    src: url('../fonts/anastasia-1.otf') format('opentype');
+}
+
+.navbar-nav {
+    font-family: 'Gabriela-regular', serif;
+    font-size: 1.6rem;
+}
+
+#leayout-logo {
+    height: 3rem;
+    width: 7rem;
+    border: 1px solid red;
+    /*background-image: url('../images/home-logo-1.png');*/
+    background-size: cover;
+}
