@@ -1,7 +1,6 @@
 ﻿namespace LifeVenture.Data.Models.Events
 {
     using System.ComponentModel.DataAnnotations;
-    using System.Diagnostics.CodeAnalysis;
 
     using LifeVenture.Data.Common.Models;
 
