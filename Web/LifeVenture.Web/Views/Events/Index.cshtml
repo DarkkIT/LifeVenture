@@ -59,18 +59,22 @@
             </div>
         </div>
 
-        <div class="new-event row row-cols-md-2">ДОБАВИ</div>
+        <div class="new-event row row-cols-md-2">НОВ ЕВЕНТ</div>
 
     </div>
 
-    @foreach (var eventObj in Model)
+    @*@foreach (var eventObj in Model)
     {
         <div class="text-center">
             <partial name="_EventCardPatrial" model="eventObj" />
         </div>
-    }
+    }*@
 
     <div class="text-center events-container">
+        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
+        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
+        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
+        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
         <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
         <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
         <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
