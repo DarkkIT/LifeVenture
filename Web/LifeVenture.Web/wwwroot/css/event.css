@@ -80,3 +80,53 @@ label {
         margin-top:0.5rem;
     }
 }
+
+.events-top {
+    padding-top: 3rem;
+}
+
+.events-filters {
+    /*display: grid;*/
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2rem;
+    /*grid-template-areas:
+        'one two two two two two three';*/
+    font-family: 'Gabriela-regular', serif;
+}
+
+.name-filters {
+    grid-area: one;
+    text-align: start;
+    width: auto;
+    font-size: 2rem;
+}
+
+.filters {
+    grid-area: two;
+    width: auto;
+}
+
+.new-event {
+    grid-area: three;
+    text-align: end;
+    width: auto;
+    font-size: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter-inner {
+    width: auto;
+    cursor: pointer;
+    margin-right: 0;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.filter-inner:hover {
+    background-color: lightskyblue;
+}
+.new-event:hover {
+    background-color: palevioletred;
+}

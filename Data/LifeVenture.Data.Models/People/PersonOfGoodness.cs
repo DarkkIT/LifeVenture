@@ -18,7 +18,6 @@
 
         public ApplicationUser User { get; set; }
 
-        [AllowNull]
         public ImagePeople Image { get; set; }
     }
 }

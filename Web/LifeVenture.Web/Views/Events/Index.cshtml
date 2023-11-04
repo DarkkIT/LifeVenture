@@ -8,7 +8,7 @@
     <link href="~/css/event.css" rel="stylesheet" asp-append-version="true" />
 </head>
 
-<div class="text-center filters-container">
+@*<div class="text-center filters-container">
     <div>
         <select class="event-filter" id="categories">
             <option>--Категория--</option>
@@ -24,23 +24,55 @@
         </select>
         <label for="from-date">От <input class="event-filter" id="from-date" type="date" min="2023-01-01"></label>
         <label for="to-date">До <input class="event-filter" id="to-date" type="date" min="2023-01-01"></label>
-        
+
     </div>
     <div class="event-buttons">
         <button class="btn-basic-color event-button" id="recent-events" type="button">Най-скорошни</button>
         <button class="btn-basic-color event-button" id="recommended" type="button">Препоръчани</button>
     </div>
-</div>
+</div>*@
 
-@foreach (var eventObj in Model)
-{
-    <div class="text-center">
-        <partial name="_EventCardPatrial" model="eventObj" />
+
+<div class="events-top">
+
+    <div class="events-filters row row-cols-md-8">
+        <div class="name-filters row-cols-2">ФИЛТРИ</div>
+
+        <div class="filters col row-cols-md-8">
+            <div class="row">
+                <div class="filter-inner">НАЙ НОВИ</div>
+                <div class="filter-inner">ПРИРОДА</div>
+                <div class="filter-inner">СОЦИАЛНИ</div>
+                <div class="filter-inner">ЖИВОТНИ</div>
+                <div class="filter-inner">ПОЛИТИКА</div>
+                <div class="filter-inner">КУЛТУРА</div>
+                <div class="filter-inner">СОЦИАЛНО СЛАБИ</div>
+            </div>
+            <div class="row">
+                <div class="filter-inner">СПОРТНИ</div>
+                <div class="filter-inner">ЗАБАВЛЕНИЯ</div>
+                <div class="filter-inner">БЕДСТВИЯ</div>
+                <div class="filter-inner">ЗДРАВЕ</div>
+                <div class="filter-inner">ДЕЦА</div>
+                <div class="filter-inner">ОБРАЗОВАНИЕ</div>
+                <div class="filter-inner">ХОРА С УВРЕЖДАНИЯ</div>
+            </div>
+        </div>
+
+        <div class="new-event row row-cols-md-2">ДОБАВИ</div>
+
     </div>
-}
 
-<div class="text-center events-container">
-    <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
-    <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
-    <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
+    @foreach (var eventObj in Model)
+    {
+        <div class="text-center">
+            <partial name="_EventCardPatrial" model="eventObj" />
+        </div>
+    }
+
+    <div class="text-center events-container">
+        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
+        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
+        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
+    </div>
 </div>
