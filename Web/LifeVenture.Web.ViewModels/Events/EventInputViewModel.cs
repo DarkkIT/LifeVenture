@@ -46,7 +46,5 @@
         // public virtual Category Category { get; set; }
 
         // public virtual ICollection<Location> Locations { get; set; }
-
-        // public virtual ICollection<Image> Images { get; set; }
     }
 }
