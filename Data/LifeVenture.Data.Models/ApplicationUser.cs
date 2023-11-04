@@ -23,8 +23,7 @@
 
         public string LastName { get; set; }
 
-        [AllowNull]
-        public int Age { get; set; }
+        public int? Age { get; set; }
 
         public Phone Phone { get; set; }
 

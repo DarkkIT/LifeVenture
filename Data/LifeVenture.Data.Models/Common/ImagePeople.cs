@@ -9,13 +9,11 @@
     {
         public byte[] Data { get; set; }
 
-        [AllowNull]
-        public int PersonOfGoodnesId { get; set; }
+        public int? PersonOfGoodnesId { get; set; }
 
         public PersonOfGoodness PersonOfGoodnes { get; set; }
 
-        [AllowNull]
-        public int VolunteerId { get; set; }
+        public int? VolunteerId { get; set; }
 
         public Volunteer Volunteer { get; set; }
     }
