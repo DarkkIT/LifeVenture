@@ -1,11 +1,11 @@
-﻿.filters-container {
+﻿.form-container {
     padding-top: 2rem;
     padding-bottom: 2rem;
     padding-left: 16rem;
     padding-right: 16rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .event-filter {
@@ -134,4 +134,8 @@ label {
 .card {
     margin: 0.5rem 1rem 1rem 1rem;
     /*max-width: 10%;*/
+}
+
+.form-control{
+    margin: 1rem !important;
 }
