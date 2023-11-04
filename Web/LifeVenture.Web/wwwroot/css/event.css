@@ -87,7 +87,7 @@ label {
 
 .events-filters {
     /*display: grid;*/
-    width: 80%;
+    width: 90%;
     margin: auto;
     margin-bottom: 2rem;
     /*grid-template-areas:
@@ -129,4 +129,9 @@ label {
 }
 .new-event:hover {
     background-color: palevioletred;
+}
+
+.card {
+    margin: 0.5rem 1rem 1rem 1rem;
+    /*max-width: 10%;*/
 }
