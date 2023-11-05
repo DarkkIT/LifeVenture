@@ -100,6 +100,7 @@ label {
     text-align: start;
     width: auto;
     font-size: 2rem;
+    color: var(--bs-link-color);
 }
 
 .filters {
@@ -114,6 +115,11 @@ label {
     font-size: 2rem;
     border-radius: 5px;
     cursor: pointer;
+}
+
+#new-event-tag {
+    text-decoration: none;
+    width: auto;
 }
 
 .filter-inner {

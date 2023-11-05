@@ -1,11 +1,18 @@
-﻿/*.carousel {
-    width: 100%;
+﻿.carousel {
+    width: 75%;
+    height: 12rem;
+    margin: auto;
+    font-family: 'Gabriela-regular', serif;
+    overflow: hidden;
 }
 
-    .carousel img {
-        height: 20rem;
-        border-radius: 5px;
-    }*/
+.text-carusel {
+    font-size: 2rem;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(100%);
+}
 
 .home-info {
     width: 100%;
