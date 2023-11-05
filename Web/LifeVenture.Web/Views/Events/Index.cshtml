@@ -8,31 +8,6 @@
     <link href="~/css/event.css" rel="stylesheet" asp-append-version="true" />
 </head>
 
-@*<div class="text-center filters-container">
-    <div>
-        <select class="event-filter" id="categories">
-            <option>--Категория--</option>
-            <option>Много дълга категория</option>
-            <option>Втора много дълга категория</option>
-            <option>Място</option>
-        </select>
-        <select class="event-filter" id="locations">
-            <option>Място</option>
-            <option>Място</option>
-            <option>Място</option>
-            <option>Място</option>
-        </select>
-        <label for="from-date">От <input class="event-filter" id="from-date" type="date" min="2023-01-01"></label>
-        <label for="to-date">До <input class="event-filter" id="to-date" type="date" min="2023-01-01"></label>
-
-    </div>
-    <div class="event-buttons">
-        <button class="btn-basic-color event-button" id="recent-events" type="button">Най-скорошни</button>
-        <button class="btn-basic-color event-button" id="recommended" type="button">Препоръчани</button>
-    </div>
-</div>*@
-
-
 <div class="events-top">
 
     <div class="events-filters row row-cols-md-8">
@@ -59,15 +34,17 @@
             </div>
         </div>
 
-        <div class="new-event row row-cols-md-2">НОВ ЕВЕНТ</div>
+        <div class="new-event row row-cols-md-2">
+            <a asp-controller="Events" asp-action="Create">НОВ ЕВЕНТ</a>
+        </div>
 
     </div>
 
     @*@foreach (var eventObj in Model)
     {
-        <div class="text-center">
-            <partial name="_EventCardPatrial" model="eventObj" />
-        </div>
+    <div class="text-center">
+    <partial name="_EventCardPatrial" model="eventObj" />
+    </div>
     }*@
 
     <div class="text-center events-container">

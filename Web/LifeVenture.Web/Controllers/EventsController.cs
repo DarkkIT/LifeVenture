@@ -1,9 +1,8 @@
 ﻿namespace LifeVenture.Web.Controllers
 {
     using LifeVenture.Services.Data;
-    using LifeVenture.Web.ViewModels.Events;
-    using LifeVenture.Web.ViewModels.Settings;
     using Microsoft.AspNetCore.Mvc;
+    using ViewModels.Events;
 
     public class EventsController : BaseController
     {
@@ -18,6 +17,19 @@
         {
             var events = this.eventsService.GetAll<EventViewModel>();
             return this.View(events);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var viewModel = new EventInputViewModel();
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Create(EventInputViewModel model)
+        {
+            return this.View(nameof(this.Create));
         }
     }
 }
