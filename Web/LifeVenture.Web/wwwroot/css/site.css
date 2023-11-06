@@ -132,3 +132,13 @@ body {
     font-family: 'Gabriela-regular', serif;
     font-size: 1.6rem;
 }
+
+.header-button {
+    height: 2.5rem;
+    line-height: 80%;
+    border-radius: 5px;
+}
+
+.header-button:hover {
+    background-color: palevioletred;
+}

@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\LifeVenture.Data.Models\LifeVenture.Data.Models.csproj" />
+    <ProjectReference Include="..\..\LifeVenture.Common\LifeVenture.Common.csproj" />
     <ProjectReference Include="..\..\Services\LifeVenture.Services.Mapping\LifeVenture.Services.Mapping.csproj" />
   </ItemGroup>
 

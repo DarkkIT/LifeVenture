@@ -1,0 +1,98 @@
+﻿@model LifeVenture.Web.ViewModels.AboutUs.AboutUsViewModel
+@{
+    this.ViewData["Title"] = "За Нас";
+}
+
+<head>
+    <link href="~/css/aboutus.css" rel="stylesheet" asp-append-version="true" />
+</head>
+
+<div class="row justify-content-center">
+    <div class="message-us">
+        <div>Пиши Ни</div>
+        <div class="message-us-body">
+            <form class="row justify-content-center" method="post" asp-controller="Account" asp-action="Login" enctype="multipart/form-data">
+
+                <div class="input-row row">
+                    <div class="col">
+                        <label asp-for="Input.SenderName"></label>
+                        <input type="text" asp-for="Input.SenderName" class="form-control" />
+                        <span asp-validation-for="Input.SenderName" class="error-message text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="input-row row">
+                    <div class="col">
+                        <label asp-for="Input.Email"></label>
+                        <input type="text" asp-for="Input.Email" class="form-control" />
+                        <span asp-validation-for="Input.Email" class="error-message text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="input-row row">
+                    <div class="col">
+                        <label asp-for="Input.Phone"></label>
+                        <input type="text" asp-for="Input.Phone" class="form-control" />
+                        <span asp-validation-for="Input.Phone" class="error-message text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="input-row row">
+                    <div class="col">
+                        <label asp-for="Input.Subject"></label>
+                        <input type="text" asp-for="Input.Subject" class="form-control" />
+                        <span asp-validation-for="Input.Subject" class="error-message text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="input-row row">
+                    <div class="col">
+                        <label asp-for="Input.Description"></label>
+                        <textarea asp-for="Input.Description" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="Input.Description" class="error-message text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="p-3 mb-4">
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-primary" value="Изпрати" asp-action="Index" />
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="contact-us">
+        <div>Контакти</div>
+        <div class="contact-us-body row justify-content-center">
+            <div class="text-row">Аддрес:</div>
+            <div class="text-row">Град - Тестов</div>
+            <div class="text-row">Улица - Тестова</div>
+            <div class="text-row">Телефон - Тестов</div>
+            <div class="text-row">Телефон - Тестов</div>
+            <div class="text-row">Телефон - Тестов</div>
+            <div class="text-row">Телефон - Тестов</div>
+            <div class="text-row">Бля Бля Бля</div>
+        </div>
+
+    </div>
+    <div class="about-us">
+        <div>За Нас</div>
+        <div class="about-us-body row justify-content-center">
+            <div class="text-row">Ние сме:</div>
+            <div class="text-row">Бля бля бля бля Бля бля бля бля</div>
+            <div class="text-row">Бля бля бля бля Бля бля бля бля</div>
+            <div class="text-row">Бля бля бля бля Бля бля бля бля</div>
+            <div class="text-row">Бля бля бля бля Бля бля бля бля</div>
+            <div class="text-row">Бля бля бля бля Бля бля бля бля</div>
+            <div class="text-row">Бля бля бля бля Бля бля бля бля</div>
+            <div class="text-row">Бля бля бля бля Бля бля бля бля</div>
+            <div class="text-row">Бля бля бля бля Бля бля бля бля</div>
+            <div class="text-row">Бля бля бля бля Бля бля бля бля</div>
+            <div class="text-row">Бля бля бля бля Бля бля бля бля</div>
+            <div class="text-row">Бля бля бля бля Бля бля бля бля</div>
+        </div>
+
+    </div>
+
+</div>
