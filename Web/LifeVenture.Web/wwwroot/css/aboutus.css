@@ -1,0 +1,30 @@
+﻿
+.message-us, .contact-us, .about-us {
+    width: 25%;
+    min-height: calc(100vh - 8rem);
+    /*border: 1px solid red;*/
+    text-align: center;
+    font-family: 'Anastasia-1';
+    font-size: 2.5vw;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+
+.message-us, .contact-us {
+    margin-right: 2rem;
+}
+
+.message-us-body, .contact-us-body, .about-us-body {
+    font-family: 'Gabriela-regular', serif;
+    font-size: 1vw;
+}
+
+.input-row, .text-row {
+    margin-top: 1rem !important;
+    max-width: 90%;
+}
+
+.error-message {
+    font-size: 0.8vw !important;
+    font-weight: 400;
+}
