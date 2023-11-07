@@ -5,7 +5,7 @@
 
     using Microsoft.AspNetCore.Http;
 
-    public class EventInputViewModel : EventDetailsViewModel
+    public class EventInputViewModel : EventBaseViewModel
     {
         [Display(Name = "Категории")]
         public int CategoryId { get; set; }
