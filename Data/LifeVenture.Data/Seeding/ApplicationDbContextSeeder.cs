@@ -27,6 +27,7 @@
                           {
                               new RolesSeeder(),
                               new SettingsSeeder(),
+                              new CountryPhoneCodesSeeder(),
                           };
 
             foreach (var seeder in seeders)
