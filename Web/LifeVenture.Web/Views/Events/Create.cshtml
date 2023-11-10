@@ -2,103 +2,99 @@
 
 @{
     this.ViewData["Title"] = "Дейности";
+    var categories = this.Model.Categories.Select(x => new SelectListItem(x.Value, x.Key));
 }
 
 <head>
     <link href="~/css/card.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/css/event.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/css/datepicker.css" rel="stylesheet" asp-append-version="true" />
-
-    @* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"> *@
-    @* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css"> *@
-
 </head>
 
-<div class="events-top">
-    <div class="text-center form-container">
-        @* asp-route-returnurl="@ViewData["ReturnUrl"]" *@
-        <form method="post" asp-controller="Account" asp-action="Login" enctype="multipart/form-data">
-            <div asp-validation-summary="All" class="text-danger"></div>
+<div class="text-center form-container">
+    <form method="post" asp-controller="Events" asp-action="Create" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger"></div>
 
-            @*  <select class="event-filter" id="categories">
-            <option>--Категория--</option>
-            <option>Много дълга категория</option>
-            <option>Втора много дълга категория</option>
-            <option>Място</option>
-            </select> *@
+        @* Град *@
+        @*  <select class="event-filter" id="locations">
+        <option>Място</option>
+        <option>Място</option>
+        <option>Място</option>
+        <option>Място</option>
+        </select> *@
 
-            @* Град *@
-            @*  <select class="event-filter" id="locations">
-            <option>Място</option>
-            <option>Място</option>
-            <option>Място</option>
-            <option>Място</option>
-            </select> *@
-            @*
-            <label for="from-date">От </label>
-            <label for="to-date">До <input class="event-filter" id="to-date" type="date" min="2023-01-01"></label>
-            *@
+        <div @* class="row" *@>
+            <div class="col">
+                <label asp-for="CategoryId"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="categories"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+        </div>
 
-            <div class="row">
-                <div class="col">
-                    <div class="input-daterange">
-                        <label asp-for="StartDate"></label>
-                        <input type="text" id="start" class="form-control" placeholder="Ден-Месец-Година" min="2024-01-01" max="2100-12-31">
-                        <span class="fa fa-calendar" id="fa-1"></span>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-daterange">
-                        <label asp-for="EndDate"></label>
-                        <input type="text" id="end" class="form-control" placeholder="Ден-Месец-Година" min="2024-01-01" max="2100-12-31">
-                        <span class="fa fa-calendar" id="fa-2"></span>
-                    </div>
+        <div class="row">
+            <div class="col">
+                <div class="input-daterange">
+                    <label asp-for="StartDate"></label>
+                    <input type="text" id="start" class="form-control" placeholder="Ден-Месец-Година" min="2024-01-01" max="2100-12-31">
+                    <span class="fa fa-calendar" id="fa-1"></span>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col">
-                    <label asp-for="Title"></label>
-                    <input type="text" asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger"></span>
+            <div class="col">
+                <div class="input-daterange form-group">
+                    <label asp-for="EndDate"></label>
+                    <input type="text" id="end" class="form-control" placeholder="Ден-Месец-Година" min="2024-01-01" max="2100-12-31">
+                    <span class="fa fa-calendar" id="fa-2"></span>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col">
-                    <label asp-for="Description"></label>
-                    <textarea asp-for="Description" class="form-control" rows="4"></textarea>
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
+        <div class="row">
+            <div class="col">
+                <label asp-for="Title"></label>
+                <input type="text" asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label asp-for="Email"></label>
+                <input type="text" asp-for="Email" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="exampleInputFile">Снимка</label>
+                <input asp-for="Image" class="form-control-file" id="exampleInputFile" />
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
 
-            <div class="row">
-                <div class="col">
-                    <label asp-for="Email"></label>
-                    <input type="text" asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label asp-for="IsUrgent"></label>
+                <input asp-for="IsUrgent" class="form-control-file" />
+                <span asp-validation-for="IsUrgent" class="text-danger"></span>
             </div>
+        </div>
 
-
-            @* <select asp-for="CarTypeId" class="form-control" asp-items="carTypes"></select> *@
-
-            <div class="row">
-                <div class="col">
-                    <label for="exampleInputFile">Снимка</label>
-                    <input asp-for="Image" class="form-control-file" id="exampleInputFile" />
-                    <span asp-validation-for="Image" class="text-danger"></span>
-                </div>
+        <div class="p-3 mb-4">
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary" value="Създай евент" asp-action="Create" />
             </div>
-
-            <div class="p-3 mb-4">
-                <div class="text-center">
-                    <input type="submit" class="btn btn-primary" value="Създай евент" asp-action="Create" />
-                </div>
-            </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 
 
@@ -118,7 +114,6 @@
                 clearBtn: true,
                 disableTouchKeyboard: true
             });
-
         });
     </script>
 }

@@ -12,7 +12,6 @@
         public Event()
         {
             this.Locations = new HashSet<Location>();
-            this.Images = new HashSet<Image>();
         }
 
         [Required]
@@ -49,12 +48,14 @@
 
         public virtual ApplicationUser CreatedBy { get; set; }
 
+        public int ImageId { get; set; }
+
+        public virtual Image Image { get; set; }
+
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
 
         public virtual ICollection<Location> Locations { get; set; }
-
-        public virtual ICollection<Image> Images { get; set; }
     }
 }

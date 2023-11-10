@@ -104,6 +104,12 @@
                 .WithOne(x => x.User)
                 .HasForeignKey<ApplicationUser>(x => x.PersonOfGoodnessId);
 
+            builder.Entity<Image>()
+                .HasOne(i => i.Event)
+                .WithOne(e => e.Image)
+                .HasForeignKey<Image>(i => i.EventId)
+                .IsRequired(false);
+
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 

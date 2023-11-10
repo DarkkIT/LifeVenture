@@ -4,7 +4,7 @@
 
     using LifeVenture.Data.Common.Models;
 
-    public class CountryPhoneCode : BaseDeletableModel<int>
+    public class CountryPhoneCode : BaseModel<int>
     {
         [Required]
         [MaxLength(10)]
