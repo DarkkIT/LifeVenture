@@ -26,6 +26,9 @@
         {
             var viewModel = new EventInputViewModel();
             viewModel.Categories = await this.eventsService.GetAllCategories();
+            var phoneCodes = await this.eventsService.GetAllPhoneCodes();
+            viewModel.Phone = new PhoneInputViewModel();
+            viewModel.Phone.Codes = phoneCodes;
             return this.View(viewModel);
         }
 
