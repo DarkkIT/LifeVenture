@@ -3,6 +3,7 @@
 @{
     this.ViewData["Title"] = "Дейности";
     var categories = this.Model.Categories.Select(x => new SelectListItem(x.Value, x.Key));
+    var phoneCodes = this.Model.Phone.Codes.Select(x => new SelectListItem(x.Value, x.Key));
 }
 
 <head>
@@ -68,7 +69,17 @@
             <div class="col">
                 <label asp-for="Email"></label>
                 <input type="text" asp-for="Email" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col">
+                <label asp-for="Phone.CodeId"></label>
+                <select asp-for="Phone.CodeId" class="form-control" asp-items="phoneCodes"></select>
+                <span asp-validation-for="Phone.CodeId" class="text-danger"></span>
+            </div>
+            <div class="col">
+                <label asp-for="Phone.Number"></label>
+                <input type="text" asp-for="Phone.Number" class="form-control" />
+                <span asp-validation-for="Phone.Number" class="text-danger"></span>
             </div>
         </div>
 

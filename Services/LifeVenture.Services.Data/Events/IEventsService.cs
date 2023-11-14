@@ -8,5 +8,7 @@
         Task<IEnumerable<T>> GetAll<T>();
 
         Task<IEnumerable<KeyValuePair<string, string>>> GetAllCategories();
+
+        Task<IEnumerable<KeyValuePair<string, string>>> GetAllPhoneCodes();
     }
 }

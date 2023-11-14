@@ -13,11 +13,16 @@
     {
         private readonly IDeletableEntityRepository<Event> eventsRepository;
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
+        private readonly IRepository<CountryPhoneCode> countryPhoneCodesRepository;
 
-        public EventsService(IDeletableEntityRepository<Event> eventsRepository, IDeletableEntityRepository<Category> categoriesRepository)
+        public EventsService(
+            IDeletableEntityRepository<Event> eventsRepository,
+            IDeletableEntityRepository<Category> categoriesRepository,
+            IRepository<CountryPhoneCode> countryPhoneCodesRepository)
         {
             this.eventsRepository = eventsRepository;
             this.categoriesRepository = categoriesRepository;
+            this.countryPhoneCodesRepository = countryPhoneCodesRepository;
         }
 
         public async Task<IEnumerable<T>> GetAll<T>()
@@ -41,5 +46,24 @@
             categories.AddRange(categoriesFromDb);
             return categories;
         }
+
+        public async Task<IEnumerable<KeyValuePair<string, string>>> GetAllPhoneCodes()
+        {
+            var phoneCodes = this.GetDefaultOption();
+
+            var phoneCodesFromDb = await this.countryPhoneCodesRepository
+                .All()
+                .Select(c => new KeyValuePair<string, string>(c.Id.ToString(), $"{c.Code} {c.Country}"))
+                .ToListAsync();
+
+            phoneCodes.AddRange(phoneCodesFromDb);
+            return phoneCodes;
+        }
+
+        private List<KeyValuePair<string, string>> GetDefaultOption()
+            => new List<KeyValuePair<string, string>>()
+            {
+                new KeyValuePair<string, string>("0", "ИЗБЕРИ"),
+            };
     }
 }
