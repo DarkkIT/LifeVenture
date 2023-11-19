@@ -12,5 +12,7 @@
 
         [MaxLength(150)]
         public string Country { get; set; }
+
+        public bool IsDefault { get; set; }
     }
 }
