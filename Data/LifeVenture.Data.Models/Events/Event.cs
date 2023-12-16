@@ -6,6 +6,7 @@
 
     using LifeVenture.Data.Common.Models;
     using LifeVenture.Data.Models.Common;
+    using LifeVenture.Data.Models.Locations;
 
     public class Event : BaseDeletableModel<int>
     {

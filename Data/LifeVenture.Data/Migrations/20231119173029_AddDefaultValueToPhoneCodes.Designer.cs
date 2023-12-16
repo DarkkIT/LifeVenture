@@ -4,6 +4,7 @@ using LifeVenture.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LifeVenture.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231119173029_AddDefaultValueToPhoneCodes")]
+    partial class AddDefaultValueToPhoneCodes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -422,6 +425,33 @@ namespace LifeVenture.Data.Migrations
                     b.ToTable("Events");
                 });
 
+            modelBuilder.Entity("LifeVenture.Data.Models.Events.Location", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Locations");
+                });
+
             modelBuilder.Entity("LifeVenture.Data.Models.Events.Phone", b =>
                 {
                     b.Property<int>("Id")
@@ -566,157 +596,6 @@ namespace LifeVenture.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("StatisticalInfo");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Locations.Location", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MunicipalityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RegionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SettlementId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("MunicipalityId");
-
-                    b.HasIndex("RegionId");
-
-                    b.HasIndex("SettlementId");
-
-                    b.ToTable("Locations");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Locations.Municipality", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RegionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("RegionId");
-
-                    b.ToTable("Municipalities");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Locations.Region", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Regions");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Locations.Settlement", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MunicipalityId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("MunicipalityId");
-
-                    b.ToTable("Settlements");
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.People.PersonOfGoodness", b =>
@@ -929,7 +808,7 @@ namespace LifeVenture.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("LifeVenture.Data.Models.Locations.Location", null)
+                    b.HasOne("LifeVenture.Data.Models.Events.Location", null)
                         .WithMany()
                         .HasForeignKey("LocationsId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1053,55 +932,6 @@ namespace LifeVenture.Data.Migrations
                     b.Navigation("StatisticalInfo");
                 });
 
-            modelBuilder.Entity("LifeVenture.Data.Models.Locations.Location", b =>
-                {
-                    b.HasOne("LifeVenture.Data.Models.Locations.Municipality", "Municipality")
-                        .WithMany()
-                        .HasForeignKey("MunicipalityId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("LifeVenture.Data.Models.Locations.Region", "Region")
-                        .WithMany()
-                        .HasForeignKey("RegionId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("LifeVenture.Data.Models.Locations.Settlement", "Settlement")
-                        .WithMany()
-                        .HasForeignKey("SettlementId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Municipality");
-
-                    b.Navigation("Region");
-
-                    b.Navigation("Settlement");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Locations.Municipality", b =>
-                {
-                    b.HasOne("LifeVenture.Data.Models.Locations.Region", "Region")
-                        .WithMany("Municipalities")
-                        .HasForeignKey("RegionId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Region");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Locations.Settlement", b =>
-                {
-                    b.HasOne("LifeVenture.Data.Models.Locations.Municipality", "Municipality")
-                        .WithMany("Settlements")
-                        .HasForeignKey("MunicipalityId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Municipality");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("LifeVenture.Data.Models.ApplicationRole", null)
@@ -1182,16 +1012,6 @@ namespace LifeVenture.Data.Migrations
             modelBuilder.Entity("LifeVenture.Data.Models.Home.HomeModel", b =>
                 {
                     b.Navigation("Events");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Locations.Municipality", b =>
-                {
-                    b.Navigation("Settlements");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Locations.Region", b =>
-                {
-                    b.Navigation("Municipalities");
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.People.PersonOfGoodness", b =>

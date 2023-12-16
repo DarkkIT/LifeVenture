@@ -1,5 +1,6 @@
 ﻿namespace LifeVenture.Services.Data
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -33,10 +34,7 @@
 
         public async Task<IEnumerable<KeyValuePair<string, string>>> GetAllCategories()
         {
-            var categories = new List<KeyValuePair<string, string>>
-            {
-                new KeyValuePair<string, string>("0", "ИЗБЕРИ"),
-            };
+            var categories = this.GetDefaultOption();
 
             var categoriesFromDb = await this.categoriesRepository
                 .All()
@@ -48,17 +46,12 @@
         }
 
         public async Task<IEnumerable<KeyValuePair<string, string>>> GetAllPhoneCodes()
-        {
-            var phoneCodes = this.GetDefaultOption();
-
-            var phoneCodesFromDb = await this.countryPhoneCodesRepository
+            => await this.countryPhoneCodesRepository
                 .All()
-                .Select(c => new KeyValuePair<string, string>(c.Id.ToString(), $"{c.Code} {c.Country}"))
+                .OrderByDescending(c => c.IsDefault)
+                .ThenBy(c => c.Id)
+                .Select(c => new KeyValuePair<string, string>(c.Id.ToString(), $"{c.Country} {c.Code}"))
                 .ToListAsync();
-
-            phoneCodes.AddRange(phoneCodesFromDb);
-            return phoneCodes;
-        }
 
         private List<KeyValuePair<string, string>> GetDefaultOption()
             => new List<KeyValuePair<string, string>>()
