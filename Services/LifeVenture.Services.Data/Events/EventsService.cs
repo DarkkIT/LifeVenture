@@ -7,6 +7,7 @@
 
     using LifeVenture.Data.Common.Repositories;
     using LifeVenture.Data.Models.Events;
+    using LifeVenture.Data.Models.Locations;
     using LifeVenture.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
 
@@ -15,15 +16,18 @@
         private readonly IDeletableEntityRepository<Event> eventsRepository;
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
         private readonly IRepository<CountryPhoneCode> countryPhoneCodesRepository;
+        private readonly IDeletableEntityRepository<Region> regionsRepository;
 
         public EventsService(
             IDeletableEntityRepository<Event> eventsRepository,
             IDeletableEntityRepository<Category> categoriesRepository,
-            IRepository<CountryPhoneCode> countryPhoneCodesRepository)
+            IRepository<CountryPhoneCode> countryPhoneCodesRepository,
+            IDeletableEntityRepository<Region> regionsRepository)
         {
             this.eventsRepository = eventsRepository;
             this.categoriesRepository = categoriesRepository;
             this.countryPhoneCodesRepository = countryPhoneCodesRepository;
+            this.regionsRepository = regionsRepository;
         }
 
         public async Task<IEnumerable<T>> GetAll<T>()
@@ -34,14 +38,16 @@
 
         public async Task<IEnumerable<KeyValuePair<string, string>>> GetAllCategories()
         {
-            var categories = this.GetDefaultOption();
+            var defaultCategory = this.GetDefaultOption();
 
-            var categoriesFromDb = await this.categoriesRepository
+            var categories = await this.categoriesRepository
                 .All()
+                .OrderBy(c => c.Id)
                 .Select(c => new KeyValuePair<string, string>(c.Id.ToString(), c.Name))
                 .ToListAsync();
 
-            categories.AddRange(categoriesFromDb);
+            categories.Insert(0, defaultCategory);
+
             return categories;
         }
 
@@ -53,10 +59,21 @@
                 .Select(c => new KeyValuePair<string, string>(c.Id.ToString(), $"{c.Country} {c.Code}"))
                 .ToListAsync();
 
-        private List<KeyValuePair<string, string>> GetDefaultOption()
-            => new List<KeyValuePair<string, string>>()
-            {
-                new KeyValuePair<string, string>("0", "ИЗБЕРИ"),
-            };
+        public async Task<IEnumerable<KeyValuePair<string, string>>> GetAllRegions()
+        {
+            var defaultOption = this.GetDefaultOption();
+            var regions = await this.regionsRepository
+                .All()
+                .OrderBy(r => r.Name)
+                .Select(r => new KeyValuePair<string, string>(r.Id.ToString(), $"{r.Name}"))
+                .ToListAsync();
+
+            regions.Insert(0, defaultOption);
+
+            return regions;
+        }
+
+        private KeyValuePair<string, string> GetDefaultOption()
+            => new KeyValuePair<string, string>("0", "ИЗБЕРИ");
     }
 }

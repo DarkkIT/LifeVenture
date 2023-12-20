@@ -10,5 +10,7 @@
         Task<IEnumerable<KeyValuePair<string, string>>> GetAllCategories();
 
         Task<IEnumerable<KeyValuePair<string, string>>> GetAllPhoneCodes();
+
+        Task<IEnumerable<KeyValuePair<string, string>>> GetAllRegions();
     }
 }

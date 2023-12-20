@@ -30,6 +30,7 @@
             var phoneCodes = await this.eventsService.GetAllPhoneCodes();
             viewModel.Phone = new PhoneInputViewModel();
             viewModel.Phone.Codes = phoneCodes;
+            viewModel.Regions = await this.eventsService.GetAllRegions();
 
             return this.View(viewModel);
         }
