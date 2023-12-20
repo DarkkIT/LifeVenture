@@ -4,6 +4,9 @@
     this.ViewData["Title"] = "Дейности";
     var categories = this.Model.Categories.Select(x => new SelectListItem(x.Value, x.Key));
     var phoneCodes = this.Model.Phone.Codes.Select(x => new SelectListItem(x.Value, x.Key));
+    var regions = this.Model.Regions.Select(x => new SelectListItem(x.Value, x.Key));
+    var municipalities = this.Model.Municipalities.Select(x => new SelectListItem(x.Value, x.Key));
+    var settlements = this.Model.Settlements.Select(x => new SelectListItem(x.Value, x.Key));
 }
 
 <head>
@@ -16,13 +19,29 @@
     <form method="post" asp-controller="Events" asp-action="Create" enctype="multipart/form-data">
         <div asp-validation-summary="All" class="text-danger"></div>
 
-        @* Град *@
-        @*  <select class="event-filter" id="locations">
-        <option>Място</option>
-        <option>Място</option>
-        <option>Място</option>
-        <option>Място</option>
-        </select> *@
+        <div @* class="row" *@>
+            <div class="col">
+                <label asp-for="CategoryId"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="regions"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div @* class="row" *@>
+            <div class="col">
+                <label asp-for="CategoryId"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="municipalities"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div @* class="row" *@>
+            <div class="col">
+                <label asp-for="CategoryId"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="settlements"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+        </div>
 
         <div @* class="row" *@>
             <div class="col">
@@ -109,7 +128,7 @@
 </div>
 
 
-@section Scripts{
+@section Scripts {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
