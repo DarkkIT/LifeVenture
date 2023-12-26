@@ -1,6 +1,7 @@
 ﻿namespace LifeVenture.Web.ViewModels.Events
 {
     using System.Collections.Generic;
+
     using LifeVenture.Data.Models.Locations;
     using LifeVenture.Services.Mapping;
 

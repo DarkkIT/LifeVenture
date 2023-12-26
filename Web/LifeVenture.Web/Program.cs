@@ -9,6 +9,7 @@
     using LifeVenture.Data.Repositories;
     using LifeVenture.Data.Seeding;
     using LifeVenture.Services.Data;
+    using LifeVenture.Services.Data.Locations;
     using LifeVenture.Services.Mapping;
     using LifeVenture.Services.Messaging;
     using LifeVenture.Web.ViewModels;
@@ -66,6 +67,7 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IEventsService, EventsService>();
+            services.AddTransient<ILocationsService, LocationsService>();
         }
 
         private static void Configure(WebApplication app)

@@ -19,27 +19,26 @@
     <form method="post" asp-controller="Events" asp-action="Create" enctype="multipart/form-data">
         <div asp-validation-summary="All" class="text-danger"></div>
 
-        <div @* class="row" *@>
-            <div class="col">
-                <label asp-for="CategoryId"></label>
-                <select asp-for="CategoryId" class="form-control" asp-items="regions"></select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
+        <div id="place-1">
+            <div class="row">
+                <div class="col">
+                    <label>Област</label>
+                    <select id="region-1" class="form-control" asp-items="regions"></select>
+                </div>
+                <div class="col">
+                    <label>Община</label>
+                    <select id="municipality-1" class="form-control" asp-items="municipalities" disabled></select>
+                </div>
+                <div class="col">
+                    <label>Населено място</label>
+                    <select id="settlements-1" class="form-control" asp-items="settlements" disabled></select>
+                </div>
             </div>
-        </div>
-
-        <div @* class="row" *@>
-            <div class="col">
-                <label asp-for="CategoryId"></label>
-                <select asp-for="CategoryId" class="form-control" asp-items="municipalities"></select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div @* class="row" *@>
-            <div class="col">
-                <label asp-for="CategoryId"></label>
-                <select asp-for="CategoryId" class="form-control" asp-items="settlements"></select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            <div class="row">
+                <div class="col">
+                    <label>Бележка</label>
+                    <textarea class="form-control" rows="4"></textarea>
+                </div>
             </div>
         </div>
 
@@ -126,13 +125,13 @@
         </div>
     </form>
 </div>
-
+<form method="post" id="antiForgeryForm"></form>
 
 @section Scripts {
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+    <script src="~/js/events.js"></script>
     <script>
         var $j = jQuery.noConflict();
         $j(document).ready(function () {
