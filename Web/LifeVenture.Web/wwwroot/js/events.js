@@ -4,12 +4,124 @@
 
     let firstMunicipality = document.getElementById('municipality-1');
     firstMunicipality.addEventListener('change', loadSettlements);
+
+    let locationBtn = document.getElementById('location-btn-1');
+    locationBtn.addEventListener('click', createNewLocationFields);
+}
+
+let createNewLocationFields = function (event) {
+    event.preventDefault()
+    let btn = event.target;
+    btn.style.display = "none"
+    let btnIdAsArray = btn.id.split('-');
+    let btnId = btnIdAsArray[btnIdAsArray.length - 1];
+    let nextNumber = parseInt(btnId) + 1;
+
+    let newParentDiv = document.createElement('div');
+    newParentDiv.id = `place-${nextNumber}`;
+
+    let selectFiedsRow = createSelectFieldsRow(nextNumber);
+    let textAreaRow = createTextAreaRow(nextNumber);
+
+    newParentDiv.appendChild(selectFiedsRow);
+    newParentDiv.appendChild(textAreaRow);
+    debugger;
+    
+    let existingNode = document.getElementById(`place-${btnId}`);
+    insertAfter(newParentDiv, existingNode);
+}
+
+let insertAfter = function (newNode, existingNode) {
+    existingNode.after(newNode);
+}
+
+let createSelectFieldsRow = function (btnId) {
+    let selectFieldsRow = document.createElement('div');
+    selectFieldsRow.classList.add('row');
+    debugger;
+    let regionCol = createColumn('Област', `region-${btnId}`);
+    let regionSelect = regionCol.children[regionCol.children.length - 1];
+    regionSelect.addEventListener('change', loadMunicipality);
+    addValuesToSelect(regionSelect);
+
+    let municipalityCol = createColumn('Община', `municipality-${btnId}`, true);
+    let municipalitySelect = municipalityCol.children[municipalityCol.children.length - 1];
+    municipalitySelect.addEventListener('change', loadSettlements);
+
+    let settlementCol = createColumn('Населено място', `settlements-${btnId}`, true);
+
+    selectFieldsRow.appendChild(regionCol);
+    selectFieldsRow.appendChild(municipalityCol);
+    selectFieldsRow.appendChild(settlementCol);
+    return selectFieldsRow;
+}
+
+let addValuesToSelect = function (select) {
+    let municipalitiesUrl = "/api/LocationsApi/GetRegions";
+    getValuesForSelect(municipalitiesUrl, select);
+}
+
+let createTextAreaRow = function (btnId) {
+    let row = document.createElement('div');
+    row.classList.add('row');
+
+    let col = createTextAreaColumn('Бележка', btnId);
+    row.appendChild(col);
+    return row;
+}
+
+let createTextAreaColumn = function (label, id) {
+    let col = document.createElement('div');
+    col.classList.add('col');
+
+    let labelField = document.createElement('label');
+    labelField.textContent = label;
+
+    let textArea = document.createElement('textarea');
+    textArea.classList.add('form-control');
+    textArea.setAttribute('rows', '4');
+
+    let button = document.createElement('button');
+    button.id = `location-btn-${id}`;
+    button.textContent = 'Добави локация';
+    button.addEventListener('click', createNewLocationFields);
+
+    col.appendChild(labelField);
+    col.appendChild(textArea);
+    col.appendChild(button);
+    return col;
+}
+
+let createColumn = function (labelText, selectId, isDisabled) {
+    let col = document.createElement('div');
+    col.classList.add('col');
+
+    let label = document.createElement('label');
+    label.textContent = labelText;
+
+    let select = document.createElement('select');
+    select.id = selectId;
+    select.classList.add('form-control');
+
+    let defaultOption = document.createElement('option');
+    defaultOption.value = '0';
+    defaultOption.textContent = 'ИЗБЕРИ';
+
+    select.appendChild(defaultOption);
+
+    if (isDisabled) {
+        select.disabled = true;
+    }
+
+    col.appendChild(label);
+    col.appendChild(select);
+    return col;
 }
 
 let loadMunicipality = function (event) {
     let select = event.target;
     let regionId = select.value;
-    
+
     let splittedSelectId = select.id.split('-');
     let municipalitySelect = getSelect('municipality-' + splittedSelectId[1]);
     let settlementsSelect = getSelect('settlements-' + splittedSelectId[1]);
@@ -19,6 +131,8 @@ let loadMunicipality = function (event) {
         settlementsSelect.disabled = true;
         return;
     }
+
+    settlementsSelect.disabled = true;
 
     let municipalitiesUrl = "/api/LocationsApi/GetMunicipalities" + '?regionId=' + regionId;
     getValuesForSelect(municipalitiesUrl, municipalitySelect);
