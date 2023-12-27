@@ -16,7 +16,7 @@
 </head>
 
 <div class="text-center form-container">
-    <form method="post" asp-controller="Events" asp-action="Create" enctype="multipart/form-data">
+    <form id="events-form" method="post" asp-controller="Events" asp-action="Create" enctype="multipart/form-data">
         <div asp-validation-summary="All" class="text-danger"></div>
 
         <div id="place-1">
@@ -38,6 +38,7 @@
                 <div class="col">
                     <label>Бележка</label>
                     <textarea class="form-control" rows="4"></textarea>
+                    <button id="location-btn-1">Добави локация</button>
                 </div>
             </div>
         </div>

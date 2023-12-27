@@ -18,6 +18,14 @@
         }
 
         [HttpGet]
+        [Route("GetRegions")]
+        public async Task<ActionResult<MunicipalityViewModel>> GetGetRegions()
+        {
+            var regionsDtos = await this.locationService.GetRegions<RegionViewModel>();
+            return this.Ok(regionsDtos);
+        }
+
+        [HttpGet]
         [Route("GetMunicipalities")]
         public async Task<ActionResult<MunicipalityViewModel>> GetMunicipalities(int regionId)
         {

@@ -5,6 +5,8 @@
 
     public interface ILocationsService
     {
+        Task<IEnumerable<T>> GetRegions<T>();
+
         Task<IEnumerable<T>> GetMunicipalitiesByRegion<T>(int regionId);
 
         Task<IEnumerable<T>> GetSettlementsByMunicipality<T>(int municipalityId);
