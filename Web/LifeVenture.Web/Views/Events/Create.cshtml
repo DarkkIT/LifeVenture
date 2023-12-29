@@ -15,56 +15,23 @@
     <link href="~/css/datepicker.css" rel="stylesheet" asp-append-version="true" />
 </head>
 
+
 <div class="text-center form-container">
-    <form id="events-form" method="post" asp-controller="Events" asp-action="Create" enctype="multipart/form-data">
-        <div asp-validation-summary="All" class="text-danger"></div>
-
-        <div id="place-1">
-            <div class="row">
-                <div class="col">
-                    <label>Област</label>
-                    <select id="region-1" class="form-control" asp-items="regions"></select>
-                </div>
-                <div class="col">
-                    <label>Община</label>
-                    <select id="municipality-1" class="form-control" asp-items="municipalities" disabled></select>
-                </div>
-                <div class="col">
-                    <label>Населено място</label>
-                    <select id="settlements-1" class="form-control" asp-items="settlements" disabled></select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label>Бележка</label>
-                    <textarea class="form-control" rows="4"></textarea>
-                    <button id="location-btn-1">Добави локация</button>
-                </div>
-            </div>
-        </div>
-
-        <div @* class="row" *@>
+    <div>
+        <h1>Нов евент</h1>
+    </div>
+    @* asp-controller="Events" asp-action="Create" *@
+    <form id="events-form" method="post" enctype="multipart/form-data">
+        <div class="row">
             <div class="col">
                 <label asp-for="CategoryId"></label>
                 <select asp-for="CategoryId" class="form-control" asp-items="categories"></select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="input-daterange">
-                    <label asp-for="StartDate"></label>
-                    <input type="text" id="start" class="form-control" placeholder="Ден-Месец-Година" min="2024-01-01" max="2100-12-31">
-                    <span class="fa fa-calendar" id="fa-1"></span>
-                </div>
+                @* <span asp-validation-for="CategoryId" class="text-danger"></span> *@
             </div>
             <div class="col">
-                <div class="input-daterange form-group">
-                    <label asp-for="EndDate"></label>
-                    <input type="text" id="end" class="form-control" placeholder="Ден-Месец-Година" min="2024-01-01" max="2100-12-31">
-                    <span class="fa fa-calendar" id="fa-2"></span>
-                </div>
+                <label asp-for="IsUrgent"></label>
+                <input asp-for="IsUrgent" class="form-control-file" />
+                @* <span asp-validation-for="IsUrgent" class="text-danger"></span> *@
             </div>
         </div>
 
@@ -72,7 +39,7 @@
             <div class="col">
                 <label asp-for="Title"></label>
                 <input type="text" asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+                @* <span asp-validation-for="Title" class="text-danger"></span> *@
             </div>
         </div>
 
@@ -80,7 +47,48 @@
             <div class="col">
                 <label asp-for="Description"></label>
                 <textarea asp-for="Description" class="form-control" rows="4"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
+                @* <span asp-validation-for="Description" class="text-danger"></span> *@
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="input-daterange">
+                    <label asp-for="StartDate"></label>
+                    <input name="StartDate" type="text" id="start" class="form-control" placeholder="Ден-Месец-Година" min="2024-01-01" max="2100-12-31">
+                    <span class="fa fa-calendar" id="fa-1"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-daterange form-group">
+                    <label asp-for="EndDate"></label>
+                    <input name="EndDate" type="text" id="end" class="form-control" placeholder="Ден-Месец-Година" min="2024-01-01" max="2100-12-31">
+                    <span class="fa fa-calendar" id="fa-2"></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="place-1">
+            <div class="row">
+                <div class="col">
+                    <label>Област</label>
+                    <select name="region-1" id="region-1" class="form-control" asp-items="regions"></select>
+                </div>
+                <div class="col">
+                    <label>Община</label>
+                    <select name="municipality-1" id="municipality-1" class="form-control" asp-items="municipalities" disabled></select>
+                </div>
+                <div class="col">
+                    <label>Населено място</label>
+                    <select name="settlements-1" id="settlements-1" class="form-control" asp-items="settlements" disabled></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label>Бележка</label>
+                    <textarea name="note-1" class="form-control" rows="4"></textarea>
+                    <button id="location-btn-1">Добави локация</button>
+                </div>
             </div>
         </div>
 
@@ -88,17 +96,17 @@
             <div class="col">
                 <label asp-for="Email"></label>
                 <input type="text" asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                @* <span asp-validation-for="Email" class="text-danger"></span> *@
             </div>
             <div class="col">
                 <label asp-for="Phone.CodeId"></label>
                 <select asp-for="Phone.CodeId" class="form-control" asp-items="phoneCodes"></select>
-                <span asp-validation-for="Phone.CodeId" class="text-danger"></span>
+                @* <span asp-validation-for="Phone.CodeId" class="text-danger"></span> *@
             </div>
             <div class="col">
                 <label asp-for="Phone.Number"></label>
                 <input type="text" asp-for="Phone.Number" class="form-control" />
-                <span asp-validation-for="Phone.Number" class="text-danger"></span>
+                @* <span asp-validation-for="Phone.Number" class="text-danger"></span> *@
             </div>
         </div>
 
@@ -106,22 +114,14 @@
             <div class="col">
                 <label for="exampleInputFile">Снимка</label>
                 <input asp-for="Image" class="form-control-file" id="exampleInputFile" />
-                <span asp-validation-for="Image" class="text-danger"></span>
+                @* <span asp-validation-for="Image" class="text-danger"></span> *@
             </div>
 
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <label asp-for="IsUrgent"></label>
-                <input asp-for="IsUrgent" class="form-control-file" />
-                <span asp-validation-for="IsUrgent" class="text-danger"></span>
-            </div>
         </div>
 
         <div class="p-3 mb-4">
             <div class="text-center">
-                <input type="submit" class="btn btn-primary" value="Създай евент" asp-action="Create" />
+                <input type="submit" id="submit-btn" class="btn btn-primary" value="Създай евент" @* asp-action="Create" *@ />
             </div>
         </div>
     </form>
@@ -132,7 +132,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
-    <script src="~/js/events.js"></script>
+    <script src="~/js/create-event.js"></script>
+    <script src="~/js/load-new-event.js"></script>
     <script>
         var $j = jQuery.noConflict();
         $j(document).ready(function () {

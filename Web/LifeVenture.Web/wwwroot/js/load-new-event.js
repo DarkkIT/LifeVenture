@@ -101,6 +101,7 @@ let createColumn = function (labelText, selectId, isDisabled) {
 
     let select = document.createElement('select');
     select.id = selectId;
+    select.setAttribute('name', selectId)
     select.classList.add('form-control');
 
     let defaultOption = document.createElement('option');
@@ -155,8 +156,8 @@ let loadSettlements = function (event) {
 }
 
 let getValuesForSelect = function (url, select) {
-    var antiForgeryToken = document.querySelector('#antiForgeryForm input[name=__RequestVerificationToken]').value;
-    var xhr = new XMLHttpRequest();
+    let antiForgeryToken = document.querySelector('#antiForgeryForm input[name=__RequestVerificationToken]').value;
+    let xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.setRequestHeader('X-CSRF-TOKEN', antiForgeryToken);
