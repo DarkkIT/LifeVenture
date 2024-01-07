@@ -18,14 +18,6 @@ let sendData = function () {
     let allData = formData.values();
     let allKeys = formData.keys();
 
-    //for (const key of allKeys) {
-    //    console.log(key);
-    //}
-
-    //for (const value of allData) {
-    //    console.log(value);
-    //}
-
     let antiForgeryToken = document.querySelector('#antiForgeryForm input[name=__RequestVerificationToken]').value;
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);

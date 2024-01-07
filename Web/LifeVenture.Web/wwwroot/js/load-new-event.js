@@ -10,12 +10,17 @@
 }
 
 let createNewLocationFields = function (event) {
-    event.preventDefault()
+    event.preventDefault();
     let btn = event.target;
-    btn.style.display = "none"
+    btn.style.display = 'none';
     let btnIdAsArray = btn.id.split('-');
     let btnId = btnIdAsArray[btnIdAsArray.length - 1];
     let nextNumber = parseInt(btnId) + 1;
+    let removeLocationsBtn = document.getElementById(`remove-location-btn-${btnId}`);
+
+    if (removeLocationsBtn) {
+        removeLocationsBtn.style.display = 'none';
+    }
 
     let newParentDiv = document.createElement('div');
     newParentDiv.id = `place-${nextNumber}`;
@@ -25,8 +30,7 @@ let createNewLocationFields = function (event) {
 
     newParentDiv.appendChild(selectFiedsRow);
     newParentDiv.appendChild(textAreaRow);
-    debugger;
-    
+
     let existingNode = document.getElementById(`place-${btnId}`);
     insertAfter(newParentDiv, existingNode);
 }
@@ -38,7 +42,7 @@ let insertAfter = function (newNode, existingNode) {
 let createSelectFieldsRow = function (btnId) {
     let selectFieldsRow = document.createElement('div');
     selectFieldsRow.classList.add('row');
-    debugger;
+
     let regionCol = createColumn('Област', `region-${btnId}`);
     let regionSelect = regionCol.children[regionCol.children.length - 1];
     regionSelect.addEventListener('change', loadMunicipality);
@@ -66,7 +70,13 @@ let createTextAreaRow = function (btnId) {
     row.classList.add('row');
 
     let col = createTextAreaColumn('Бележка', btnId);
+    let addLocationsButton = createAddLocationsButton(btnId);
+    let removeLocationsButton = createRemoveLocationsButton(btnId);
+
+    col.appendChild(addLocationsButton);
+    col.appendChild(removeLocationsButton);
     row.appendChild(col);
+
     return row;
 }
 
@@ -80,16 +90,56 @@ let createTextAreaColumn = function (label, id) {
     let textArea = document.createElement('textarea');
     textArea.classList.add('form-control');
     textArea.setAttribute('rows', '4');
+    textArea.id = `address-note-${id}`;
 
+    col.appendChild(labelField);
+    col.appendChild(textArea);
+
+    return col;
+}
+
+let createAddLocationsButton = function (id) {
     let button = document.createElement('button');
     button.id = `location-btn-${id}`;
     button.textContent = 'Добави локация';
     button.addEventListener('click', createNewLocationFields);
+    return button;
+}
 
-    col.appendChild(labelField);
-    col.appendChild(textArea);
-    col.appendChild(button);
-    return col;
+let createRemoveLocationsButton = function (id) {
+    let button = document.createElement('button');
+    button.id = `remove-location-btn-${id}`;
+    button.textContent = 'Премахни локация';
+    button.addEventListener('click', removeLocationFields);
+    return button;
+}
+
+let removeLocationFields = function (event) {
+    event.preventDefault();
+    let eventTarget = event.target;
+    let eventTargetId = eventTarget.id;
+    let splittedId = eventTargetId.split('-');
+    let id = splittedId[splittedId.length - 1];
+    let idAsNumber = parseInt(id);
+
+    deleteLocationsElements(id);
+
+    let lastId = idAsNumber - 1;
+    showElement(`location-btn-${lastId}`);
+
+    if (lastId > 1) {
+        showElement(`remove-location-btn-${lastId}`);
+    }
+}
+
+let showElement = function (id) {
+    let btn = document.getElementById(id);
+    btn.style.display = 'inline-block';
+}
+
+let deleteLocationsElements = function (id) {
+    let elementToDelete = document.getElementById(`place-${id}`);
+    elementToDelete.remove();
 }
 
 let createColumn = function (labelText, selectId, isDisabled) {
