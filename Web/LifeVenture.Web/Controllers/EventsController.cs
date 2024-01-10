@@ -36,7 +36,7 @@
         }
 
         [HttpPost]
-        public IActionResult Create(EventInputViewModel model)
+        public IActionResult Create([FromBody] EventInputViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
