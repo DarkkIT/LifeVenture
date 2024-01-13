@@ -24,7 +24,7 @@
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            var viewModel = new EventInputViewModel();
+            var viewModel = new CreateEventViewModel();
             viewModel.Categories = await this.eventsService.GetAllCategories();
 
             var phoneCodes = await this.eventsService.GetAllPhoneCodes();
@@ -36,11 +36,11 @@
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] EventInputViewModel model)
+        public IActionResult Create([FromBody] CreateEventInputModel model)
         {
             if (!this.ModelState.IsValid)
             {
-                return this.RedirectToAction(nameof(this.Create));
+                // return this.RedirectToAction(nameof(this.Create));
             }
 
             // var userId = this.userManager.GetUserId(this.User);
@@ -59,7 +59,8 @@
 
             // await this.imagesService.UploadImages(imageUploadModel);
             // }
-            return this.RedirectToAction(nameof(this.Index));
+            // return this.RedirectToAction(nameof(this.Index));
+            return this.Ok();
         }
     }
 }

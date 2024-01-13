@@ -14,14 +14,6 @@ let createEvent = function (event) {
 
 let sendData = function () {
     debugger;
-    //let formData = new FormData();
-    //formData.append('CategoryId',);
-    //formData.append('IsUrgent',);
-    //formData.append('Title',);
-    //formData.append('Description',);
-    //formData.append('StartDate',);
-    //formData.append('EndDate',);
-    //formData.append('EndDate',); region - 1
     let categoryEl = form.querySelector('#CategoryId');
     let isUrgentEl = form.querySelector('#IsUrgent');
     let titleEl = form.querySelector('#Title');
@@ -32,20 +24,23 @@ let sendData = function () {
     let phoneCodeEl = form.querySelector('#Phone_CodeId');
     let phoneNumberEl = form.querySelector('#Phone_Number');
 
+    let startDate = getDate(startDateEl.value);
+    let endDate = getDate(endDateEl.value);
+
     let data = {
-        CategoryId: categoryEl.value,
-        IsUrgent: isUrgentEl.value,
+        //CategoryId: categoryEl.value,
+        IsUrgent: Boolean(isUrgentEl.value),
         Title: titleEl.value,
-        Descrption: descriptionEl.value,
-        StartDate: startDateEl.value,
-        EndDate: endDateEl.value,
-        Locations: [{ RegionId: 1, MunicipalityId: 1, SettlementId: 1}],
+        Description: descriptionEl.value,
+        StartDate: startDate,
+        EndDate: endDate,
+        //Locations: [{ RegionId: 1, MunicipalityId: 1, SettlementId: 1 }],
         Email: emailEl.value,
-        Phone: {
-            CodeId: phoneCodeEl.value,
-            Number: phoneNumberEl.value,
-        },
-        Image: null
+        //Phone: {
+        //    CodeId: phoneCodeEl.value,
+        //    Number: phoneNumberEl.value,
+        //},
+        //Image: null
     }
 
     let url = '/Events/Create'
@@ -57,9 +52,16 @@ let sendData = function () {
     xhr.send(JSON.stringify(data));
 
     xhr.onreadystatechange = function () {
+        debugger;
         if (this.status == 200 && this.responseText) {
         }
     };
+}
+
+let getDate = function(dateAsString) {
+    let dateParts = dateAsString.split('-');
+    let dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+    return dateObject;
 }
 
 addEventListener();
