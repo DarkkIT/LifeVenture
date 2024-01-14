@@ -11,8 +11,8 @@
     <script src="https://kit.fontawesome.com/f909b4a59b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow">
+    <header id="main-header">
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow">
             <div class="custom-body">
 
                 <a id="leayout-logo" class="navbar-brand" asp-controller="Home" asp-action="Index">
@@ -51,7 +51,7 @@
 
     <div class="custom-inner-body">
         <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
+        <main role="main" id="main-main">
             @this.RenderBody()
         </main>
     </div>
