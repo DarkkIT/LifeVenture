@@ -18,7 +18,7 @@
         [Display(Name = "За одобрение")]
         public bool IsInDrafts { get; set; }
 
-        public virtual PhoneViewModel Phone { get; set; }
+        public virtual PhoneDetailsViewModel Phone { get; set; }
 
         public virtual RepeatabilityViewModel Repeatability { get; set; }
 

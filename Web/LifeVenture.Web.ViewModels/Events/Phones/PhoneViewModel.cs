@@ -1,16 +1,13 @@
 ﻿namespace LifeVenture.Web.ViewModels.Events
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using LifeVenture.Data.Models.Events;
-    using LifeVenture.Services.Mapping;
-
-    public class PhoneViewModel : IMapFrom<Phone>
+    public class PhoneViewModel
     {
-        [Required]
-        [MaxLength(30)]
+        [Display(Name = "Телефонен номер")]
         public string Number { get; set; }
 
-        public virtual CountryPhoneCodeViewModel Code { get; set; }
+        public IEnumerable<KeyValuePair<string, string>> Codes { get; set; }
     }
 }

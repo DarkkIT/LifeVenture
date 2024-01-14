@@ -28,18 +28,18 @@ let sendData = function () {
     let endDate = getDate(endDateEl.value);
 
     let data = {
-        //CategoryId: categoryEl.value,
-        IsUrgent: Boolean(isUrgentEl.value),
+        CategoryId: categoryEl.value,
+        IsUrgent: isUrgentEl.checked,
         Title: titleEl.value,
         Description: descriptionEl.value,
         StartDate: startDate,
         EndDate: endDate,
         //Locations: [{ RegionId: 1, MunicipalityId: 1, SettlementId: 1 }],
         Email: emailEl.value,
-        //Phone: {
-        //    CodeId: phoneCodeEl.value,
-        //    Number: phoneNumberEl.value,
-        //},
+        Phone: {
+            CodeId: phoneCodeEl.value,
+            Number: phoneNumberEl.value,
+        },
         //Image: null
     }
 

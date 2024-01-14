@@ -28,7 +28,7 @@
             viewModel.Categories = await this.eventsService.GetAllCategories();
 
             var phoneCodes = await this.eventsService.GetAllPhoneCodes();
-            viewModel.Phone = new PhoneInputViewModel();
+            viewModel.Phone = new PhoneViewModel();
             viewModel.Phone.Codes = phoneCodes;
             viewModel.Regions = await this.eventsService.GetAllRegions();
 

@@ -9,7 +9,7 @@
     {
         public IFormFile Image { get; set; }
 
-        public PhoneInputViewModel Phone { get; set; }
+        public PhoneViewModel Phone { get; set; }
 
         [Display(Name = "Категория")]
         public int CategoryId { get; set; }
