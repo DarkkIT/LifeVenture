@@ -1,6 +1,6 @@
 ﻿namespace LifeVenture.Web.Controllers
 {
-    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     using LifeVenture.Services.Data;
     using LifeVenture.Web.ViewModels.Events;
@@ -15,17 +15,20 @@
             this.eventsService = eventsService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var events = this.eventsService.GetAll<EventViewModel>();
+            var events = await this.eventsService.GetAll<EventViewModel>();
             return this.View(events);
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             var viewModel = new EventInputViewModel();
-            viewModel.Categories = new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("2", "Гъз") };
+            viewModel.Categories = await this.eventsService.GetAllCategories();
+            var phoneCodes = await this.eventsService.GetAllPhoneCodes();
+            viewModel.Phone = new PhoneInputViewModel();
+            viewModel.Phone.Codes = phoneCodes;
             return this.View(viewModel);
         }
 
@@ -53,8 +56,6 @@
 
             // await this.imagesService.UploadImages(imageUploadModel);
             // }
-
-            // this.TempData["Message"] = "You can drive now. Your car is created successufully";
             return this.RedirectToAction(nameof(this.Index));
         }
     }

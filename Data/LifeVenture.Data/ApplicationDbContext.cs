@@ -75,11 +75,6 @@
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Phone>()
-                .HasOne(x => x.Event)
-                .WithOne(x => x.Phone)
-                .HasForeignKey<Phone>(x => x.EventId);
-
-            builder.Entity<Phone>()
                 .HasOne(x => x.User)
                 .WithOne(x => x.Phone)
                 .HasForeignKey<Phone>(x => x.UserId);

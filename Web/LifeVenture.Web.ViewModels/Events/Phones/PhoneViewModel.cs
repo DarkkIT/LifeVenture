@@ -11,8 +11,6 @@
         [MaxLength(30)]
         public string Number { get; set; }
 
-        public int CodeId { get; set; }
-
         public virtual CountryPhoneCodeViewModel Code { get; set; }
     }
 }
