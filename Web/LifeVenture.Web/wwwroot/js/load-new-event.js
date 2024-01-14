@@ -42,6 +42,7 @@ let insertAfter = function (newNode, existingNode) {
 let createSelectFieldsRow = function (btnId) {
     let selectFieldsRow = document.createElement('div');
     selectFieldsRow.classList.add('row');
+    selectFieldsRow.classList.add('new-event-element');
 
     let regionCol = createColumn('Област', `region-${btnId}`);
     let regionSelect = regionCol.children[regionCol.children.length - 1];
@@ -83,12 +84,14 @@ let createTextAreaRow = function (btnId) {
 let createTextAreaColumn = function (label, id) {
     let col = document.createElement('div');
     col.classList.add('col');
+    col.classList.add('new-event-element');
 
     let labelField = document.createElement('label');
     labelField.textContent = label;
 
     let textArea = document.createElement('textarea');
     textArea.classList.add('form-control');
+    textArea.classList.add('new-event-element');
     textArea.setAttribute('rows', '4');
     textArea.id = `address-note-${id}`;
 
@@ -99,17 +102,17 @@ let createTextAreaColumn = function (label, id) {
 }
 
 let createAddLocationsButton = function (id) {
-    let button = document.createElement('button');
+    let button = document.createElement('input');
     button.id = `location-btn-${id}`;
-    button.textContent = 'Добави локация';
+    button.setAttribute('value', 'Добави локация');
     button.addEventListener('click', createNewLocationFields);
     return button;
 }
 
 let createRemoveLocationsButton = function (id) {
-    let button = document.createElement('button');
+    let button = document.createElement('input');
     button.id = `remove-location-btn-${id}`;
-    button.textContent = 'Премахни локация';
+    button.setAttribute('value', 'Премахни локация');
     button.addEventListener('click', removeLocationFields);
     return button;
 }

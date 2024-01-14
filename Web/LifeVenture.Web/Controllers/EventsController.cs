@@ -24,11 +24,11 @@
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            var viewModel = new EventInputViewModel();
+            var viewModel = new CreateEventViewModel();
             viewModel.Categories = await this.eventsService.GetAllCategories();
 
             var phoneCodes = await this.eventsService.GetAllPhoneCodes();
-            viewModel.Phone = new PhoneInputViewModel();
+            viewModel.Phone = new PhoneViewModel();
             viewModel.Phone.Codes = phoneCodes;
             viewModel.Regions = await this.eventsService.GetAllRegions();
 
@@ -36,30 +36,14 @@
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] EventInputViewModel model)
+        public IActionResult Create([FromBody] CreateEventInputModel model)
         {
             if (!this.ModelState.IsValid)
             {
-                return this.RedirectToAction(nameof(this.Create));
+                // return this.RedirectToAction(nameof(this.Create));
             }
 
-            // var userId = this.userManager.GetUserId(this.User);
-            // var carId = await this.carsService.CreateCarAsync(input, userId);
-
-            // if (input.Images != null)
-            // {
-            //    var imagePath = $"{this.environment.WebRootPath}/img";
-
-            // var imageUploadModel = new ImageUploadViewModel();
-            //    imageUploadModel.Images = input.Images;
-            //    imageUploadModel.Path = imagePath;
-            //    imageUploadModel.UserId = userId;
-            //    imageUploadModel.ImageTypeName = GlobalConstants.CarExternalImage;
-            //    imageUploadModel.CarId = carId;
-
-            // await this.imagesService.UploadImages(imageUploadModel);
-            // }
-            return this.RedirectToAction(nameof(this.Index));
+            return this.Ok();
         }
     }
 }
