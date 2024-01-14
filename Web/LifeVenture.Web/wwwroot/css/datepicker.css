@@ -1,19 +1,10 @@
-﻿/*body {
-    color: #000;
-    overflow-x: hidden;
-    height: 100%;
-    background-color: #C5CAE9 !important;
-    background-repeat: no-repeat;
-    padding: 0 !important;
-}*/
-
-.container {
+﻿.container {
     padding-top: 120px;
     padding-bottom: 120px;
 }
 
 input {
-    padding: 22px 15px !important;
+    /*padding: 22px 15px;*/
     border: 1px solid #CFD8DC !important;
     border-radius: 4px !important;
     box-sizing: border-box;
@@ -123,7 +114,6 @@ thead tr:nth-child(2) {
     background-color: #1976D2 !important;
 }
 
-/*Weekday title*/
 thead tr:nth-child(3) th {
     font-weight: bold !important;
     padding: 20px 10px !important;

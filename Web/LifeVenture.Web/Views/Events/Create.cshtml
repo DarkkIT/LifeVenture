@@ -16,44 +16,45 @@
 </head>
 
 
-<div class="text-center form-container">
+<div class="text-center form-container row justify-content-center">
     <div>
         <h1>Нов евент</h1>
     </div>
-    <form id="events-form" method="post" enctype="multipart/form-data">
+    <form id="events-form" class="col col-md-6" method="post" enctype="multipart/form-data">
         <div class="row">
-            <div class="col">
+            <div class="col new-event-element">
                 <label asp-for="CategoryId"></label>
                 <select id="CategoryId" class="form-control" asp-items="categories"></select>
             </div>
-            <div class="col">
-                <label asp-for="IsUrgent"></label>
+            
+            <div class="col new-event-element">
+                <label class="row row-col-12 justify-content-center" asp-for="IsUrgent"></label>
                 <input id="IsUrgent" type="checkbox" class="form-control-file" />
             </div>
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col new-event-element">
                 <label asp-for="Title"></label>
                 <input id="Title" type="text" class="form-control" />
             </div>
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col new-event-element">
                 <label asp-for="Description"></label>
                 <textarea id="Description" class="form-control" rows="4"></textarea>
             </div>
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col new-event-element">
                 <div class="input-daterange">
                     <label asp-for="StartDate"></label>
                     <input id="start" name="StartDate" type="text" class="form-control" placeholder="Ден-Месец-Година" min="2024-01-01" max="2100-12-31">
                 </div>
             </div>
-            <div class="col">
+            <div class="col new-event-element">
                 <div class="input-daterange form-group">
                     <label asp-for="EndDate"></label>
                     <input id="end" name="EndDate" type="text" class="form-control" placeholder="Ден-Месец-Година" min="2024-01-01" max="2100-12-31">
@@ -63,52 +64,52 @@
 
         <div id="place-1">
             <div class="row">
-                <div class="col">
+                <div class="col new-event-element">
                     <label>Област</label>
                     <select id="region-1" name="region-1" class="form-control" asp-items="regions"></select>
                 </div>
-                <div class="col">
+                <div class="col new-event-element">
                     <label>Община</label>
                     <select id="municipality-1" name="municipality-1" class="form-control" asp-items="municipalities" disabled></select>
                 </div>
-                <div class="col">
+                <div class="col new-event-element">
                     <label>Населено място</label>
                     <select id="settlements-1" name="settlements-1" class="form-control" asp-items="settlements" disabled></select>
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col new-event-element">
                     <label>Бележка</label>
-                    <textarea name="note-1" class="form-control" rows="4"></textarea>
-                    <button id="location-btn-1">Добави локация</button>
+                    <textarea class="form-control new-event-element" name="note-1" rows="4"></textarea>
+                    <input type="submit" id="location-btn-1" value="Добави локация" />
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col new-event-element">
                 <label asp-for="Email"></label>
                 <input id="Email" type="text" class="form-control" />
             </div>
-            <div class="col">
+            <div class="col new-event-element">
                 <label>Код на държава</label>
                 <select id="Phone_CodeId" class="form-control" asp-items="phoneCodes"></select>
             </div>
-            <div class="col">
+            <div class="col new-event-element">
                 <label asp-for="Phone.Number"></label>
                 <input id="Phone_Number" class="form-control" />
             </div>
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col new-event-element">
                 <label for="exampleInputFile">Снимка</label>
                 <input asp-for="Image" class="form-control-file" id="exampleInputFile" />
             </div>
 
         </div>
 
-        <div class="p-3 mb-4">
+        <div class="new-event-element">
             <div class="text-center">
                 <input type="submit" id="submit-btn" class="btn btn-primary" value="Създай евент" />
             </div>
