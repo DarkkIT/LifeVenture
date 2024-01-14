@@ -4,6 +4,6 @@
     {
         public int CategoryId { get; set; }
 
-        public PhoneInputViewModel Phoone { get; set; }
+        public PhoneInputViewModel Phone { get; set; }
     }
 }

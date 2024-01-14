@@ -53,7 +53,7 @@
         public DbSet<PersonOfGoodness> PersonOfGoodnesses { get; set; }
 
         public DbSet<Message> Messages { get; set; }
-        
+
         public DbSet<Municipality> Municipalities { get; set; }
 
         public DbSet<Settlement> Settlements { get; set; }

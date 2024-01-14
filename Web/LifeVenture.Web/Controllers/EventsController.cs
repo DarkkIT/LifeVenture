@@ -43,23 +43,6 @@
                 // return this.RedirectToAction(nameof(this.Create));
             }
 
-            // var userId = this.userManager.GetUserId(this.User);
-            // var carId = await this.carsService.CreateCarAsync(input, userId);
-
-            // if (input.Images != null)
-            // {
-            //    var imagePath = $"{this.environment.WebRootPath}/img";
-
-            // var imageUploadModel = new ImageUploadViewModel();
-            //    imageUploadModel.Images = input.Images;
-            //    imageUploadModel.Path = imagePath;
-            //    imageUploadModel.UserId = userId;
-            //    imageUploadModel.ImageTypeName = GlobalConstants.CarExternalImage;
-            //    imageUploadModel.CarId = carId;
-
-            // await this.imagesService.UploadImages(imageUploadModel);
-            // }
-            // return this.RedirectToAction(nameof(this.Index));
             return this.Ok();
         }
     }
