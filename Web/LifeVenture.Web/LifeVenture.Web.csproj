@@ -40,4 +40,10 @@
     <ProjectReference Include="..\LifeVenture.Web.Infrastructure\LifeVenture.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\LifeVenture.Web.ViewModels\LifeVenture.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\js\load-new-event.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

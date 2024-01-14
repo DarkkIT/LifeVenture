@@ -26,14 +26,17 @@
         {
             var viewModel = new EventInputViewModel();
             viewModel.Categories = await this.eventsService.GetAllCategories();
+
             var phoneCodes = await this.eventsService.GetAllPhoneCodes();
             viewModel.Phone = new PhoneInputViewModel();
             viewModel.Phone.Codes = phoneCodes;
+            viewModel.Regions = await this.eventsService.GetAllRegions();
+
             return this.View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Create(EventInputViewModel model)
+        public IActionResult Create([FromBody] EventInputViewModel model)
         {
             if (!this.ModelState.IsValid)
             {

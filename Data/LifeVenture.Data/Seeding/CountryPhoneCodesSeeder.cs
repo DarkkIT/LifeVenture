@@ -274,6 +274,7 @@
                     {
                         Country = x.Key.Any(char.IsDigit) ? new string(x.Key.Where(c => (c < '0' || c > '9')).ToArray()) : x.Key,
                         Code = x.Value,
+                        IsDefault = x.Key.Equals("Bulgaria") ? true : false,
                     }));
     }
 }

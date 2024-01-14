@@ -11,6 +11,7 @@
     using LifeVenture.Data.Models.Common;
     using LifeVenture.Data.Models.Events;
     using LifeVenture.Data.Models.Home;
+    using LifeVenture.Data.Models.Locations;
     using LifeVenture.Data.Models.People;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
@@ -52,6 +53,12 @@
         public DbSet<PersonOfGoodness> PersonOfGoodnesses { get; set; }
 
         public DbSet<Message> Messages { get; set; }
+        
+        public DbSet<Municipality> Municipalities { get; set; }
+
+        public DbSet<Settlement> Settlements { get; set; }
+
+        public DbSet<Region> Regions { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
