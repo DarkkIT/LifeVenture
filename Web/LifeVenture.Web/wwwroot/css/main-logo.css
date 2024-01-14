@@ -24,7 +24,7 @@
     /*border: 1px solid blue;*/
     width: 3.5rem;
     font-weight: 900;
-    color: #000000
+    color: #572fd7
 }
 #logo-part-two {
     grid-area: two;
@@ -40,5 +40,5 @@
     grid-area: three;
     height: 1.5rem;
     /*border: 1px solid blue;*/
-    color: #000000;
+    color: #572fd7;
 }
