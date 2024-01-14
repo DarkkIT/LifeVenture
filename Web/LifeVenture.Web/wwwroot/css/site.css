@@ -62,7 +62,7 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
 }
 
 .footer {
@@ -118,6 +118,7 @@ body {
     --bs-gutter-y: 0;
     background-color: #DCECF9;
 }
+
 @font-face {
     font-family: 'Gabriela-regular';
     src: url('../fonts/gabriela-regular.ttf') format('truetype');
