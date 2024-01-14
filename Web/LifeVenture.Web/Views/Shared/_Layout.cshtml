@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/main-logo.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/loader.css" asp-append-version="true" />
     <script src="https://kit.fontawesome.com/f909b4a59b.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -57,11 +58,11 @@
     </div>
 
     @*<footer class="footer text-muted">
-        <div class="custom-body">
-            <div class="footer-start">
-                &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </div>
+    <div class="custom-body">
+    <div class="footer-start">
+    &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+    </div>
     </footer>*@
 
     <footer class="bg-dark text-center text-white">
@@ -96,6 +97,9 @@
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
                     <i class="fab fa-github"></i>
                 </a>
+                <!-- Test -->
+                <span class="loader"></span>
+
             </section>
 
             <section class="">
