@@ -145,9 +145,8 @@ body {
 }
 
     .header-button:hover {
-        font-size: 2rem;
-        line-height: 60%;
-        font-weight: 700;
+        font-weight: 500;
+        transform: scale(1.2);
     }
 
 #main-main {
