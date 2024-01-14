@@ -142,3 +142,7 @@ label {
 .form-control{
     margin: 1rem !important;
 }
+
+.filters-row {
+    justify-content: center !important;
+}

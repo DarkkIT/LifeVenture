@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/main-logo.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/f909b4a59b.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow">
             <div class="custom-body">
 
-                <a id="leayout-logo" class="navbar-brand" asp-area="" asp-controller="Home">
+                <a id="leayout-logo" class="navbar-brand" asp-controller="Home" asp-action="Index">
                     <div id="logo-part-one">Life</div>
                     <div id="logo-part-two">&infin;</div>
                     <div id="logo-part-three">venture</div>
@@ -27,16 +28,19 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="header-button nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Events" asp-action="Index">Евенти</a>
+                            <a class="header-button nav-link text-dark" asp-controller="Events" asp-action="Index">Евенти</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="PeopleOfGoodness" asp-action="Index">Герои</a>
+                            <a class="header-button nav-link text-dark" asp-controller="PeopleOfGoodness" asp-action="Index">Герои</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="header-button nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="header-button nav-link text-dark" asp-controller="AboutUs" asp-action="Index">За Нас</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -52,11 +56,162 @@
         </main>
     </div>
 
-    <footer class="footer text-muted">
+    @*<footer class="footer text-muted">
         <div class="custom-body">
             <div class="footer-start">
                 &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
+        </div>
+    </footer>*@
+
+    <footer class="bg-dark text-center text-white">
+        <div class="container p-4">
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-google"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+
+            <section class="">
+                <form action="">
+                    <div class="row d-flex justify-content-center">
+
+                        <div class="col-auto">
+                            <p class="pt-2">
+                                <strong>Ask question or leave comment</strong>
+                            </p>
+                        </div>
+
+                        <div class="col-md-5 col-12">
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" id="form5Example2" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-outline-light mb-4">
+                                Confirm
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <section class="mb-4">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+                    repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+                    eum harum corrupti dicta, aliquam sequi voluptate quas.
+                </p>
+            </section>
+
+            <section class="">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Home</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Евенти</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Герои</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">За Нас</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Контакти</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Галерия</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Помощ</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Въпроси</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Вашия Акаунт</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Нашите герои</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Нашите кампанни</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Нашата цел</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Правила</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Акаунти</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Бюлетин</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Новости</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © @(DateTime.Now.Year.ToString()) Copyright:
+            <a class="text-white" href="https://lifeventure.com">LifeVenture.com</a>
         </div>
     </footer>
 
