@@ -97,3 +97,7 @@
     width: 73%;
     text-align: end;
 }
+
+#home-body {
+    background-color: transparent;
+}

@@ -20,7 +20,7 @@ a {
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #F07F42;
-    background-color: #1b6ec2;
+    /*background-color: #1b6ec2;*/
     border-color: #1861ac;
 }
 
@@ -63,6 +63,10 @@ html {
 body {
     /* Margin bottom by footer height */
     /*margin-bottom: 60px;*/
+
+    background-image: url("../images/bg-02-2.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .footer {
@@ -90,7 +94,7 @@ body {
     --bs-navbar-padding-x: 0;
     --bs-navbar-padding-y: 0;
     border-bottom: none !important;
-    background-color: #aab8c3 !important;
+    /*background-color: #aab8c3 !important;*/
 }
 
 .navbar-brand {
@@ -108,7 +112,7 @@ body {
 .custom-body {
     --bs-gutter-x: 0;
     --bs-gutter-y: 0;
-    background-color: #DCECF9;
+    /*background-color: #DCECF9;*/
     display: flex;
     width: 100%
 }
@@ -116,7 +120,7 @@ body {
 .custom-inner-body {
     --bs-gutter-x: 0;
     --bs-gutter-y: 0;
-    background-color: #DCECF9;
+    background-color: transparent;
 }
 
 @font-face {
@@ -140,6 +144,12 @@ body {
     border-radius: 5px;
 }
 
-.header-button:hover {
-    background-color: palevioletred;
+    .header-button:hover {
+        font-size: 2rem;
+        line-height: 60%;
+        font-weight: 700;
+    }
+
+#main-main {
+    background-color: transparent;
 }
