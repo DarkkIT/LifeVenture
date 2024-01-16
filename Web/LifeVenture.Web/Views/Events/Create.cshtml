@@ -20,7 +20,7 @@
     <div>
         <h1>Нов евент</h1>
     </div>
-    <form id="events-form" class="col col-md-6" method="post" enctype="multipart/form-data">
+    <form id="events-form" class="col col-md-6" method="post" asp-controller="Events" asp-action="Create" enctype="multipart/form-data">
         <div class="row">
             <div class="col new-event-element">
                 <label asp-for="CategoryId"></label>
@@ -51,13 +51,13 @@
             <div class="col new-event-element">
                 <div class="input-daterange">
                     <label asp-for="StartDate"></label>
-                    <input asp-for="StartDate" class="form-control" placeholder="Ден-Месец-Година" min="2024-01-01" max="2100-12-31">
+                    <input type="datetime" name="StartDate" class="form-control" placeholder="Ден-Месец-Година" />
                 </div>
             </div>
             <div class="col new-event-element">
                 <div class="input-daterange form-group">
                     <label asp-for="EndDate"></label>
-                    <input asp-for="EndDate" class="form-control" placeholder="Ден-Месец-Година" min="2024-01-01" max="2100-12-31">
+                    <input type="datetime" name="EndDate" class="form-control" placeholder="Ден-Месец-Година" />
                 </div>
             </div>
         </div>
@@ -69,17 +69,17 @@
                     <select asp-for="Locations[0].RegionId" id="region-0" class="form-control" asp-items="regions"></select>
                 </div>
                 <div class="col new-event-element">
-                    <label>Община</label>
+                    <label asp-for="Locations[0].MunicipalityId"></label>
                     <select asp-for="Locations[0].MunicipalityId" id="municipality-0" class="form-control" asp-items="municipalities" disabled></select>
                 </div>
                 <div class="col new-event-element">
-                    <label>Населено място</label>
+                    <label asp-for="Locations[0].SettlementId"></label>
                     <select asp-for="Locations[0].SettlementId" id="settlement-0" class="form-control" asp-items="settlements" disabled></select>
                 </div>
             </div>
             <div class="row">
                 <div class="col new-event-element">
-                    <label>Уточнение на адрес</label>
+                    <label asp-for="Locations[0].AddressNote"></label>
                     <textarea asp-for="Locations[0].AddressNote" id="address-note-0" class="form-control new-event-element" rows="4"></textarea>
                     <input type="submit" id="location-btn-0" value="Добави локация" />
                 </div>
@@ -103,8 +103,8 @@
 
         <div class="row">
             <div class="col new-event-element">
-                <label for="exampleInputFile">Снимка</label>
-                <input name="image" class="form-control-file" id="exampleInputFile" />
+                <label asp-for="Image"></label>
+                <input asp-for="Image" class="form-control-file" id="exampleInputFile" />
             </div>
 
         </div>
@@ -122,7 +122,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
-    <script src="~/js/create-event.js" asp-append-version="true"></script>
+    @* <script src="~/js/create-event.js" asp-append-version="true"></script> *@
     <script src="~/js/load-new-event.js" asp-append-version="true"></script>
     <script>
         var $j = jQuery.noConflict();

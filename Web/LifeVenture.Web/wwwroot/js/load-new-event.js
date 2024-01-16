@@ -71,7 +71,7 @@ let createTextAreaRow = function (btnId) {
     let row = document.createElement('div');
     row.classList.add('row');
 
-    let col = createTextAreaColumn('Бележка', btnId);
+    let col = createTextAreaColumn('Уточнение на адрес', btnId);
     let addLocationsButton = createAddLocationsButton(btnId);
     let removeLocationsButton = createRemoveLocationsButton(btnId);
 
@@ -106,6 +106,7 @@ let createAddLocationsButton = function (id) {
     let button = document.createElement('input');
     button.id = `location-btn-${id}`;
     button.setAttribute('value', 'Добави локация');
+    button.setAttribute('type', 'submit');
     button.addEventListener('click', createNewLocationFields);
     return button;
 }
@@ -114,6 +115,7 @@ let createRemoveLocationsButton = function (id) {
     let button = document.createElement('input');
     button.id = `remove-location-btn-${id}`;
     button.setAttribute('value', 'Премахни локация');
+    button.setAttribute('type', 'submit');
     button.addEventListener('click', removeLocationFields);
     return button;
 }
@@ -131,7 +133,7 @@ let removeLocationFields = function (event) {
     let lastId = idAsNumber - 1;
     showElement(`location-btn-${lastId}`);
 
-    if (lastId > 1) {
+    if (lastId > 0) {
         showElement(`remove-location-btn-${lastId}`);
     }
 }

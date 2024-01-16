@@ -1,7 +1,6 @@
 ﻿namespace LifeVenture.Web.ViewModels.Events
 {
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     using Microsoft.AspNetCore.Http;
@@ -12,6 +11,9 @@
 
         [Display(Name = "Категория")]
         public int CategoryId { get; set; }
+
+        [Display(Name = "Снимка")]
+        public IFormFile Image { get; set; }
 
         public IList<LocationViewModel1> Locations { get; set; }
 
@@ -35,7 +37,7 @@
         [Display(Name = "Населено място")]
         public int SettlementId { get; set; }
 
-        [Display(Name = "Допълнителна информация за адрес")]
+        [Display(Name = "Уточнение за адрес")]
         public string AddressNote { get; set; }
     }
 }
