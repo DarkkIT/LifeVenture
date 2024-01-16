@@ -10,7 +10,6 @@
 }
 
 let createNewLocationFields = function (event) {
-    debugger;
     event.preventDefault();
     let btn = event.target;
     btn.style.display = 'none';
@@ -175,7 +174,6 @@ let createColumn = function (labelText, selectId, elementName, isDisabled) {
 }
 
 let loadMunicipality = function (event) {
-    debugger;
     let select = event.target;
     let regionId = select.value;
 
