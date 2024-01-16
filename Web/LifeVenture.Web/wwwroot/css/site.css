@@ -64,9 +64,9 @@ body {
     /* Margin bottom by footer height */
     /*margin-bottom: 60px;*/
 
-    background-image: url("../images/bg-02-2.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: url("../images/bg-02-5.jpeg");
+    /*background-repeat: no-repeat;*/
+    background-size: ;
 }
 
 .footer {
