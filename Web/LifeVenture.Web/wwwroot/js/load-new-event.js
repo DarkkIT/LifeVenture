@@ -1,11 +1,11 @@
 ﻿let main = function () {
-    let firstRegion = document.getElementById('region-1');
+    let firstRegion = document.getElementById('region-0');
     firstRegion.addEventListener('change', loadMunicipality);
 
-    let firstMunicipality = document.getElementById('municipality-1');
+    let firstMunicipality = document.getElementById('municipality-0');
     firstMunicipality.addEventListener('change', loadSettlements);
 
-    let locationBtn = document.getElementById('location-btn-1');
+    let locationBtn = document.getElementById('location-btn-0');
     locationBtn.addEventListener('click', createNewLocationFields);
 }
 
@@ -44,20 +44,21 @@ let createSelectFieldsRow = function (btnId) {
     selectFieldsRow.classList.add('row');
     selectFieldsRow.classList.add('new-event-element');
 
-    let regionCol = createColumn('Област', `region-${btnId}`);
+    let regionCol = createColumn('Област', `region-${btnId}`, `Locations[${btnId}].RegionId`);
     let regionSelect = regionCol.children[regionCol.children.length - 1];
     regionSelect.addEventListener('change', loadMunicipality);
     addValuesToSelect(regionSelect);
 
-    let municipalityCol = createColumn('Община', `municipality-${btnId}`, true);
+    let municipalityCol = createColumn('Община', `municipality-${btnId}`, `Locations[${btnId}].MunicipalityId`, true);
     let municipalitySelect = municipalityCol.children[municipalityCol.children.length - 1];
     municipalitySelect.addEventListener('change', loadSettlements);
 
-    let settlementCol = createColumn('Населено място', `settlements-${btnId}`, true);
+    let settlementCol = createColumn('Населено място', `settlement-${btnId}`, `Locations[${btnId}].SettlementId`, true);
 
     selectFieldsRow.appendChild(regionCol);
     selectFieldsRow.appendChild(municipalityCol);
     selectFieldsRow.appendChild(settlementCol);
+
     return selectFieldsRow;
 }
 
@@ -70,7 +71,7 @@ let createTextAreaRow = function (btnId) {
     let row = document.createElement('div');
     row.classList.add('row');
 
-    let col = createTextAreaColumn('Бележка', btnId);
+    let col = createTextAreaColumn('Уточнение на адрес', btnId);
     let addLocationsButton = createAddLocationsButton(btnId);
     let removeLocationsButton = createRemoveLocationsButton(btnId);
 
@@ -105,6 +106,7 @@ let createAddLocationsButton = function (id) {
     let button = document.createElement('input');
     button.id = `location-btn-${id}`;
     button.setAttribute('value', 'Добави локация');
+    button.setAttribute('type', 'submit');
     button.addEventListener('click', createNewLocationFields);
     return button;
 }
@@ -113,6 +115,7 @@ let createRemoveLocationsButton = function (id) {
     let button = document.createElement('input');
     button.id = `remove-location-btn-${id}`;
     button.setAttribute('value', 'Премахни локация');
+    button.setAttribute('type', 'submit');
     button.addEventListener('click', removeLocationFields);
     return button;
 }
@@ -130,7 +133,7 @@ let removeLocationFields = function (event) {
     let lastId = idAsNumber - 1;
     showElement(`location-btn-${lastId}`);
 
-    if (lastId > 1) {
+    if (lastId > 0) {
         showElement(`remove-location-btn-${lastId}`);
     }
 }
@@ -145,7 +148,7 @@ let deleteLocationsElements = function (id) {
     elementToDelete.remove();
 }
 
-let createColumn = function (labelText, selectId, isDisabled) {
+let createColumn = function (labelText, selectId, elementName, isDisabled) {
     let col = document.createElement('div');
     col.classList.add('col');
 
@@ -154,7 +157,7 @@ let createColumn = function (labelText, selectId, isDisabled) {
 
     let select = document.createElement('select');
     select.id = selectId;
-    select.setAttribute('name', selectId)
+    select.setAttribute('name', elementName)
     select.classList.add('form-control');
 
     let defaultOption = document.createElement('option');
@@ -178,7 +181,7 @@ let loadMunicipality = function (event) {
 
     let splittedSelectId = select.id.split('-');
     let municipalitySelect = getSelect('municipality-' + splittedSelectId[1]);
-    let settlementsSelect = getSelect('settlements-' + splittedSelectId[1]);
+    let settlementsSelect = getSelect('settlement-' + splittedSelectId[1]);
 
     if (regionId === '0') {
         municipalitySelect.disabled = true;
@@ -197,7 +200,7 @@ let loadSettlements = function (event) {
     let municipalityId = select.value;
 
     let splittedSelectId = select.id.split('-');
-    let settlementsSelect = getSelect('settlements-' + splittedSelectId[1]);
+    let settlementsSelect = getSelect('settlement-' + splittedSelectId[1]);
 
     if (municipalityId === '0') {
         settlementsSelect.disabled = true;

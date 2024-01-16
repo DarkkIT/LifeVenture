@@ -18,12 +18,12 @@
         [Display(Name = "Описание")]
         public string Description { get; set; }
 
-        [Required]
         [Display(Name = "Начална дата")]
+        [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
 
-        [Required]
         [Display(Name = "Крайна дата")]
+        [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
 
         [Display(Name = "Спешен евент")]

@@ -7,12 +7,15 @@
 
     public class CreateEventViewModel : EventBaseViewModel
     {
-        public IFormFile Image { get; set; }
-
         public PhoneViewModel Phone { get; set; }
 
         [Display(Name = "Категория")]
         public int CategoryId { get; set; }
+
+        [Display(Name = "Снимка")]
+        public IFormFile Image { get; set; }
+
+        public IList<LocationViewModel1> Locations { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> Categories { get; set; }
 
@@ -21,5 +24,20 @@
         public IEnumerable<KeyValuePair<string, string>> Municipalities => new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("0", "ИЗБЕРИ") };
 
         public IEnumerable<KeyValuePair<string, string>> Settlements => new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("0", "ИЗБЕРИ") };
+    }
+
+    public class LocationViewModel1
+    {
+        [Display(Name = "Регион")]
+        public int RegionId { get; set; }
+
+        [Display(Name = "Община")]
+        public int MunicipalityId { get; set; }
+
+        [Display(Name = "Населено място")]
+        public int SettlementId { get; set; }
+
+        [Display(Name = "Уточнение за адрес")]
+        public string AddressNote { get; set; }
     }
 }
