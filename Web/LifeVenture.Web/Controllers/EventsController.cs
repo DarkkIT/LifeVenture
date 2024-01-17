@@ -37,12 +37,14 @@
         }
 
         [HttpPost]
-        public IActionResult Create(CreateEventViewModel model)
+        public async Task<IActionResult> Create(CreateEventViewModel input)
         {
             if (!this.ModelState.IsValid)
             {
                 // return this.RedirectToAction(nameof(this.Create));
             }
+
+            await this.eventsService.CreateEvent(input);
 
             return this.Ok();
         }
