@@ -4,6 +4,7 @@
 
     using LifeVenture.Services.Data;
     using LifeVenture.Web.ViewModels.Events;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
 
     public class EventsController : BaseController
@@ -36,7 +37,7 @@
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateEventInputModel model)
+        public IActionResult Create(CreateEventViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
