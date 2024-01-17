@@ -37,16 +37,24 @@
         }
 
         [HttpPost]
+        [RequestSizeLimit(20 * 1024 * 1024)]
         public async Task<IActionResult> Create(CreateEventViewModel input)
         {
+            if (input.Image.Length > 10 * 1024 * 1024)
+            {
+                this.ModelState.AddModelError("Image", "Снимката не може да бъде по-голяма от 10 MB.");
+            }
+
             if (!this.ModelState.IsValid)
             {
-                // return this.RedirectToAction(nameof(this.Create));
+                return this.View();
             }
 
             await this.eventsService.CreateEvent(input);
 
-            return this.Ok();
+            return this.RedirectToAction(nameof(this.Success));
         }
+
+        public IActionResult Success() => this.View();
     }
 }
