@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.2" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
@@ -21,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\LifeVenture.Data.Common\LifeVenture.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\LifeVenture.Data.Models\LifeVenture.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\LifeVenture.Web.ViewModels\LifeVenture.Web.ViewModels.csproj" />
     <ProjectReference Include="..\LifeVenture.Services.Mapping\LifeVenture.Services.Mapping.csproj" />
   </ItemGroup>
 

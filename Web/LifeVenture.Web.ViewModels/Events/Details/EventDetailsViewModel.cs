@@ -9,7 +9,7 @@
     {
         public EventDetailsViewModel()
         {
-            this.Locations = new HashSet<LocationViewModel>();
+            //this.Locations = new HashSet<LocationViewModel>();
         }
 
         [Display(Name = "Одобрен евент от администратор")]
@@ -20,12 +20,10 @@
 
         public virtual PhoneDetailsViewModel Phone { get; set; }
 
-        public virtual RepeatabilityViewModel Repeatability { get; set; }
-
         public virtual ApplicationUserViewModel CreatedBy { get; set; }
 
         public virtual CategoryViewModel Category { get; set; }
 
-        public virtual ICollection<LocationViewModel> Locations { get; set; }
+        //public virtual ICollection<LocationViewModel> Locations { get; set; }
     }
 }

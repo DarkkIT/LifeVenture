@@ -5,25 +5,25 @@
 namespace LifeVenture.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class AddDefaultValueToPhoneCodes : Migration
+    public partial class AddColumnInEvents : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
-                name: "IsDefault",
-                table: "CountriesPhoneCodes",
-                type: "bit",
+            migrationBuilder.AddColumn<int>(
+                name: "MaxParticipantsCount",
+                table: "Events",
+                type: "int",
                 nullable: false,
-                defaultValue: false);
+                defaultValue: 0);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "IsDefault",
-                table: "CountriesPhoneCodes");
+                name: "MaxParticipantsCount",
+                table: "Events");
         }
     }
 }

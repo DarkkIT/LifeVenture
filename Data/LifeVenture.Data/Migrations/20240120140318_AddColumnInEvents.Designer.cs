@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LifeVenture.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231119211353_AddLocations")]
-    partial class AddLocations
+    [Migration("20240120140318_AddColumnInEvents")]
+    partial class AddColumnInEvents
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -212,19 +212,29 @@ namespace LifeVenture.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<byte[]>("Data")
+                    b.Property<byte[]>("FullscreenData")
                         .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("EventId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.Property<string>("OriginalContentType")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasIndex("EventId")
-                        .IsUnique();
+                    b.Property<byte[]>("OriginalData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("OriginalName")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<byte[]>("ThumbnailData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Images");
                 });
@@ -271,6 +281,48 @@ namespace LifeVenture.Data.Migrations
                         .HasFilter("[VolunteerId] IS NOT NULL");
 
                     b.ToTable("ImagePeoples");
+                });
+
+            modelBuilder.Entity("LifeVenture.Data.Models.Common.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Phone")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SenderName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.Events.Category", b =>
@@ -391,13 +443,13 @@ namespace LifeVenture.Data.Migrations
                     b.Property<bool>("IsUrgent")
                         .HasColumnType("bit");
 
+                    b.Property<int>("MaxParticipantsCount")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PhoneId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RepeatabilityId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
@@ -416,11 +468,12 @@ namespace LifeVenture.Data.Migrations
 
                     b.HasIndex("HomeModelId");
 
+                    b.HasIndex("ImageId")
+                        .IsUnique();
+
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("PhoneId");
-
-                    b.HasIndex("RepeatabilityId");
 
                     b.ToTable("Events");
                 });
@@ -467,42 +520,6 @@ namespace LifeVenture.Data.Migrations
                         .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Phones");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Events.Repeatability", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Repeatabilities");
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.Home.HomeModel", b =>
@@ -659,7 +676,7 @@ namespace LifeVenture.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Abbreviation")
+                    b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
@@ -969,15 +986,6 @@ namespace LifeVenture.Data.Migrations
                     b.Navigation("Volunteer");
                 });
 
-            modelBuilder.Entity("LifeVenture.Data.Models.Common.Image", b =>
-                {
-                    b.HasOne("LifeVenture.Data.Models.Events.Event", "Event")
-                        .WithOne("Image")
-                        .HasForeignKey("LifeVenture.Data.Models.Common.Image", "EventId");
-
-                    b.Navigation("Event");
-                });
-
             modelBuilder.Entity("LifeVenture.Data.Models.Common.ImagePeople", b =>
                 {
                     b.HasOne("LifeVenture.Data.Models.People.PersonOfGoodness", "PersonOfGoodnes")
@@ -1009,15 +1017,13 @@ namespace LifeVenture.Data.Migrations
                         .WithMany("Events")
                         .HasForeignKey("HomeModelId");
 
+                    b.HasOne("LifeVenture.Data.Models.Common.Image", "Image")
+                        .WithOne("Event")
+                        .HasForeignKey("LifeVenture.Data.Models.Events.Event", "ImageId");
+
                     b.HasOne("LifeVenture.Data.Models.Events.Phone", "Phone")
                         .WithMany("Events")
                         .HasForeignKey("PhoneId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("LifeVenture.Data.Models.Events.Repeatability", "Repeatability")
-                        .WithMany()
-                        .HasForeignKey("RepeatabilityId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -1025,9 +1031,9 @@ namespace LifeVenture.Data.Migrations
 
                     b.Navigation("CreatedBy");
 
-                    b.Navigation("Phone");
+                    b.Navigation("Image");
 
-                    b.Navigation("Repeatability");
+                    b.Navigation("Phone");
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.Events.Phone", b =>
@@ -1167,14 +1173,14 @@ namespace LifeVenture.Data.Migrations
                     b.Navigation("Roles");
                 });
 
+            modelBuilder.Entity("LifeVenture.Data.Models.Common.Image", b =>
+                {
+                    b.Navigation("Event");
+                });
+
             modelBuilder.Entity("LifeVenture.Data.Models.Events.Category", b =>
                 {
                     b.Navigation("Events");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Events.Event", b =>
-                {
-                    b.Navigation("Image");
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.Events.Phone", b =>
