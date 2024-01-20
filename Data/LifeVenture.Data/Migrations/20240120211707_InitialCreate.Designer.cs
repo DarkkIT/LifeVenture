@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LifeVenture.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240120140318_AddColumnInEvents")]
-    partial class AddColumnInEvents
+    [Migration("20240120211707_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

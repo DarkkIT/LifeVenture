@@ -45,21 +45,32 @@
         [RequestSizeLimit(20 * 1024 * 1024)]
         public async Task<IActionResult> Create(CreateEventViewModel eventInput, IFormFile image)
         {
-            if (image.Length > 10 * 1024 * 1024)
+            if (image == null)
+            {
+                this.ModelState.AddModelError("Image", "Снимката е задължителна!.");
+                eventInput.ImageError = "Снимката е задължителна!";
+            }
+
+            if (image != null && image.Length > 10 * 1024 * 1024)
             {
                 this.ModelState.AddModelError("Image", "Снимката не може да бъде по-голяма от 10 MB.");
             }
 
             if (!this.ModelState.IsValid)
             {
-                return this.View();
+                eventInput.Categories = await this.eventsService.GetAllCategories();
+
+                eventInput.Phone.Codes = await this.eventsService.GetAllPhoneCodes();
+                eventInput.Regions = await this.eventsService.GetAllRegions();
+
+                return this.View(eventInput);
             }
 
             var imageInputModel = new ImageInputModel
             {
-                Name = image.FileName,
-                Type = image.ContentType,
-                Content = image.OpenReadStream(),
+                Name = image?.FileName,
+                Type = image?.ContentType,
+                Content = image?.OpenReadStream(),
             };
 
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);

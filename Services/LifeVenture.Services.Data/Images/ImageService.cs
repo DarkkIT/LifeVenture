@@ -17,6 +17,11 @@
 
         public async Task<LifeVenture.Data.Models.Common.Image> GetImageData(ImageInputModel image)
         {
+            if (image.Content == null)
+            {
+                return null;
+            }
+
             using var imageResult = await Image.LoadAsync(image.Content);
 
             var originalData = await this.GetImageData(imageResult, imageResult.Width);

@@ -3,14 +3,20 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using Microsoft.AspNetCore.Http;
+    using static LifeVenture.Common.ErrorConstants.Common;
+    using static LifeVenture.Common.InputConstants.InputCommonConstants;
+    using static LifeVenture.Common.InputConstants.InputEventsConstants;
 
     public class CreateEventViewModel : EventBaseViewModel
     {
         public PhoneViewModel Phone { get; set; }
 
-        [Display(Name = "Категория")]
+        [Required(ErrorMessage = RequiredField)]
+        [Display(Name = EventCategory)]
+        [Range(MinNumber, int.MaxValue, ErrorMessage = SelectOptionErr)]
         public int CategoryId { get; set; }
+
+        public string ImageError { get; set; }
 
         public IList<LocationViewModel> Locations { get; set; }
 
