@@ -1,6 +1,5 @@
 ﻿namespace LifeVenture.Services.Data
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -10,6 +9,7 @@
     using LifeVenture.Data.Models.Locations;
     using LifeVenture.Services.Mapping;
     using LifeVenture.Web.ViewModels.Events;
+    using LifeVenture.Web.ViewModels.Image;
     using Microsoft.EntityFrameworkCore;
 
     public class EventsService : IEventsService
@@ -18,25 +18,28 @@
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
         private readonly IRepository<CountryPhoneCode> countryPhoneCodesRepository;
         private readonly IDeletableEntityRepository<Region> regionsRepository;
+        private readonly IImageService imageService;
 
         public EventsService(
             IDeletableEntityRepository<Event> eventsRepository,
             IDeletableEntityRepository<Category> categoriesRepository,
             IRepository<CountryPhoneCode> countryPhoneCodesRepository,
-            IDeletableEntityRepository<Region> regionsRepository)
+            IDeletableEntityRepository<Region> regionsRepository,
+            IImageService imageService)
         {
             this.eventsRepository = eventsRepository;
             this.categoriesRepository = categoriesRepository;
             this.countryPhoneCodesRepository = countryPhoneCodesRepository;
             this.regionsRepository = regionsRepository;
+            this.imageService = imageService;
         }
 
-        public async Task CreateEvent(CreateEventViewModel input)
+        public async Task CreateEvent(CreateEventViewModel input, ImageInputModel image, string userId)
         {
             var eventModel = new Event
             {
                 CategoryId = input.CategoryId,
-                CreatedById = " ",
+                CreatedById = userId,
                 Description = input.Description,
                 Email = input.Email,
                 EndDate = input.EndDate,
@@ -46,6 +49,7 @@
                 Phone = new Phone { Number = input.Phone.Number, CodeId = input.Phone.CodeId },
                 IsUrgent = input.IsUrgent,
                 Title = input.Title,
+                MaxParticipantsCount = input.MaxParticipantsCount,
             };
 
             foreach (var location in input.Locations)
@@ -59,6 +63,8 @@
 
                 eventModel.Locations.Add(modelLocation);
             }
+
+            eventModel.Image = await this.imageService.GetImageData(image);
 
             await this.eventsRepository.AddAsync(eventModel);
             await this.eventsRepository.SaveChangesAsync();

@@ -29,6 +29,10 @@
         [Display(Name = "Спешен евент")]
         public bool IsUrgent { get; set; }
 
+        [Display(Name = "Максимален брой участници")]
+        [Range(1, 2000000000)]
+        public int MaxParticipantsCount { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Имейл")]

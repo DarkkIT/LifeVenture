@@ -20,8 +20,6 @@
 
         public virtual PhoneDetailsViewModel Phone { get; set; }
 
-        public virtual RepeatabilityViewModel Repeatability { get; set; }
-
         public virtual ApplicationUserViewModel CreatedBy { get; set; }
 
         public virtual CategoryViewModel Category { get; set; }

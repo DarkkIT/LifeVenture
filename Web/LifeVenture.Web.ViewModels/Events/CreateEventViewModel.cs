@@ -12,9 +12,6 @@
         [Display(Name = "Категория")]
         public int CategoryId { get; set; }
 
-        [Display(Name = "Снимка")]
-        public IFormFile Image { get; set; }
-
         public IList<LocationViewModel> Locations { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> Categories { get; set; }

@@ -44,8 +44,6 @@
 
         public DbSet<Phone> Phones { get; set; }
 
-        public DbSet<Repeatability> Repeatabilities { get; set; }
-
         public DbSet<HomeModel> HomeModels { get; set; }
 
         public DbSet<Volunteer> Volunteers { get; set; }
@@ -106,10 +104,10 @@
                 .WithOne(x => x.User)
                 .HasForeignKey<ApplicationUser>(x => x.PersonOfGoodnessId);
 
-            builder.Entity<Image>()
-                .HasOne(i => i.Event)
-                .WithOne(e => e.Image)
-                .HasForeignKey<Image>(i => i.EventId)
+            builder.Entity<Event>()
+                .HasOne(e => e.Image)
+                .WithOne(i => i.Event)
+                .HasForeignKey<Event>(e => e.ImageId)
                 .IsRequired(false);
 
             // Needed for Identity models configuration

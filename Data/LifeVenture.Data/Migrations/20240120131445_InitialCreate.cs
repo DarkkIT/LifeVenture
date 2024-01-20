@@ -55,10 +55,9 @@ namespace LifeVenture.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Country = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    IsDefault = table.Column<bool>(type: "bit", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -66,11 +65,35 @@ namespace LifeVenture.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Locations",
+                name: "Images",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    OriginalName = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    OriginalContentType = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    OriginalData = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    ThumbnailData = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    FullscreenData = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Messages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SenderName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<int>(type: "int", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -78,7 +101,7 @@ namespace LifeVenture.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Locations", x => x.Id);
+                    table.PrimaryKey("PK_Messages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -100,13 +123,13 @@ namespace LifeVenture.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Repeatabilities",
+                name: "Regions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -114,7 +137,7 @@ namespace LifeVenture.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Repeatabilities", x => x.Id);
+                    table.PrimaryKey("PK_Regions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -195,6 +218,31 @@ namespace LifeVenture.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Municipalities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RegionId = table.Column<int>(type: "int", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Municipalities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Municipalities_Regions_RegionId",
+                        column: x => x.RegionId,
+                        principalTable: "Regions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HomeModels",
                 columns: table => new
                 {
@@ -221,7 +269,7 @@ namespace LifeVenture.Data.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Age = table.Column<int>(type: "int", nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: true),
                     Nationality = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -266,8 +314,8 @@ namespace LifeVenture.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Data = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    PersonOfGoodnesId = table.Column<int>(type: "int", nullable: false),
-                    VolunteerId = table.Column<int>(type: "int", nullable: false),
+                    PersonOfGoodnesId = table.Column<int>(type: "int", nullable: true),
+                    VolunteerId = table.Column<int>(type: "int", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -280,12 +328,59 @@ namespace LifeVenture.Data.Migrations
                         name: "FK_ImagePeoples_PersonOfGoodnesses_PersonOfGoodnesId",
                         column: x => x.PersonOfGoodnesId,
                         principalTable: "PersonOfGoodnesses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ImagePeoples_Volunteers_VolunteerId",
                         column: x => x.VolunteerId,
                         principalTable: "Volunteers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Settlements",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MunicipalityId = table.Column<int>(type: "int", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Settlements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Settlements_Municipalities_MunicipalityId",
+                        column: x => x.MunicipalityId,
+                        principalTable: "Municipalities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HomeModelImage",
+                columns: table => new
+                {
+                    HomeModelsId = table.Column<int>(type: "int", nullable: false),
+                    ImagesId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HomeModelImage", x => new { x.HomeModelsId, x.ImagesId });
+                    table.ForeignKey(
+                        name: "FK_HomeModelImage_HomeModels_HomeModelsId",
+                        column: x => x.HomeModelsId,
+                        principalTable: "HomeModels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_HomeModelImage_Images_ImagesId",
+                        column: x => x.ImagesId,
+                        principalTable: "Images",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -376,6 +471,73 @@ namespace LifeVenture.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Phones",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Number = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    CodeId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Phones", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Phones_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Phones_CountriesPhoneCodes_CodeId",
+                        column: x => x.CodeId,
+                        principalTable: "CountriesPhoneCodes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Locations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RegionId = table.Column<int>(type: "int", nullable: false),
+                    MunicipalityId = table.Column<int>(type: "int", nullable: false),
+                    SettlementId = table.Column<int>(type: "int", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Locations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Locations_Municipalities_MunicipalityId",
+                        column: x => x.MunicipalityId,
+                        principalTable: "Municipalities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Locations_Regions_RegionId",
+                        column: x => x.RegionId,
+                        principalTable: "Regions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Locations_Settlements_SettlementId",
+                        column: x => x.SettlementId,
+                        principalTable: "Settlements",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Events",
                 columns: table => new
                 {
@@ -390,8 +552,8 @@ namespace LifeVenture.Data.Migrations
                     IsInDrafts = table.Column<bool>(type: "bit", nullable: false),
                     IsApproved = table.Column<bool>(type: "bit", nullable: false),
                     PhoneId = table.Column<int>(type: "int", nullable: false),
-                    RepeatabilityId = table.Column<int>(type: "int", nullable: false),
                     CreatedById = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ImageId = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     HomeModelId = table.Column<int>(type: "int", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -419,9 +581,14 @@ namespace LifeVenture.Data.Migrations
                         principalTable: "HomeModels",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Events_Repeatabilities_RepeatabilityId",
-                        column: x => x.RepeatabilityId,
-                        principalTable: "Repeatabilities",
+                        name: "FK_Events_Images_ImageId",
+                        column: x => x.ImageId,
+                        principalTable: "Images",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Events_Phones_PhoneId",
+                        column: x => x.PhoneId,
+                        principalTable: "Phones",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -446,89 +613,6 @@ namespace LifeVenture.Data.Migrations
                         name: "FK_EventLocation_Locations_LocationsId",
                         column: x => x.LocationsId,
                         principalTable: "Locations",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    EventId = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Images", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Images_Events_EventId",
-                        column: x => x.EventId,
-                        principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Phones",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Number = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    CodeId = table.Column<int>(type: "int", nullable: false),
-                    EventId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Phones", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Phones_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Phones_CountriesPhoneCodes_CodeId",
-                        column: x => x.CodeId,
-                        principalTable: "CountriesPhoneCodes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Phones_Events_EventId",
-                        column: x => x.EventId,
-                        principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HomeModelImage",
-                columns: table => new
-                {
-                    HomeModelsId = table.Column<int>(type: "int", nullable: false),
-                    ImagesId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HomeModelImage", x => new { x.HomeModelsId, x.ImagesId });
-                    table.ForeignKey(
-                        name: "FK_HomeModelImage_HomeModels_HomeModelsId",
-                        column: x => x.HomeModelsId,
-                        principalTable: "HomeModels",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_HomeModelImage_Images_ImagesId",
-                        column: x => x.ImagesId,
-                        principalTable: "Images",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -602,11 +686,6 @@ namespace LifeVenture.Data.Migrations
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CountriesPhoneCodes_IsDeleted",
-                table: "CountriesPhoneCodes",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_EventLocation_LocationsId",
                 table: "EventLocation",
                 column: "LocationsId");
@@ -627,14 +706,20 @@ namespace LifeVenture.Data.Migrations
                 column: "HomeModelId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Events_ImageId",
+                table: "Events",
+                column: "ImageId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Events_IsDeleted",
                 table: "Events",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Events_RepeatabilityId",
+                name: "IX_Events_PhoneId",
                 table: "Events",
-                column: "RepeatabilityId");
+                column: "PhoneId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HomeModelImage_ImagesId",
@@ -655,23 +740,50 @@ namespace LifeVenture.Data.Migrations
                 name: "IX_ImagePeoples_PersonOfGoodnesId",
                 table: "ImagePeoples",
                 column: "PersonOfGoodnesId",
-                unique: true);
+                unique: true,
+                filter: "[PersonOfGoodnesId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ImagePeoples_VolunteerId",
                 table: "ImagePeoples",
                 column: "VolunteerId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Images_EventId",
-                table: "Images",
-                column: "EventId");
+                unique: true,
+                filter: "[VolunteerId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Locations_IsDeleted",
                 table: "Locations",
                 column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Locations_MunicipalityId",
+                table: "Locations",
+                column: "MunicipalityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Locations_RegionId",
+                table: "Locations",
+                column: "RegionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Locations_SettlementId",
+                table: "Locations",
+                column: "SettlementId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messages_IsDeleted",
+                table: "Messages",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Municipalities_IsDeleted",
+                table: "Municipalities",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Municipalities_RegionId",
+                table: "Municipalities",
+                column: "RegionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersonOfGoodnesses_IsDeleted",
@@ -682,12 +794,6 @@ namespace LifeVenture.Data.Migrations
                 name: "IX_Phones_CodeId",
                 table: "Phones",
                 column: "CodeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Phones_EventId",
-                table: "Phones",
-                column: "EventId",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Phones_IsDeleted",
@@ -702,14 +808,24 @@ namespace LifeVenture.Data.Migrations
                 filter: "[UserId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Repeatabilities_IsDeleted",
-                table: "Repeatabilities",
+                name: "IX_Regions_IsDeleted",
+                table: "Regions",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Settings_IsDeleted",
                 table: "Settings",
                 column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Settlements_IsDeleted",
+                table: "Settlements",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Settlements_MunicipalityId",
+                table: "Settlements",
+                column: "MunicipalityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StatisticalInfo_IsDeleted",
@@ -750,7 +866,7 @@ namespace LifeVenture.Data.Migrations
                 name: "ImagePeoples");
 
             migrationBuilder.DropTable(
-                name: "Phones");
+                name: "Messages");
 
             migrationBuilder.DropTable(
                 name: "Settings");
@@ -759,19 +875,10 @@ namespace LifeVenture.Data.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Locations");
-
-            migrationBuilder.DropTable(
-                name: "Images");
-
-            migrationBuilder.DropTable(
-                name: "CountriesPhoneCodes");
-
-            migrationBuilder.DropTable(
                 name: "Events");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Locations");
 
             migrationBuilder.DropTable(
                 name: "Categories");
@@ -780,7 +887,25 @@ namespace LifeVenture.Data.Migrations
                 name: "HomeModels");
 
             migrationBuilder.DropTable(
-                name: "Repeatabilities");
+                name: "Images");
+
+            migrationBuilder.DropTable(
+                name: "Phones");
+
+            migrationBuilder.DropTable(
+                name: "Settlements");
+
+            migrationBuilder.DropTable(
+                name: "StatisticalInfo");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "CountriesPhoneCodes");
+
+            migrationBuilder.DropTable(
+                name: "Municipalities");
 
             migrationBuilder.DropTable(
                 name: "PersonOfGoodnesses");
@@ -789,7 +914,7 @@ namespace LifeVenture.Data.Migrations
                 name: "Volunteers");
 
             migrationBuilder.DropTable(
-                name: "StatisticalInfo");
+                name: "Regions");
         }
     }
 }
