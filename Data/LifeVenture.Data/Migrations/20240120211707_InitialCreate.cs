@@ -551,6 +551,7 @@ namespace LifeVenture.Data.Migrations
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     IsInDrafts = table.Column<bool>(type: "bit", nullable: false),
                     IsApproved = table.Column<bool>(type: "bit", nullable: false),
+                    MaxParticipantsCount = table.Column<int>(type: "int", nullable: false),
                     PhoneId = table.Column<int>(type: "int", nullable: false),
                     CreatedById = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     ImageId = table.Column<int>(type: "int", nullable: false),

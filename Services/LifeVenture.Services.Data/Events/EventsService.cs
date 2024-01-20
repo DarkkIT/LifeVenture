@@ -64,7 +64,12 @@
                 eventModel.Locations.Add(modelLocation);
             }
 
-            eventModel.Image = await this.imageService.GetImageData(image);
+            var imageModel = await this.imageService.GetImageData(image);
+
+            if (imageModel != null)
+            {
+                eventModel.Image = imageModel;
+            }
 
             await this.eventsRepository.AddAsync(eventModel);
             await this.eventsRepository.SaveChangesAsync();
