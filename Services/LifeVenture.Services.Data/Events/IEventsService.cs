@@ -8,7 +8,7 @@
 
     public interface IEventsService
     {
-        Task CreateEvent(CreateEventViewModel input, ImageInputModel image, string userId);
+        Task CreateEvent(CreateEventInputModel input, string userId);
 
         Task<IEnumerable<T>> GetAll<T>();
 
