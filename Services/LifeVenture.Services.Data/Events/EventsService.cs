@@ -9,7 +9,6 @@
     using LifeVenture.Data.Models.Locations;
     using LifeVenture.Services.Mapping;
     using LifeVenture.Web.ViewModels.Events;
-    using LifeVenture.Web.ViewModels.Image;
     using Microsoft.EntityFrameworkCore;
 
     public class EventsService : IEventsService
@@ -34,7 +33,7 @@
             this.imageService = imageService;
         }
 
-        public async Task CreateEvent(CreateEventViewModel input, ImageInputModel image, string userId)
+        public async Task CreateEvent(CreateEventInputModel input, string userId)
         {
             var eventModel = new Event
             {
@@ -64,7 +63,7 @@
                 eventModel.Locations.Add(modelLocation);
             }
 
-            var imageModel = await this.imageService.GetImageData(image);
+            var imageModel = await this.imageService.GetImageData(input.Image);
 
             if (imageModel != null)
             {

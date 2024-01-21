@@ -5,6 +5,10 @@
         public class InputCommonConstants
         {
             public const int MinNumber = 1;
+
+            public const int RequestSizeLimit = 20 * 1024 * 1024;
+
+            public const string EndDate = "EndDate";
         }
 
         public class InputEventsConstants
@@ -52,6 +56,11 @@
             public const string LocationSettlement = "Населено място";
 
             public const string LocationAddressNote = "Уточнение за адрес";
+        }
+
+        public class InputImageConstants
+        {
+            public const int ImageMaxSizeMb = 10 * 1024 * 1024;
         }
     }
 }

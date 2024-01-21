@@ -12,15 +12,15 @@
     public class LocationViewModel : IMapFrom<Location>
     {
         [Display(Name = LocationRegion)]
-        ////[Range(MinNumber, int.MaxValue, ErrorMessage = SelectOptionErr)]
+        [Range(MinNumber, int.MaxValue, ErrorMessage = SelectOptionErr)]
         public int RegionId { get; set; }
 
         [Display(Name = LocationMunicipality)]
-        ////[Range(MinNumber, int.MaxValue, ErrorMessage = SelectOptionErr)]
+        [Range(MinNumber, int.MaxValue, ErrorMessage = SelectOptionErr)]
         public int MunicipalityId { get; set; }
 
         [Display(Name = LocationSettlement)]
-        ////[Range(MinNumber, int.MaxValue, ErrorMessage = SelectOptionErr)]
+        [Range(MinNumber, int.MaxValue, ErrorMessage = SelectOptionErr)]
         public int SettlementId { get; set; }
 
         [Display(Name = LocationAddressNote)]

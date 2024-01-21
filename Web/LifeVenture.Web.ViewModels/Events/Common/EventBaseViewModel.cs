@@ -23,13 +23,13 @@
         [Display(Name = EventDescription)]
         public string Description { get; set; }
 
+        [Required(ErrorMessage = RequiredField)]
         [Display(Name = EventStartDate)]
-        [DataType(DataType.Date)]
-        public DateTime StartDate { get; set; }
+        public DateTime StartDate { get; set; } = new DateTime(DateTime.UtcNow.Ticks / 600000000 * 600000000);
 
+        [Required(ErrorMessage = RequiredField)]
         [Display(Name = EventEndDate)]
-        [DataType(DataType.Date)]
-        public DateTime EndDate { get; set; }
+        public DateTime EndDate { get; set; } = new DateTime(DateTime.UtcNow.Ticks / 600000000 * 600000000);
 
         [Display(Name = EventUrgency)]
         public bool IsUrgent { get; set; }

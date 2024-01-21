@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using Microsoft.AspNetCore.Http;
+
     using static LifeVenture.Common.ErrorConstants.Common;
     using static LifeVenture.Common.InputConstants.InputCommonConstants;
     using static LifeVenture.Common.InputConstants.InputEventsConstants;
@@ -16,7 +18,8 @@
         [Range(MinNumber, int.MaxValue, ErrorMessage = SelectOptionErr)]
         public int CategoryId { get; set; }
 
-        public string ImageError { get; set; }
+        [Required(ErrorMessage = ImageIsRequired)]
+        public IFormFile Image { get; set; }
 
         public IList<LocationViewModel> Locations { get; set; }
 
