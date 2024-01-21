@@ -37,13 +37,11 @@
 
         public bool IsApproved { get; set; }
 
+        public int MaxParticipantsCount { get; set; }
+
         public int PhoneId { get; set; }
 
         public virtual Phone Phone { get; set; }
-
-        public int RepeatabilityId { get; set; }
-
-        public virtual Repeatability Repeatability { get; set; }
 
         public string CreatedById { get; set; }
 

@@ -11,10 +11,8 @@
 
 <head>
     <link href="~/css/card.css" rel="stylesheet" asp-append-version="true" />
-    <link href="~/css/event.css" rel="stylesheet" asp-append-version="true" />
-    <link href="~/css/datepicker.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/event.css" rel="stylesheet" asp-append-version="true" />S
 </head>
-
 
 <div class="text-center form-container row justify-content-center">
     <div>
@@ -25,11 +23,19 @@
             <div class="col new-event-element">
                 <label asp-for="CategoryId"></label>
                 <select asp-for="CategoryId" class="form-control" asp-items="categories"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
-            
+
             <div class="col new-event-element">
-                <label class="row row-col-12 justify-content-center" asp-for="IsUrgent"></label>
+                <label asp-for="MaxParticipantsCount"></label>
+                <input asp-for="MaxParticipantsCount" class="form-control" />
+                <span asp-validation-for="MaxParticipantsCount" class="text-danger"></span>
+            </div>
+
+            <div class="col new-event-element">
+                <label asp-for="IsUrgent" class="row row-col-12 justify-content-center"></label>
                 <input asp-for="IsUrgent" class="form-control-file" />
+                <span asp-validation-for="IsUrgent" class="text-danger"></span>
             </div>
         </div>
 
@@ -37,6 +43,7 @@
             <div class="col new-event-element">
                 <label asp-for="Title"></label>
                 <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
         </div>
 
@@ -44,6 +51,7 @@
             <div class="col new-event-element">
                 <label asp-for="Description"></label>
                 <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
         </div>
 
@@ -51,13 +59,15 @@
             <div class="col new-event-element">
                 <div class="input-daterange">
                     <label asp-for="StartDate"></label>
-                    <input type="datetime" name="StartDate" class="form-control" placeholder="Ден-Месец-Година" />
+                    <input asp-for="StartDate" class="form-control" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
                 </div>
             </div>
             <div class="col new-event-element">
                 <div class="input-daterange form-group">
                     <label asp-for="EndDate"></label>
-                    <input type="datetime" name="EndDate" class="form-control" placeholder="Ден-Месец-Година" />
+                    <input asp-for="EndDate" class="form-control" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
                 </div>
             </div>
         </div>
@@ -67,20 +77,24 @@
                 <div class="col new-event-element">
                     <label asp-for="Locations[0].RegionId"></label>
                     <select asp-for="Locations[0].RegionId" id="region-0" class="form-control" asp-items="regions"></select>
+                    <span asp-validation-for="Locations[0].RegionId" class="text-danger"></span>
                 </div>
                 <div class="col new-event-element">
                     <label asp-for="Locations[0].MunicipalityId"></label>
                     <select asp-for="Locations[0].MunicipalityId" id="municipality-0" class="form-control" asp-items="municipalities" disabled></select>
+                    <span asp-validation-for="Locations[0].MunicipalityId" class="text-danger"></span>
                 </div>
                 <div class="col new-event-element">
                     <label asp-for="Locations[0].SettlementId"></label>
                     <select asp-for="Locations[0].SettlementId" id="settlement-0" class="form-control" asp-items="settlements" disabled></select>
+                    <span asp-validation-for="Locations[0].SettlementId" class="text-danger"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col new-event-element">
                     <label asp-for="Locations[0].AddressNote"></label>
                     <textarea asp-for="Locations[0].AddressNote" id="address-note-0" class="form-control new-event-element" rows="4"></textarea>
+                    <span asp-validation-for="Locations[0].AddressNote" class="text-danger"></span>
                     <input type="submit" id="location-btn-0" value="Добави локация" />
                 </div>
             </div>
@@ -90,28 +104,32 @@
             <div class="col new-event-element">
                 <label asp-for="Email"></label>
                 <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="col new-event-element">
                 <label asp-for="Phone.CodeId"></label>
                 <select asp-for="Phone.CodeId" class="form-control" asp-items="phoneCodes"></select>
+                <span asp-validation-for="Phone.CodeId" class="text-danger"></span>
             </div>
             <div class="col new-event-element">
                 <label asp-for="Phone.Number"></label>
                 <input asp-for="Phone.Number" class="form-control" />
+                <span asp-validation-for="Phone.Number" class="text-danger"></span>
             </div>
         </div>
 
         <div class="row">
             <div class="col new-event-element">
-                <label asp-for="Image"></label>
+                <label>Снимка</label>
                 <input asp-for="Image" class="form-control-file" id="exampleInputFile" />
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
 
         </div>
 
         <div class="new-event-element">
             <div class="text-center">
-                <input type="submit" id="submit-btn" class="btn btn-primary" value="Създай евент" />
+                <input type="submit" id="submit-btn" class="btn btn-secondary" value="Създай евент" />
             </div>
         </div>
     </form>
@@ -119,22 +137,5 @@
 <form method="post" id="antiForgeryForm"></form>
 
 @section Scripts {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
-    @* <script src="~/js/create-event.js" asp-append-version="true"></script> *@
     <script src="~/js/load-new-event.js" asp-append-version="true"></script>
-    <script>
-        var $j = jQuery.noConflict();
-        $j(document).ready(function () {
-
-            $j('.input-daterange').datepicker({
-                format: 'dd-mm-yyyy',
-                autoclose: true,
-                calendarWeeks: true,
-                clearBtn: true,
-                disableTouchKeyboard: true
-            });
-        });
-    </script>
 }

@@ -6,32 +6,42 @@
     using LifeVenture.Data.Models.Events;
     using LifeVenture.Services.Mapping;
 
+    using static LifeVenture.Common.ErrorConstants.Common;
+    using static LifeVenture.Common.ErrorConstants.EventErrors;
+    using static LifeVenture.Common.InputConstants.InputCommonConstants;
+    using static LifeVenture.Common.InputConstants.InputEventsConstants;
+
     public abstract class EventBaseViewModel : IMapFrom<Event>
     {
-        [Required]
-        [MaxLength(200)]
-        [Display(Name = "Заглавие")]
+        [Required(ErrorMessage = RequiredField)]
+        [MaxLength(MaxEventTitleLenghtNumber, ErrorMessage = MaxTitleLenght)]
+        [Display(Name = EventTitle)]
         public string Title { get; set; }
 
-        [Required]
-        [MaxLength(3000)]
-        [Display(Name = "Описание")]
+        [Required(ErrorMessage = RequiredField)]
+        [MaxLength(MaxEventDescriptionLenghtNumber, ErrorMessage = DescriptionMaxLength)]
+        [Display(Name = EventDescription)]
         public string Description { get; set; }
 
-        [Display(Name = "Начална дата")]
-        [DataType(DataType.Date)]
-        public DateTime StartDate { get; set; }
+        [Required(ErrorMessage = RequiredField)]
+        [Display(Name = EventStartDate)]
+        public DateTime StartDate { get; set; } = new DateTime(DateTime.UtcNow.Ticks / 600000000 * 600000000);
 
-        [Display(Name = "Крайна дата")]
-        [DataType(DataType.Date)]
-        public DateTime EndDate { get; set; }
+        [Required(ErrorMessage = RequiredField)]
+        [Display(Name = EventEndDate)]
+        public DateTime EndDate { get; set; } = new DateTime(DateTime.UtcNow.Ticks / 600000000 * 600000000);
 
-        [Display(Name = "Спешен евент")]
+        [Display(Name = EventUrgency)]
         public bool IsUrgent { get; set; }
 
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Имейл")]
+        [Required(ErrorMessage = RequiredField)]
+        [Display(Name = EventMaxParticipants)]
+        [Range(MinNumber, EventMaxParticipantsMaxNumber, ErrorMessage = MaxParticipantsCountErr)]
+        public int MaxParticipantsCount { get; set; }
+
+        [Required(ErrorMessage = RequiredField)]
+        [EmailAddress(ErrorMessage = NotValidEmailAddress)]
+        [Display(Name = EventEmail)]
         public string Email { get; set; }
     }
 }

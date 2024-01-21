@@ -9,6 +9,7 @@
     using LifeVenture.Data.Repositories;
     using LifeVenture.Data.Seeding;
     using LifeVenture.Services.Data;
+    using LifeVenture.Services.Data.Images;
     using LifeVenture.Services.Data.Locations;
     using LifeVenture.Services.Mapping;
     using LifeVenture.Services.Messaging;
@@ -56,10 +57,7 @@
 
             services.AddAntiforgery(options =>
             {
-                // Set Cookie properties using CookieBuilder properties†.
-                // options.FormFieldName = "AntiforgeryFieldname";
                 options.HeaderName = "X-CSRF-TOKEN";
-                // options.SuppressXFrameOptionsHeader = false;
             });
 
             services.AddRazorPages();
@@ -77,6 +75,7 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IEventsService, EventsService>();
             services.AddTransient<ILocationsService, LocationsService>();
+            services.AddTransient<IImageService, ImageService>();
         }
 
         private static void Configure(WebApplication app)

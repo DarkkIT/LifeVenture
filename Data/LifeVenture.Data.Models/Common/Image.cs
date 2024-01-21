@@ -1,6 +1,7 @@
 ﻿namespace LifeVenture.Data.Models.Common
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     using LifeVenture.Data.Common.Models;
     using LifeVenture.Data.Models.Events;
@@ -13,9 +14,19 @@
             this.HomeModels = new HashSet<HomeModel>();
         }
 
-        public byte[] Data { get; set; }
+        [Required]
+        [MaxLength(1000)]
+        public string OriginalName { get; set; }
 
-        public int EventId { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string OriginalContentType { get; set; }
+
+        public byte[] OriginalData { get; set; }
+
+        public byte[] ThumbnailData { get; set; }
+
+        public byte[] FullscreenData { get; set; }
 
         public Event Event { get; set; }
 

@@ -3,12 +3,19 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using static LifeVenture.Common.ErrorConstants.Common;
+    using static LifeVenture.Common.ErrorConstants.PhoneNumberErrors;
+    using static LifeVenture.Common.InputConstants.InputPhoneConstants;
+
     public class PhoneViewModel
     {
-        [Display(Name = "Телефонен номер")]
+        [Required(ErrorMessage = RequiredField)]
+        [Display(Name = PhoneNumber)]
+        [StringLength(maximumLength: MaxPhoneNumberLenght, MinimumLength = MinPhoneNumberLenght, ErrorMessage = NumberErr)]
         public string Number { get; set; }
 
-        [Display(Name = "Код на държава")]
+        [Required(ErrorMessage = RequiredField)]
+        [Display(Name = PhoneCode)]
         public int CodeId { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> Codes { get; set; }

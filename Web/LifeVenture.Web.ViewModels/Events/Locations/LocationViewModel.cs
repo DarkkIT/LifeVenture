@@ -1,17 +1,29 @@
 ﻿namespace LifeVenture.Web.ViewModels.Events
 {
-    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     using LifeVenture.Data.Models.Locations;
     using LifeVenture.Services.Mapping;
 
+    using static LifeVenture.Common.ErrorConstants.Common;
+    using static LifeVenture.Common.InputConstants.InputCommonConstants;
+    using static LifeVenture.Common.InputConstants.InputLocationConstants;
+
     public class LocationViewModel : IMapFrom<Location>
     {
-        public LocationViewModel()
-        {
-            this.Events = new HashSet<EventDetailsViewModel>();
-        }
+        [Display(Name = LocationRegion)]
+        [Range(MinNumber, int.MaxValue, ErrorMessage = SelectOptionErr)]
+        public int RegionId { get; set; }
 
-        public virtual ICollection<EventDetailsViewModel> Events { get; set; }
+        [Display(Name = LocationMunicipality)]
+        [Range(MinNumber, int.MaxValue, ErrorMessage = SelectOptionErr)]
+        public int MunicipalityId { get; set; }
+
+        [Display(Name = LocationSettlement)]
+        [Range(MinNumber, int.MaxValue, ErrorMessage = SelectOptionErr)]
+        public int SettlementId { get; set; }
+
+        [Display(Name = LocationAddressNote)]
+        public string AddressNote { get; set; }
     }
 }

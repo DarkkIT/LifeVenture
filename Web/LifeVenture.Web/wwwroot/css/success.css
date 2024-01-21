@@ -1,0 +1,20 @@
+﻿.success-container {
+    margin-top: 15vh;
+    margin-bottom: 27vh;
+    font-family: 'Anastasia-1';
+}
+
+.h1-font {
+    font-weight: 600;
+    font-size: 3.5rem;
+}
+
+.h2-font {
+    font-weight: 300;
+    font-size: 3rem;
+}
+
+.success-anchor {
+    text-decoration: none;
+    color: darkgreen;
+}
