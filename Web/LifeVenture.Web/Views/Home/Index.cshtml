@@ -9,91 +9,49 @@
 <head>
     <link href="~/css/home.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/css/card.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/home-carousel.css" rel="stylesheet" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
 <div id="home-body" class="text-center">
 
-    <h1 id="home-welcome" class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
+    <div id="home-welcome-container">
+        <img src="~/images/backgrounds/hero-Image.jpg" alt="">
+        <h1 id="home-welcome">ДОБРЕ ДОШЛИ В</h1>
+        <h1 id="home-name">LIVE VENTURE</h1>
+        <button id="home-event-button" type="button" class="btn btn-primary">Събития</button>
+    </div>
 
-    <div class="home-info">
-        <div class="nums-container">
+
+    <div class="home-info-container">
+        <div id="nums-container">
             <div class="item1">
                 <div class="home-number">@Model.StatisticalInfo.ActiveEvents</div>
-                <div class="home-label">АКТИВНИ ДЕЙНОСТИ</div>
+                <div class="home-label">Събития</div>
             </div>
             <div class="item2">
                 <div class="home-number">@Model.StatisticalInfo.EndedEvents</div>
-                <div class="home-label">ЗАВЪРШЕНИ ДЕЙНОСТИ</div>
+                <div class="home-label">Доброволци</div>
             </div>
             <div class="item3">
                 <div class="home-number">@Model.StatisticalInfo.TotalGoodDeeds</div>
-                <div class="home-label">ИЗВЪРШЕНИ ДОБРИ ДЕЛА</div>
+                <div class="home-label">Добри дела</div>
             </div>
             <div class="item4">
                 <div class="home-number">@Model.StatisticalInfo.PeopleOfGoodness</div>
-                <div class="home-label">ХОРА НА ДОБРОТО</div>
+                <div class="home-label">Герои</div>
             </div>
             <div class="item5">
                 <div class="home-number">@Model.StatisticalInfo.Volunteers</div>
-                <div class="home-label">ДОБРОВОЛЦИ</div>
+                <div class="home-label">Потребители</div>
             </div>
         </div>
     </div>
 
-    <div class="home-info-container">
+    <div id="home-carousel-container">
 
-        <div id="carouselExampleIndicators" class="carousel custom-carusel slide" data-bs-ride="true">
-            <div class="carousel-indicators">
-                <button class="active indicator-button" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
-                <button class="indicator-button" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button class="indicator-button" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active" >
-                    <img src="~/images/image5.png" class="d-block w-100" alt="">
-                    <div class="carousel-caption d-none d-md-block">
-                        @*<h1 class="text-carusel">First slide label</h1>*@
-                        <p class="text-carusel">Be the change that you want to see in the world <br> Mahatma Gandy.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="~/images/image4-1.png" class="d-block w-100" alt="">
-                    <div class="carousel-caption d-none d-md-block">
-                        @*<h5 class="text-carusel">Second slide label</h5>*@
-                        <p class="text-carusel">Be the change that you want to see in the world – Mahatma Gandy</p>
-                    </div>
-                </div>
-                <div class="carousel-item" >
-                    <img src="~/images/4444hgfhfhfh.jpg" class="d-block w-100" alt="">
-                    <div class="carousel-caption d-none d-md-block">
-                        @*<h5 class="text-carusel">Third slide label</h5>*@
-                        <p class="text-carusel">Some representative placeholder content for the third slide.</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
 
-    </div>
-
-    <div class="home-events">
-        @*@foreach (var eventModel in Model.Events)
-        {
-        <partial name="_EventCardPatrial" model="eventModel" />
-        }*@
-
-        <partial name="_EventCardPatrial" model="new EventViewModel()" />
-        <partial name="_EventCardPatrial" model="new EventViewModel()" />
-        <partial name="_EventCardPatrial" model="new EventViewModel()" />
     </div>
 
 </div>
