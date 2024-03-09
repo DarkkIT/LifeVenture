@@ -1,4 +1,4 @@
-﻿.carousel {
+﻿/*.carousel {
     width: 75%;
     height: 12rem;
     margin: auto;
@@ -57,9 +57,9 @@
     color: cornflowerblue
 }
 
-.home-label {
+.home-label {*/
     /*font-family: 'Poppins', sans-serif;*/
-    font-weight: 600;
+    /*font-weight: 600;
     font-size: .8rem;
 }
 
@@ -79,7 +79,7 @@
 }
 
 .home-info-container, #home-welcome {
-    font-family: 'Anastasia-1';
+    font-family: 'Comfortaa-Bold';
 }
 
 .home-label, .home-number {
@@ -100,4 +100,108 @@
 
 #home-body {
     background-color: transparent;
+}*/
+
+#home-welcome-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+img {
+    max-width: inherit;
+    max-height: inherit;
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+}
+
+#home-welcome {
+    font-family: 'Comfortaa-Bold' !important;
+    position: absolute;
+    font-size: 5vw;
+    color: #EDF5E1;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#home-name {
+    font-family: 'Comfortaa-Bold' !important;
+    position: absolute;
+    font-size: 5vw;
+    color: #5CDB95;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#home-event-button {
+    font-family: 'Comfortaa-Bold' !important;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 10%;
+    background-color: #5CDB95;
+    border: 1px solid #5CDB95;
+    border-radius: 45px;
+    font-size: 1.5vw;
+    color: #05386B;
+}
+
+.home-info-container {
+    width: 100%;
+    height: 290px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #05386B;
+}
+
+#nums-container {
+    display: grid;
+    grid-template-areas:
+        'first2 first3 first4 first5 first6';
+    gap: 10px;
+    padding: 10px;
+    width: 90%;
+    height: 170px;
+    margin: auto;
+    background-color: #05386B;
+}
+
+.item1 {
+    grid-area: first2;
+}
+
+.item2 {
+    grid-area: first3;
+}
+
+.item3 {
+    grid-area: first4;
+}
+
+.item4 {
+    grid-area: first5;
+}
+
+.item5 {
+    grid-area: first6;
+}
+
+.home-number {
+    font-family: 'Comfortaa-Bold' !important;
+    font-weight: 700;
+    font-size: 4.5vw;
+    color: #5CDB95;
+}
+
+.home-label {
+    font-family: 'Comfortaa-Bold' !important;
+    font-weight: 700;
+    font-size: 1vw;
+    color: #EDF5E1;
 }
