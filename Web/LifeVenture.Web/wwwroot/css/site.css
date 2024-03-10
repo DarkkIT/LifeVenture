@@ -159,12 +159,13 @@ body {
 }
 
 .menu-button, #logo {
+    margin-right: 1.5vw;
     height: 2.5rem;
-    line-height: 80%;
+    line-height: 100%;
     border-radius: 5px;
     color: #EDF5E1;
     font-family: 'Comfortaa-Bold' !important;
-    font-size: 24px;
+    font-size: 1.3vw;
 }
 
     .menu-button:hover {
@@ -177,7 +178,7 @@ body {
 }
 
 #leayout-logo {
-    width: 25rem;
+    width: 20%;
     margin: auto;
 }
 
@@ -185,7 +186,7 @@ body {
 }
 
 #navbar-login {
-    width: 25rem;
+    width: 20%;
     margin: auto;
     display: flex;
     justify-content: flex-end;
@@ -201,6 +202,10 @@ body {
     align-items: center;
 }
 
+#logo2 {
+    color: #5CDB95;
+}
+
 #logout-button {
     color: #EDF5E1 !important;
     font-family: 'Comfortaa-Bold' !important;
@@ -211,8 +216,17 @@ body {
 #user-button {
     color: #EDF5E1 !important;
     font-family: 'Comfortaa-Bold' !important;
+    font-size: 1.3vw;
 }
 
-.menu-button {
-    margin-right: 1rem;
+.login-element {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.3vw;
+}
+
+.login-info {
+    text-align: center;
+    font-size: 1.3vw;
 }
