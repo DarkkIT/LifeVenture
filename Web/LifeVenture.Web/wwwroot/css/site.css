@@ -175,6 +175,7 @@ body {
 
 #main-main {
     background-color: transparent;
+    overflow-x: hidden;
 }
 
 #leayout-logo {
