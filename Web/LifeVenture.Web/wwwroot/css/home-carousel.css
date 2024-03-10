@@ -69,6 +69,10 @@
             filter: grayscale(0%);
         }
 
+        #carousel div.selected.carusel-inner-header {
+            opacity: 1;
+        }
+
         #carousel div.next {
             z-index: 5;
             overflow: hidden;
@@ -126,4 +130,28 @@
     background-size: 50%;
     background-position: center;
     background-position-x: 50%;
+}
+
+.carusel-inner-header {
+    position: absolute;
+    border: none !important;
+    border-radius: unset !important;
+    width: 100% !important;
+    height: 5vw;
+    background-color: #05386B;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #EDF5E1;
+    opacity: 0.8;
+}
+
+.inner-header-text {
+    position: absolute;
+    width: 100% !important;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-family: 'Comfortaa-Bold' !important;
+    font-weight: 700;
+    font-size: 1.5vw;
+    color: #EDF5E1;
 }
