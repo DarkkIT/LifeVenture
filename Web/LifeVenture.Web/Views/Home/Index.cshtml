@@ -10,6 +10,7 @@
     <link href="~/css/home.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/css/card.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/css/home-carousel.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/sass/home-sass.css" rel="stylesheet" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
@@ -17,7 +18,7 @@
 <div id="home-body" class="text-center">
 
     <div id="home-welcome-container">
-        <img src="~/images/backgrounds/hero-Image.jpg" alt="">
+        <img id="home-welcome-img" src="~/images/backgrounds/hero-Image.jpg" alt="">
         <h1 id="home-welcome">ДОБРЕ ДОШЛИ В</h1>
         <h1 id="home-name">LIVE VENTURE</h1>
         <button id="home-event-button" type="button" class="btn btn-primary">Събития</button>
@@ -50,6 +51,44 @@
     </div>
 
     <div id="home-carousel-container">
+
+        <div id="carousel">
+
+            <div class="hideLeft">
+                <img src="~/images/test02.jpg">
+            </div>
+
+            <div class="prevLeftSecond">
+                <img src="~/images/test02.jpg">
+            </div>
+
+            <div class="prev">
+                <img src="~/images/test02.jpg">
+            </div>
+
+            <div class="selected">
+                <img src="~/images/test02.jpg">
+            </div>
+
+            <div class="next">
+                <img src="~/images/test02.jpg">
+            </div>
+
+            <div class="nextRightSecond">
+                <img src="~/images/test02.jpg">
+            </div>
+
+            <div class="hideRight">
+                <img src="~/images/test02.jpg">
+            </div>
+
+        </div>
+
+
+        <button id="prev">
+        </button>
+        <button id="next">
+        </button>
 
 
     </div>

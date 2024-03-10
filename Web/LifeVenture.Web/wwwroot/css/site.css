@@ -105,15 +105,9 @@ body {
 .footer-start {
     margin: 0 0 0 1.5rem;
 }
-
-/*.navbar-collapse {
-    margin-right: 1.5rem;
-}*/
-
 .custom-body {
     --bs-gutter-x: 0;
     --bs-gutter-y: 0;
-    /*background-color: #DCECF9;*/
     display: flex;
     width: 100%
 }
