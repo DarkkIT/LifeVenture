@@ -1,114 +1,11 @@
-﻿/*.carousel {
-    width: 75%;
-    height: 12rem;
-    margin: auto;
-    font-family: 'Gabriela-regular', serif;
-    overflow: hidden;
-}
-
-.text-carusel {
-    font-size: 2rem;
-}
-
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    filter: invert(100%);
-}
-
-.home-info {
-    width: 100%;
-    justify-self: auto;
-    margin-bottom: 2.5rem;
-}
-
-.nums-container {
-    display: grid;
-    grid-template-areas:
-        'first1 first2 first3 first4 first5 first6 first7';
-    gap: 10px;
-    padding: 10px;
-    width: 100%;
-    height: 5rem;
-}
-
-.item1 {
-    grid-area: first2;
-}
-
-.item2 {
-    grid-area: first3;
-}
-
-.item3 {
-    grid-area: first4;
-}
-
-.item4 {
-    grid-area: first5;
-}
-
-.item5 {
-    grid-area: first6;
-}
-
-.home-number {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 2.7rem;
-    color: cornflowerblue
-}
-
-.home-label {*/
-    /*font-family: 'Poppins', sans-serif;*/
-    /*font-weight: 600;
-    font-size: .8rem;
-}
-
-.home-info-container {
-    font-family: 'Caveat', cursive;
-    font-weight: 400;
-    font-size: 3vw;
-    color: #519872;
-    margin: 0 0 2rem 0;
-}
-
-#home-welcome {
-    padding: 2rem;
-    font-weight: 600;
-    font-size: 5rem;
-    margin-bottom: 0;
-}
-
-.home-info-container, #home-welcome {
-    font-family: 'Comfortaa-Bold';
-}
-
-.home-label, .home-number {
-    font-family: 'Gabriela-regular', serif;
-}
-
-.events-header {
-    margin: 0 0 1rem 0;
-}
-.event-header-inner {
-    font-family: 'Gabriela-regular', serif;
-    font-weight: 600;
-    color: cornflowerblue;
-    margin: auto;
-    width: 73%;
-    text-align: end;
-}
-
-#home-body {
-    background-color: transparent;
-}*/
-
+﻿
 #home-welcome-container {
     position: relative;
     width: 100%;
     height: auto;
 }
 
-img {
+#home-welcome-img {
     max-width: inherit;
     max-height: inherit;
     height: inherit;
@@ -153,7 +50,7 @@ img {
 
 .home-info-container {
     width: 100%;
-    height: 290px;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,8 +64,8 @@ img {
     gap: 10px;
     padding: 10px;
     width: 90%;
-    height: 170px;
-    margin: auto;
+    height: auto;
+    margin: calc(100vw / 30);
     background-color: #05386B;
 }
 
