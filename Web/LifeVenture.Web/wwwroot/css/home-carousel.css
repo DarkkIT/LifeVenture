@@ -91,27 +91,12 @@
             filter: grayscale(70%);
         }
 
-#prev {
-    position: absolute;
-    top: 43%;
-    left: 3.5%;
-}
-
-#next {
-    position: absolute;
-    top: 43%;
-    left: 91.2%;
-}
-
 #prev, #next {
-    width: 5vw;
-    height: 5vw;
+    width: 4vw;
+    height: 4vw;
     background-color: #05386B;
-    /*background: rgba(0,0,0,0);*/
     border: none;
-    /*border: 3px solid #05386B;*/
     border-radius: 50%;
-    font-size: 2vw;
 }
 
     #prev:hover, #next:hover {
@@ -119,19 +104,25 @@
     }
 
 #prev {
-    background-image: url("../images/icons/arrow_back.png");
+    position: absolute;
+    top: 45.5%;
+    left: 4.2%;
+    background-image: url("../images/icons/LeftArrow.png");
     background-repeat: no-repeat;
-    background-size: 50%;
+    background-size: 30%;
     background-position: center;
-    background-position-x: 42%; 
+    background-position-x: 46%;
 }
 
 #next {
-    background-image: url("../images/icons/arrow_forward.png");
+    position: absolute;
+    top: 45.5%;
+    left: 91.7%;
+    background-image: url("../images/icons/RightArrow.png");
     background-repeat: no-repeat;
-    background-size: 50%;
+    background-size: 30%;
     background-position: center;
-    background-position-x: 50%;
+    background-position-x: 56%;
 }
 
 .carusel-inner-header {
