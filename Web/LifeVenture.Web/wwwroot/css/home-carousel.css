@@ -107,7 +107,9 @@
     width: 5vw;
     height: 5vw;
     background-color: #05386B;
+    /*background: rgba(0,0,0,0);*/
     border: none;
+    /*border: 3px solid #05386B;*/
     border-radius: 50%;
     font-size: 2vw;
 }
@@ -137,7 +139,7 @@
     border: none !important;
     border-radius: unset !important;
     width: 100% !important;
-    height: 5vw;
+    height: 7vw;
     background-color: #05386B;
     top: 50%;
     transform: translateY(-50%);

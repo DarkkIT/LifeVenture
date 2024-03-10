@@ -230,3 +230,7 @@ body {
     text-align: center;
     font-size: 1.3vw;
 }
+
+#user-name {
+    color: #5CDB95 !important;
+}
