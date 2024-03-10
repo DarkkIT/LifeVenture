@@ -91,25 +91,12 @@
             filter: grayscale(70%);
         }
 
-#prev {
-    position: absolute;
-    top: 43%;
-    left: 3.5%;
-}
-
-#next {
-    position: absolute;
-    top: 43%;
-    left: 91.2%;
-}
-
 #prev, #next {
-    width: 5vw;
-    height: 5vw;
+    width: 4vw;
+    height: 4vw;
     background-color: #05386B;
     border: none;
     border-radius: 50%;
-    font-size: 2vw;
 }
 
     #prev:hover, #next:hover {
@@ -117,6 +104,9 @@
     }
 
 #prev {
+    position: absolute;
+    top: 45.5%;
+    left: 4.2%;
     background-image: url("../images/icons/LeftArrow.png");
     background-repeat: no-repeat;
     background-size: 30%;
@@ -125,11 +115,14 @@
 }
 
 #next {
+    position: absolute;
+    top: 45.5%;
+    left: 91.7%;
     background-image: url("../images/icons/RightArrow.png");
     background-repeat: no-repeat;
     background-size: 30%;
     background-position: center;
-    background-position-x: 54%;
+    background-position-x: 56%;
 }
 
 .carusel-inner-header {
