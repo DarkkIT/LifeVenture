@@ -1,33 +1,74 @@
-﻿.carousel {
-    width: 75%;
-    height: 12rem;
-    margin: auto;
-    font-family: 'Gabriela-regular', serif;
-    overflow: hidden;
-}
-
-.text-carusel {
-    font-size: 2rem;
-}
-
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    filter: invert(100%);
-}
-
-.home-info {
+﻿
+#home-welcome-container {
+    position: relative;
     width: 100%;
-    justify-self: auto;
-    margin-bottom: 2.5rem;
+    height: auto;
 }
 
-.nums-container {
+#home-welcome-img {
+    max-width: inherit;
+    max-height: inherit;
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+}
+
+#home-welcome {
+    font-family: 'Comfortaa-Bold' !important;
+    position: absolute;
+    font-size: 5vw;
+    color: #EDF5E1;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#home-name {
+    font-family: 'Comfortaa-Bold' !important;
+    position: absolute;
+    font-size: 5vw;
+    color: #5CDB95;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#home-event-button {
+    font-family: 'Comfortaa-Bold' !important;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 10%;
+    background-color: #5CDB95;
+    border: 1px solid #5CDB95;
+    border-radius: 45px;
+    font-size: 1.5vw;
+    color: #05386B;
+    line-height: 3.6vw;
+    font-weight: 700;
+}
+
+.home-info-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #05386B;
+}
+
+#nums-container {
     display: grid;
     grid-template-areas:
-        'first1 first2 first3 first4 first5 first6 first7';
+        'first2 first3 first4 first5 first6';
     gap: 10px;
     padding: 10px;
-    width: 100%;
-    height: 5rem;
+    width: 90%;
+    height: auto;
+    margin: calc(100vw / 30);
+    background-color: #05386B;
 }
 
 .item1 {
@@ -51,53 +92,15 @@
 }
 
 .home-number {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 2.7rem;
-    color: cornflowerblue
+    font-family: 'Comfortaa-Bold' !important;
+    font-weight: 700;
+    font-size: 4.5vw;
+    color: #5CDB95;
 }
 
 .home-label {
-    /*font-family: 'Poppins', sans-serif;*/
-    font-weight: 600;
-    font-size: .8rem;
-}
-
-.home-info-container {
-    font-family: 'Caveat', cursive;
-    font-weight: 400;
-    font-size: 3vw;
-    color: #519872;
-    margin: 0 0 2rem 0;
-}
-
-#home-welcome {
-    padding: 2rem;
-    font-weight: 600;
-    font-size: 5rem;
-    margin-bottom: 0;
-}
-
-.home-info-container, #home-welcome {
-    font-family: 'Anastasia-1';
-}
-
-.home-label, .home-number {
-    font-family: 'Gabriela-regular', serif;
-}
-
-.events-header {
-    margin: 0 0 1rem 0;
-}
-.event-header-inner {
-    font-family: 'Gabriela-regular', serif;
-    font-weight: 600;
-    color: cornflowerblue;
-    margin: auto;
-    width: 73%;
-    text-align: end;
-}
-
-#home-body {
-    background-color: transparent;
+    font-family: 'Comfortaa-Bold' !important;
+    font-weight: 700;
+    font-size: 1.3vw;
+    color: #EDF5E1;
 }

@@ -1,0 +1,159 @@
+﻿
+#home-carousel-container {
+    width: 100%;
+    height: calc(100vw / 3);
+    position: relative;
+    background-color: #EDF5E1;
+}
+
+#carousel {
+    position: relative;
+    top: 17%;
+    transform: translateY(-50%);
+}
+
+    #carousel div {
+        position: absolute;
+        border: 1px solid none;
+        border-radius: 30px;
+        overflow: hidden;
+        width: 35%;
+        transition: transform 1s, left 1s, opacity 1s, z-index 0s;
+    }
+
+        #carousel div img {
+            width: 100%;
+            transition: width 1s;        }
+
+        #carousel div.hideLeft {
+            left: 0%;
+            opacity: 0;
+            transform: translateY(0%) translateX(-50%) scale(0.5);
+            opacity: 0;
+            filter: grayscale(80%);
+        }
+
+
+        #carousel div.hideRight {
+            left: 100%;
+            opacity: 0;
+            transform: translateY(0%) translateX(-50%) scale(0.5);
+            opacity: 0;
+            filter: grayscale(80%);
+        }
+
+
+        #carousel div.prev {
+            z-index: 5;
+            left: 32%;
+            transform: translateY(0%) translateX(-50%) scale(0.85);
+            opacity: 0.9;
+            filter: grayscale(60%);
+        }
+
+
+        #carousel div.prevLeftSecond {
+            z-index: 4;
+            left: 18.5%;
+            transform: translateY(0%) translateX(-50%) scale(0.7);
+            opacity: 0.5;
+            filter: grayscale(70%);
+        }
+
+
+        #carousel div.selected {
+            z-index: 10;
+            left: 50%;
+            transform: translateY(0px) translateX(-50%);
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        #carousel div.selected.carusel-inner-header {
+            opacity: 1;
+        }
+
+        #carousel div.next {
+            z-index: 5;
+            overflow: hidden;
+            left: 70%;
+            transform: translateY(0%) translateX(-55%) scale(0.85);
+            opacity: 0.9;
+            filter: grayscale(60%);
+        }
+
+
+        #carousel div.nextRightSecond {
+            z-index: 4;
+            left: 85%;
+            transform: translateY(0%) translateX(-60%) scale(0.7);
+            opacity: 0.5;
+            filter: grayscale(70%);
+        }
+
+#prev {
+    position: absolute;
+    top: 43%;
+    left: 3.5%;
+}
+
+#next {
+    position: absolute;
+    top: 43%;
+    left: 91.2%;
+}
+
+#prev, #next {
+    width: 5vw;
+    height: 5vw;
+    background-color: #05386B;
+    /*background: rgba(0,0,0,0);*/
+    border: none;
+    /*border: 3px solid #05386B;*/
+    border-radius: 50%;
+    font-size: 2vw;
+}
+
+    #prev:hover, #next:hover {
+        transform: scale(1.1);
+    }
+
+#prev {
+    background-image: url("../images/icons/arrow_back.png");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    background-position-x: 42%; 
+}
+
+#next {
+    background-image: url("../images/icons/arrow_forward.png");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    background-position-x: 50%;
+}
+
+.carusel-inner-header {
+    position: absolute;
+    border: none !important;
+    border-radius: unset !important;
+    width: 100% !important;
+    height: 7vw;
+    background-color: #05386B;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #EDF5E1;
+    opacity: 0.8;
+}
+
+.inner-header-text {
+    position: absolute;
+    width: 100% !important;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-family: 'Comfortaa-Bold' !important;
+    font-weight: 700;
+    font-size: 1.5vw;
+    color: #EDF5E1;
+}

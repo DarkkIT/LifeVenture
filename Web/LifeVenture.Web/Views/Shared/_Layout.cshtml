@@ -17,35 +17,34 @@
             <div class="custom-body">
 
                 <a id="leayout-logo" class="navbar-brand" asp-controller="Home" asp-action="Index">
-                    <div id="logo-part-one">Life</div>
-                    <div id="logo-part-two">&infin;</div>
-                    <div id="logo-part-three">venture</div>
+                    <div id="logo">LIFE<span id="logo2">VENTURE</span></div>
                 </a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+@*
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+*@
+                <div id="navbar-buttons" class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 justify-content-center">
                         <li class="nav-item">
-                            <a class="header-button nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="menu-button nav-link" asp-controller="Home" asp-action="Index">Начало</a>
                         </li>
                         <li class="nav-item">
-                            <a class="header-button nav-link text-dark" asp-controller="Events" asp-action="Index">Евенти</a>
+                            <a class="menu-button nav-link" asp-controller="Events" asp-action="Index">Събития</a>
                         </li>
                         <li class="nav-item">
-                            <a class="header-button nav-link text-dark" asp-controller="PeopleOfGoodness" asp-action="Index">Герои</a>
+                            <a class="menu-button nav-link" asp-controller="PeopleOfGoodness" asp-action="Index">Герои</a>
                         </li>
+                        @*<li class="nav-item">
+                        <a class="header-button nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>*@
                         <li class="nav-item">
-                            <a class="header-button nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="header-button nav-link text-dark" asp-controller="AboutUs" asp-action="Index">За Нас</a>
+                            <a class="menu-button nav-link" asp-controller="AboutUs" asp-action="Index">За Нас</a>
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
                 </div>
+                <partial name="_LoginPartial" />
             </div>
         </nav>
     </header>
