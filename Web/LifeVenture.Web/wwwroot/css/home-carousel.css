@@ -107,9 +107,7 @@
     width: 5vw;
     height: 5vw;
     background-color: #05386B;
-    /*background: rgba(0,0,0,0);*/
     border: none;
-    /*border: 3px solid #05386B;*/
     border-radius: 50%;
     font-size: 2vw;
 }
@@ -119,19 +117,19 @@
     }
 
 #prev {
-    background-image: url("../images/icons/arrow_back.png");
+    background-image: url("../images/icons/LeftArrow.png");
     background-repeat: no-repeat;
-    background-size: 50%;
+    background-size: 30%;
     background-position: center;
-    background-position-x: 42%; 
+    background-position-x: 46%;
 }
 
 #next {
-    background-image: url("../images/icons/arrow_forward.png");
+    background-image: url("../images/icons/RightArrow.png");
     background-repeat: no-repeat;
-    background-size: 50%;
+    background-size: 30%;
     background-position: center;
-    background-position-x: 50%;
+    background-position-x: 54%;
 }
 
 .carusel-inner-header {
