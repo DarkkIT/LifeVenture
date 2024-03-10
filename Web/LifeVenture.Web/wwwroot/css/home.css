@@ -46,6 +46,8 @@
     border-radius: 45px;
     font-size: 1.5vw;
     color: #05386B;
+    line-height: 3.6vw;
+    font-weight: 700;
 }
 
 .home-info-container {
@@ -99,6 +101,6 @@
 .home-label {
     font-family: 'Comfortaa-Bold' !important;
     font-weight: 700;
-    font-size: 1vw;
+    font-size: 1.3vw;
     color: #EDF5E1;
 }
