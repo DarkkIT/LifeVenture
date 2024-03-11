@@ -10,9 +10,7 @@
     using LifeVenture.Data.Models;
     using LifeVenture.Data.Models.Common;
     using LifeVenture.Data.Models.Events;
-    using LifeVenture.Data.Models.Home;
     using LifeVenture.Data.Models.Locations;
-    using LifeVenture.Data.Models.People;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
@@ -34,8 +32,6 @@
 
         public DbSet<Image> Images { get; set; }
 
-        public DbSet<ImagePeople> ImagePeoples { get; set; }
-
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<CountryPhoneCode> CountriesPhoneCodes { get; set; }
@@ -43,12 +39,6 @@
         public DbSet<Location> Locations { get; set; }
 
         public DbSet<Phone> Phones { get; set; }
-
-        public DbSet<HomeModel> HomeModels { get; set; }
-
-        public DbSet<Volunteer> Volunteers { get; set; }
-
-        public DbSet<PersonOfGoodness> PersonOfGoodnesses { get; set; }
 
         public DbSet<Message> Messages { get; set; }
 
@@ -84,31 +74,26 @@
                 .WithOne(x => x.Phone)
                 .HasForeignKey<Phone>(x => x.UserId);
 
-            builder.Entity<ImagePeople>()
-                .HasOne(x => x.PersonOfGoodnes)
-                .WithOne(x => x.Image)
-                .HasForeignKey<ImagePeople>(x => x.PersonOfGoodnesId);
-
-            builder.Entity<ImagePeople>()
-                .HasOne(x => x.Volunteer)
-                .WithOne(x => x.Image)
-                .HasForeignKey<ImagePeople>(x => x.VolunteerId);
-
-            builder.Entity<ApplicationUser>()
-                .HasOne(x => x.Volunteer)
-                .WithOne(x => x.User)
-                .HasForeignKey<ApplicationUser>(x => x.VolunteerId);
-
-            builder.Entity<ApplicationUser>()
-                .HasOne(x => x.PersonOfGoodness)
-                .WithOne(x => x.User)
-                .HasForeignKey<ApplicationUser>(x => x.PersonOfGoodnessId);
-
             builder.Entity<Event>()
                 .HasOne(e => e.Image)
                 .WithOne(i => i.Event)
                 .HasForeignKey<Event>(e => e.ImageId)
                 .IsRequired(false);
+
+            builder.Entity<ApplicationUser>()
+                .HasMany(u => u.UserEvents)
+                .WithOne(e => e.CreatedBy)
+                .HasForeignKey(e => e.CreatedById)
+                .IsRequired(true);
+
+            builder.Entity<ApplicationUser>()
+                .HasMany(u => u.EventsТоАttend)
+                .WithMany(e => e.Volunteers);
+
+            builder.Entity<ApplicationUser>()
+                .HasOne(u => u.Image)
+                .WithOne(i => i.User)
+                .HasForeignKey<ApplicationUser>(u => u.ImageId);
 
             // Needed for Identity models configuration
             base.OnModelCreating(builder);

@@ -1,24 +1,7 @@
 ﻿namespace LifeVenture.Web.ViewModels.Home
 {
-    using System.Collections.Generic;
-
-    using LifeVenture.Data.Models.Home;
-    using LifeVenture.Services.Mapping;
-    using LifeVenture.Web.ViewModels.Common;
-    using LifeVenture.Web.ViewModels.Events;
-
-    public class HomeViewModel : IMapFrom<HomeModel>
+    public class HomeViewModel
     {
-        public HomeViewModel()
-        {
-            this.Images = new HashSet<ImageViewModel>();
-            this.Events = new HashSet<EventViewModel>();
-        }
-
         public StatisticalInfoViewModel StatisticalInfo { get; set; }
-
-        public virtual ICollection<ImageViewModel> Images { get; set; }
-
-        public virtual ICollection<EventViewModel> Events { get; set; }
     }
 }

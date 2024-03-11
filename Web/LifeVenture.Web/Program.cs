@@ -11,6 +11,7 @@
     using LifeVenture.Services.Data;
     using LifeVenture.Services.Data.Images;
     using LifeVenture.Services.Data.Locations;
+    using LifeVenture.Services.Data.UserService;
     using LifeVenture.Services.Mapping;
     using LifeVenture.Services.Messaging;
     using LifeVenture.Web.ViewModels;
@@ -76,6 +77,7 @@
             services.AddTransient<IEventsService, EventsService>();
             services.AddTransient<ILocationsService, LocationsService>();
             services.AddTransient<IImageService, ImageService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         private static void Configure(WebApplication app)
