@@ -1,43 +1,50 @@
-﻿.event-card {
-    display: inline-block;
-    width: 22% !important;
-    min-width: 300px;
-    margin: 0 2rem 2rem 2rem;
-}
-
-#card-progress-bar {
-
-}
-
-.card-title-top, .card-title-mid {
-    font-family: 'Gabriela-regular', serif;
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: cornflowerblue;
-}
-
-.card {
-    background-color: transparent;
+﻿.card {
+    width: 28vw !important;
+    height: auto;
+    margin: 2vw 1.5vw 2vw 1.5vw;
+    padding: 0;
     border: none;
 }
 
-.list-group {
-    border-radius: 0 0 5px 5px;
+.card-img-top {
+    border-radius: 20px 20px 0 0;
 }
 
-.list-group-item {
-    padding: 0.2rem;
-    font-weight: 600;
+.event-footer {
+    border-radius: 0 0 20px 20px;
 }
 
-.card-body {
-    padding-top: 0.3rem;
+.progress-bar {
+    background-color: #8EE4AF;
+    color: #05386B;
 }
 
-#card-author-link {
-    padding-top: 0;
+.event-header {
+    background-color: #8EE4AF;
+    color: #05386B;
+    text-align: center;
+    font-family: 'Comfortaa-Bold' !important;
+    font-size: 1.2vw;
+    font-weight: 700;
 }
 
-.progress {
-    background-color: white;
+.card-list-group {
+    --bs-list-group-bg: #05386B;
+    text-align: left;
+    --bs-list-group-color: #EDF5E1;
+    font-family: 'Comfortaa-Bold' !important;
+    font-size: 1vw;
+    font-weight: 700;
+}
+
+.event-footer, a {
+    background-color: #05386B;
+    text-align: center;
+    font-size: 1vw;
+    --bs-list-group-color: #EDF5E1;
+    color: #EDF5E1;
+}
+
+.event-bar-header {
+    text-align: center;
 }
