@@ -42,7 +42,9 @@
     text-align: center;
     font-size: 1vw;
     --bs-list-group-color: #EDF5E1;
-    color: #EDF5E1;
+    color: #8EE4AF;
+    font-family: 'Comfortaa-Bold' !important;
+    text-decoration: none;
 }
 
 .event-bar-header {
