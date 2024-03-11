@@ -1,20 +1,27 @@
 ﻿@using LifeVenture.Web.ViewModels.Events;
 @model EventViewModel
 
-<div class="card event-card" style="width: 18rem;">
-    <div class="card-title-top">Заглавие на евента</div>
-    <img src="~/images/image2.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title card-title-mid">Участници <span>3</span> от <span>10</span></h5>
-        <div class="progress">
-            <div id="card-progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 32%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0">32%</div>
-        </div>
+<div class="card">
+    <img class="card-img-top" src="~/images/3.jpg" alt="Card image cap">
+    <div class="event-header card-body">
+        <div class="card-title">ЗАГЛАВИЕ НА СЪБИТИЕТО</div>
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Остават <span>5</span> дни</li>
-        <li class="list-group-item">Прегледана <span>235</span> пъти</li>
+    <ul class="card-list-group list-group list-group-flush">
+        <li class="event-bar-header list-group-item">
+            Участници: 3 от 10
+        </li>
+        <li class="list-group-item">
+            <div class="progress">
+                <div id="card-progress-bar" class="progress-bar" role="progressbar" style="width: 32%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0">32%</div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna ali.
+            Excepteur sint occaecat non.
+        </li>
     </ul>
-    <div id="card-author-link" class="card-body">
-        <a href="#" class="card-link">Профил на автора</a>
+    <div class="event-footer card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
     </div>
 </div>
