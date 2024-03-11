@@ -35,10 +35,11 @@ function moveToSelected(element) {
 
     let selectedCard = document.querySelector('.selected');
     let innerText = selectedCard.querySelector('.carusel-inner-header');
-    unfade(innerText);
+    if (innerText) {
+        unfade(innerText);
+    }
 }
 
-// Eventos teclado
 $(document).keydown(function (e) {
     switch (e.which) {
         case 37: // left
@@ -67,7 +68,7 @@ $('#next').click(function () {
 });
 
 function unfade(element) {
-    var op = 0.1;  // initial opacity
+    var op = 0.1;
     element.style.display = 'block';
     var timer = setInterval(function () {
         if (op >= 0.8) {
@@ -81,7 +82,7 @@ function unfade(element) {
 }
 
 function fade(element) {
-    var op = 1;  // initial opacity
+    var op = 1;
     var timer = setInterval(function () {
         if (op <= 0.1) {
             op = 0;
