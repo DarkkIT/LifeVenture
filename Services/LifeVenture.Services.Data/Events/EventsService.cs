@@ -9,6 +9,7 @@
     using LifeVenture.Data.Models.Locations;
     using LifeVenture.Services.Mapping;
     using LifeVenture.Web.ViewModels.Events;
+    using LifeVenture.Web.ViewModels.Home;
     using Microsoft.EntityFrameworkCore;
 
     public class EventsService : IEventsService
@@ -79,6 +80,36 @@
             .All()
             .To<T>()
             .ToListAsync();
+
+        public async Task<EventStatisticalInfoViewModel> GetEventStatistics()
+        {
+            var eventsInfo = await this.eventsRepository
+                .All()
+                .Select(e => new
+                {
+                    EventVolunteers = e.Volunteers,
+                })
+                .ToListAsync();
+
+            var eventsVolunteers = eventsInfo
+                .SelectMany(ei => ei.EventVolunteers);
+
+            var goodDeedsCount = eventsVolunteers.Count();
+
+            var distinctVolunteersCount = eventsVolunteers
+                .Distinct()
+                .ToList()
+                .Count;
+
+            var result = new EventStatisticalInfoViewModel
+            {
+                EventsCount = eventsInfo.Count,
+                VolunteersCount = distinctVolunteersCount,
+                GoodDeedsCount = goodDeedsCount,
+            };
+
+            return result;
+        }
 
         public async Task<IEnumerable<KeyValuePair<string, string>>> GetAllCategories()
         {

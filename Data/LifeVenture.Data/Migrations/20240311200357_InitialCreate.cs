@@ -1,10 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-#nullable disable
+﻿#nullable disable
 
 namespace LifeVenture.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     /// <inheritdoc />
     public partial class InitialCreate : Migration
     {
@@ -75,6 +76,7 @@ namespace LifeVenture.Data.Migrations
                     OriginalData = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     ThumbnailData = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     FullscreenData = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    EventId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -102,24 +104,6 @@ namespace LifeVenture.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Messages", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PersonOfGoodnesses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FieldOfWork = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PersonOfGoodnesses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -159,44 +143,6 @@ namespace LifeVenture.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "StatisticalInfo",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ActiveEvents = table.Column<int>(type: "int", nullable: false),
-                    EndedEvents = table.Column<int>(type: "int", nullable: false),
-                    TotalGoodDeeds = table.Column<int>(type: "int", nullable: false),
-                    PeopleOfGoodness = table.Column<int>(type: "int", nullable: false),
-                    Volunteers = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_StatisticalInfo", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Volunteers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Volunteers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -215,6 +161,45 @@ namespace LifeVenture.Data.Migrations
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Age = table.Column<int>(type: "int", nullable: true),
+                    Nationality = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ImageId = table.Column<int>(type: "int", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_Images_ImageId",
+                        column: x => x.ImageId,
+                        principalTable: "Images",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -238,149 +223,6 @@ namespace LifeVenture.Data.Migrations
                         name: "FK_Municipalities_Regions_RegionId",
                         column: x => x.RegionId,
                         principalTable: "Regions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HomeModels",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    StatisticalInfoId = table.Column<int>(type: "int", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HomeModels", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_HomeModels_StatisticalInfo_StatisticalInfoId",
-                        column: x => x.StatisticalInfoId,
-                        principalTable: "StatisticalInfo",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Age = table.Column<int>(type: "int", nullable: true),
-                    Nationality = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    PersonOfGoodnessId = table.Column<int>(type: "int", nullable: true),
-                    VolunteerId = table.Column<int>(type: "int", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetUsers_PersonOfGoodnesses_PersonOfGoodnessId",
-                        column: x => x.PersonOfGoodnessId,
-                        principalTable: "PersonOfGoodnesses",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_AspNetUsers_Volunteers_VolunteerId",
-                        column: x => x.VolunteerId,
-                        principalTable: "Volunteers",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ImagePeoples",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    PersonOfGoodnesId = table.Column<int>(type: "int", nullable: true),
-                    VolunteerId = table.Column<int>(type: "int", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ImagePeoples", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ImagePeoples_PersonOfGoodnesses_PersonOfGoodnesId",
-                        column: x => x.PersonOfGoodnesId,
-                        principalTable: "PersonOfGoodnesses",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_ImagePeoples_Volunteers_VolunteerId",
-                        column: x => x.VolunteerId,
-                        principalTable: "Volunteers",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Settlements",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MunicipalityId = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Settlements", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Settlements_Municipalities_MunicipalityId",
-                        column: x => x.MunicipalityId,
-                        principalTable: "Municipalities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HomeModelImage",
-                columns: table => new
-                {
-                    HomeModelsId = table.Column<int>(type: "int", nullable: false),
-                    ImagesId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HomeModelImage", x => new { x.HomeModelsId, x.ImagesId });
-                    table.ForeignKey(
-                        name: "FK_HomeModelImage_HomeModels_HomeModelsId",
-                        column: x => x.HomeModelsId,
-                        principalTable: "HomeModels",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_HomeModelImage_Images_ImagesId",
-                        column: x => x.ImagesId,
-                        principalTable: "Images",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -501,6 +343,83 @@ namespace LifeVenture.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Settlements",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MunicipalityId = table.Column<int>(type: "int", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Settlements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Settlements_Municipalities_MunicipalityId",
+                        column: x => x.MunicipalityId,
+                        principalTable: "Municipalities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Events",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(3000)", maxLength: 3000, nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsUrgent = table.Column<bool>(type: "bit", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    IsInDrafts = table.Column<bool>(type: "bit", nullable: false),
+                    IsApproved = table.Column<bool>(type: "bit", nullable: false),
+                    MaxParticipantsCount = table.Column<int>(type: "int", nullable: false),
+                    PhoneId = table.Column<int>(type: "int", nullable: false),
+                    CreatedById = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ImageId = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Events", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Events_AspNetUsers_CreatedById",
+                        column: x => x.CreatedById,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Events_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Events_Images_ImageId",
+                        column: x => x.ImageId,
+                        principalTable: "Images",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Events_Phones_PhoneId",
+                        column: x => x.PhoneId,
+                        principalTable: "Phones",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Locations",
                 columns: table => new
                 {
@@ -538,58 +457,25 @@ namespace LifeVenture.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Events",
+                name: "ApplicationUserEvent",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(3000)", maxLength: 3000, nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsUrgent = table.Column<bool>(type: "bit", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    IsInDrafts = table.Column<bool>(type: "bit", nullable: false),
-                    IsApproved = table.Column<bool>(type: "bit", nullable: false),
-                    MaxParticipantsCount = table.Column<int>(type: "int", nullable: false),
-                    PhoneId = table.Column<int>(type: "int", nullable: false),
-                    CreatedById = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ImageId = table.Column<int>(type: "int", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    HomeModelId = table.Column<int>(type: "int", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    EventsТоАttendId = table.Column<int>(type: "int", nullable: false),
+                    VolunteersId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Events", x => x.Id);
+                    table.PrimaryKey("PK_ApplicationUserEvent", x => new { x.EventsТоАttendId, x.VolunteersId });
                     table.ForeignKey(
-                        name: "FK_Events_AspNetUsers_CreatedById",
-                        column: x => x.CreatedById,
+                        name: "FK_ApplicationUserEvent_AspNetUsers_VolunteersId",
+                        column: x => x.VolunteersId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Events_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Events_HomeModels_HomeModelId",
-                        column: x => x.HomeModelId,
-                        principalTable: "HomeModels",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Events_Images_ImageId",
-                        column: x => x.ImageId,
-                        principalTable: "Images",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Events_Phones_PhoneId",
-                        column: x => x.PhoneId,
-                        principalTable: "Phones",
+                        name: "FK_ApplicationUserEvent_Events_EventsТоАttendId",
+                        column: x => x.EventsТоАttendId,
+                        principalTable: "Events",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -617,6 +503,11 @@ namespace LifeVenture.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ApplicationUserEvent_VolunteersId",
+                table: "ApplicationUserEvent",
+                column: "VolunteersId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -656,23 +547,16 @@ namespace LifeVenture.Data.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_ImageId",
+                table: "AspNetUsers",
+                column: "ImageId",
+                unique: true,
+                filter: "[ImageId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_IsDeleted",
                 table: "AspNetUsers",
                 column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_PersonOfGoodnessId",
-                table: "AspNetUsers",
-                column: "PersonOfGoodnessId",
-                unique: true,
-                filter: "[PersonOfGoodnessId] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_VolunteerId",
-                table: "AspNetUsers",
-                column: "VolunteerId",
-                unique: true,
-                filter: "[VolunteerId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -702,11 +586,6 @@ namespace LifeVenture.Data.Migrations
                 column: "CreatedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Events_HomeModelId",
-                table: "Events",
-                column: "HomeModelId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Events_ImageId",
                 table: "Events",
                 column: "ImageId",
@@ -721,35 +600,6 @@ namespace LifeVenture.Data.Migrations
                 name: "IX_Events_PhoneId",
                 table: "Events",
                 column: "PhoneId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_HomeModelImage_ImagesId",
-                table: "HomeModelImage",
-                column: "ImagesId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_HomeModels_StatisticalInfoId",
-                table: "HomeModels",
-                column: "StatisticalInfoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ImagePeoples_IsDeleted",
-                table: "ImagePeoples",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ImagePeoples_PersonOfGoodnesId",
-                table: "ImagePeoples",
-                column: "PersonOfGoodnesId",
-                unique: true,
-                filter: "[PersonOfGoodnesId] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ImagePeoples_VolunteerId",
-                table: "ImagePeoples",
-                column: "VolunteerId",
-                unique: true,
-                filter: "[VolunteerId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Locations_IsDeleted",
@@ -787,11 +637,6 @@ namespace LifeVenture.Data.Migrations
                 column: "RegionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersonOfGoodnesses_IsDeleted",
-                table: "PersonOfGoodnesses",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Phones_CodeId",
                 table: "Phones",
                 column: "CodeId");
@@ -827,21 +672,14 @@ namespace LifeVenture.Data.Migrations
                 name: "IX_Settlements_MunicipalityId",
                 table: "Settlements",
                 column: "MunicipalityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_StatisticalInfo_IsDeleted",
-                table: "StatisticalInfo",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Volunteers_IsDeleted",
-                table: "Volunteers",
-                column: "IsDeleted");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ApplicationUserEvent");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -859,12 +697,6 @@ namespace LifeVenture.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "EventLocation");
-
-            migrationBuilder.DropTable(
-                name: "HomeModelImage");
-
-            migrationBuilder.DropTable(
-                name: "ImagePeoples");
 
             migrationBuilder.DropTable(
                 name: "Messages");
@@ -885,19 +717,10 @@ namespace LifeVenture.Data.Migrations
                 name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "HomeModels");
-
-            migrationBuilder.DropTable(
-                name: "Images");
-
-            migrationBuilder.DropTable(
                 name: "Phones");
 
             migrationBuilder.DropTable(
                 name: "Settlements");
-
-            migrationBuilder.DropTable(
-                name: "StatisticalInfo");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
@@ -909,10 +732,7 @@ namespace LifeVenture.Data.Migrations
                 name: "Municipalities");
 
             migrationBuilder.DropTable(
-                name: "PersonOfGoodnesses");
-
-            migrationBuilder.DropTable(
-                name: "Volunteers");
+                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "Regions");
