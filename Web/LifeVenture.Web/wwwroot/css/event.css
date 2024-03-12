@@ -67,10 +67,15 @@
     background-color: rgba(0,0,0,0);
     font-size: 1.5vw;
     color: #05386b;
-    top: 2.5vw;
-    left: 12vw;
-    transform: translate(-50%, -50%);
+    top: 1.5vw;
+    left: 3vw;
+    /*transform: translate(-50%, -50%);*/
+    width: 20vw;
 }
+
+    #event-filter-new:hover {
+        transform: scale(1.1);
+    }
 
 #event-filter-popular {
     position: absolute;
@@ -78,10 +83,15 @@
     background-color: rgba(0,0,0,0);
     font-size: 1.5vw;
     color: #05386b;
-    top: 2.5vw;
-    left: 34vw;
-    transform: translate(-50%, -50%);
+    top: 1.5vw;
+    left: 24vw;
+    /*transform: translate(-50%, -50%);*/
+    width: 20vw;
 }
+
+    #event-filter-popular:hover {
+        transform: scale(1.1);
+    }
 
 #event-filter-visited {
     position: absolute;
@@ -89,10 +99,15 @@
     background-color: rgba(0,0,0,0);
     font-size: 1.5vw;
     color: #05386b;
-    top: 2.5vw;
-    left: 60vw;
-    transform: translate(-50%, -50%);
+    top: 1.5vw;
+    left: 50vw;
+    /*transform: translate(-50%, -50%);*/
+    width: 20vw;
 }
+
+    #event-filter-visited:hover {
+        transform: scale(1.1);
+    }
 
 .custom-select {
     position: absolute;
@@ -102,8 +117,12 @@
     font-size: 1.5vw;
     color: #05386b;
     width: 10vw;
-    top: 2.5vw;
-    left: 85vw;
-    transform: translate(-50%, -50%);
+    top: 1vw;
+    left: 78vw;
+    /*transform: translate(-50%, -50%);*/
     z-index: 999;
 }
+
+    .custom-select:hover {
+        transform: scale(1.1);
+    }
