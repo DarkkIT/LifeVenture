@@ -5,7 +5,105 @@
 }
 
 .card-container {
+    position: relative;
     margin: auto;
     width: 94vw;
     padding: 0;
+}
+
+.events-header {
+    position: relative;
+    width: 100vw;
+    height: 20vw;
+    overflow: hidden;
+}
+
+#events-welcome-img {
+    width: 100%;
+}
+
+#event-slogan {
+    font-family: 'Comfortaa-Bold' !important;
+    position: absolute;
+    text-align: center;
+    font-size: 1.5vw;
+    color: #EDF5E1;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#event-newevent-button {
+    position: absolute;
+    top: 65%;
+    left: 42%;
+    width: 16%;
+    height: 20%;
+    background-color: rgba(0,0,0,0);
+    border: 3px solid #5CDB95;
+    border-radius: 5vw;
+    box-shadow: 0px 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+    #event-newevent-button span {
+        position: absolute;
+        font-family: 'Comfortaa-Bold' !important;
+        color: #5CDB95;
+        font-size: 1.2vw;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+    }
+
+.events-filter{
+    position: relative;
+    width: 100vw;
+    height: 5vw;
+}
+
+#event-filter-new {
+    position: absolute;
+    font-family: 'Comfortaa-Bold' !important;
+    background-color: rgba(0,0,0,0);
+    font-size: 1.5vw;
+    color: #05386b;
+    top: 2.5vw;
+    left: 12vw;
+    transform: translate(-50%, -50%);
+}
+
+#event-filter-popular {
+    position: absolute;
+    font-family: 'Comfortaa-Bold' !important;
+    background-color: rgba(0,0,0,0);
+    font-size: 1.5vw;
+    color: #05386b;
+    top: 2.5vw;
+    left: 34vw;
+    transform: translate(-50%, -50%);
+}
+
+#event-filter-visited {
+    position: absolute;
+    font-family: 'Comfortaa-Bold' !important;
+    background-color: rgba(0,0,0,0);
+    font-size: 1.5vw;
+    color: #05386b;
+    top: 2.5vw;
+    left: 60vw;
+    transform: translate(-50%, -50%);
+}
+
+.custom-select {
+    position: absolute;
+    font-family: 'Comfortaa-Bold' !important;
+    background-color: rgba(0,0,0,0);
+    -webkit-appearance: none;
+    font-size: 1.5vw;
+    color: #05386b;
+    width: 10vw;
+    top: 2.5vw;
+    left: 85vw;
+    transform: translate(-50%, -50%);
+    z-index: 999;
 }

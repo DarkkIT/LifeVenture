@@ -1,14 +1,49 @@
 ﻿@model List<LifeVenture.Web.ViewModels.Events.EventViewModel>
 @{
-    this.ViewData["Title"] = "Дейности";
+    this.ViewData["Title"] = "Събития";
 }
 
 <head>
     <link href="~/css/card.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/css/event.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/select.css" rel="stylesheet" asp-append-version="true" />
 </head>
 
 <div class="event-body">
+
+    <div class="events-header">
+        <img id="events-welcome-img" src="~/images/people-event-2.jpg" alt="">
+        <p id="event-slogan">
+            Промени света, създай добро дело - събития с цел помощ
+            за добри каузи, достъпни само с един клик!
+        </p>
+        <a id="event-newevent-button" asp-controller="Events" asp-action="Index" type="button" class="btn btn-primary">
+            <span>Създай събитие</span>
+        </a>
+    </div>
+
+    <div class="events-filter">
+        <a id="event-filter-new" asp-controller="Events" asp-action="Index" >
+            <span>НАЙ-НОВИ</span>
+        </a>
+        <a id="event-filter-popular" asp-controller="Events" asp-action="Index" >
+            <span>НАЙ-ПОПУЛЯРНИ</span>
+        </a>
+        <a id="event-filter-visited" asp-controller="Events" asp-action="Index" >
+            <span>НАЙ-ПОСЕЩАВАНИ</span>
+        </a>
+        <div class="custom-select">
+            <select id="custom-select-select">
+                <option value="0">КАТЕГОРИИ</option>
+                <option value="1">ЖИВОТНИ</option>
+                <option value="2">СОЦИАЛНИ</option>
+                <option value="3">ПРИРОДА</option>с
+                <option value="4">СПЕШНИ</option>
+            </select>
+        </div>
+    </div>
+
+
     @*@foreach (var eventObj in Model)
     {
     <div class="text-center">
@@ -25,3 +60,7 @@
         <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/select.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,57 @@
+﻿
+.custom-select {
+    position: relative;
+    width: 12vw;
+    text-align: center;
+}
+
+.custom-select select {
+    display: none;
+}
+
+.select-selected {
+    background-color: rgba(0,0,0,0);
+}
+
+    .select-selected:after {
+        position: absolute;
+        content: "";
+        top: 45%;
+        left: 100%;
+        right: 10px;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-color: #05386b transparent transparent transparent;
+    }
+
+    .select-selected.select-arrow-active:after {
+        border-color: transparent transparent #05386b transparent;
+        top: 38%;
+        left: 100%;
+    }
+
+.select-items div, .select-selected {
+    color: #05386b;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0) transparent;
+    cursor: pointer;
+}
+
+.select-items {
+    position: absolute;
+    background-color: rgba(240,240,240,0.7);
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
