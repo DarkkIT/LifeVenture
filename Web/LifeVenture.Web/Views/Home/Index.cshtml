@@ -30,27 +30,26 @@
         </a>
     </div>
 
-
     <div class="home-info-container">
         <div id="nums-container">
             <div class="item1">
-                <div class="home-number">200</div>
+                <div class="home-number">@Model.StatisticalInfo.EventStatistic.EventsCount</div>
                 <div class="home-label">Събития</div>
             </div>
             <div class="item2">
-                <div class="home-number">87</div>
+                <div class="home-number">@Model.StatisticalInfo.EventStatistic.VolunteersCount</div>
                 <div class="home-label">Доброволци</div>
             </div>
             <div class="item3">
-                <div class="home-number">23 450</div>
+                <div class="home-number">@Model.StatisticalInfo.EventStatistic.GoodDeedsCount</div>
                 <div class="home-label">Добри дела</div>
             </div>
             <div class="item4">
-                <div class="home-number">345 451</div>
+                <div class="home-number">@Model.StatisticalInfo.UserStatistic.HeroesCount</div>
                 <div class="home-label">Герои</div>
             </div>
             <div class="item5">
-                <div class="home-number">324</div>
+                <div class="home-number">@Model.StatisticalInfo.UserStatistic.UsersCount</div>
                 <div class="home-label">Потребители</div>
             </div>
         </div>

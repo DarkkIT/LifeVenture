@@ -1,18 +1,11 @@
 ﻿namespace LifeVenture.Web.ViewModels.Home
 {
-    using LifeVenture.Data.Models.Home;
-    using LifeVenture.Services.Mapping;
+    using LifeVenture.Web.ViewModels.Users;
 
-    public class StatisticalInfoViewModel : IMapFrom<StatisticalInfo>
+    public class StatisticalInfoViewModel
     {
-        public int ActiveEvents { get; set; }
+        public EventStatisticalInfoViewModel EventStatistic { get; set; }
 
-        public int EndedEvents { get; set; }
-
-        public int TotalGoodDeeds { get; set; }
-
-        public int PeopleOfGoodness { get; set; }
-
-        public int Volunteers { get; set; }
+        public UserStatisticalInfoViewModel UserStatistic { get; set; }
     }
 }
