@@ -11,7 +11,7 @@
 
     public class ImageService : IImageService
     {
-        private const int ThumbnailWidth = 300;
+        private const int ThumbnailWidth = 600;
         private const int FullscreenWidth = 1000;
         private const int Quality = 75;
 

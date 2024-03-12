@@ -19,6 +19,8 @@
 
         Task<IEnumerable<KeyValuePair<string, string>>> GetAllRegions();
 
+        Task<List<HomeEventViewModel>> GetEventsForHomePage();
+
         Task<EventStatisticalInfoViewModel> GetEventStatistics();
     }
 }
