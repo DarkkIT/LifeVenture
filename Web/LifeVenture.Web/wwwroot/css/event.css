@@ -67,7 +67,7 @@
     background-color: rgba(0,0,0,0);
     font-size: 1.5vw;
     color: #05386b;
-    top: 1.5vw;
+    top: 25%;
     left: 3vw;
     /*transform: translate(-50%, -50%);*/
     width: 20vw;
@@ -83,7 +83,7 @@
     background-color: rgba(0,0,0,0);
     font-size: 1.5vw;
     color: #05386b;
-    top: 1.5vw;
+    top: 25%;
     left: 24vw;
     /*transform: translate(-50%, -50%);*/
     width: 20vw;
@@ -99,7 +99,7 @@
     background-color: rgba(0,0,0,0);
     font-size: 1.5vw;
     color: #05386b;
-    top: 1.5vw;
+    top: 25%;
     left: 50vw;
     /*transform: translate(-50%, -50%);*/
     width: 20vw;
@@ -116,9 +116,9 @@
     -webkit-appearance: none;
     font-size: 1.5vw;
     color: #05386b;
-    width: 10vw;
-    top: 1vw;
-    left: 78vw;
+    width: 15vw;
+    top: 15%;
+    left: 76vw;
     /*transform: translate(-50%, -50%);*/
     z-index: 999;
 }
