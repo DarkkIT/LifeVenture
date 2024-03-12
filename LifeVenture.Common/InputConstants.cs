@@ -61,6 +61,14 @@
         public class InputImageConstants
         {
             public const int ImageMaxSizeMb = 10 * 1024 * 1024;
+
+            public const double AspectRatioNumber = 1.778;
+
+            public const int ThumbnailWidth = 600;
+
+            public const int FullscreenWidth = 1000;
+
+            public const int Quality = 75;
         }
     }
 }

@@ -148,6 +148,19 @@
             return regions;
         }
 
+        public async Task<List<HomeEventViewModel>> GetEventsForHomePage()
+         => await this.eventsRepository
+                .All()
+                .Select(e => new HomeEventViewModel
+                {
+                    Id = e.Id,
+                    Title = e.Title,
+                    ThumbnailData = e.Image.ThumbnailData,
+                })
+                .OrderByDescending(e => e.Id)
+                .Take(7)
+                .ToListAsync();
+
         private KeyValuePair<string, string> GetDefaultOption()
             => new KeyValuePair<string, string>("0", "ИЗБЕРИ");
     }
