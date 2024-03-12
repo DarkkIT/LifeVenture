@@ -18,7 +18,7 @@
     position: absolute;
     font-size: 5vw;
     color: #EDF5E1;
-    top: 35%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -28,27 +28,50 @@
     position: absolute;
     font-size: 5vw;
     color: #5CDB95;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-#home-event-button {
+#home-slogan {
     font-family: 'Comfortaa-Bold' !important;
     position: absolute;
-    top: 85%;
+    font-size: 1.5vw;
+    color: #EDF5E1;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+
+#home-event-button {
+    position: absolute;
+    top: 80%;
+    left: 40%;
+    /*transform: translate(-50%, -50%);*/
     width: 20%;
     height: 10%;
-    background-color: #5CDB95;
-    border: 1px solid #5CDB95;
-    border-radius: 45px;
-    font-size: 1.5vw;
-    color: #05386B;
-    line-height: 3.6vw;
-    font-weight: 700;
+    background-color: rgba(0,0,0,0);
+    border: 3px solid #5CDB95;
+    border-radius: 5vw;
+    box-shadow: 0px 0px 10px 15px rgba(0, 0, 0, 0.1);
 }
+
+    #home-event-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 15px 17px rgba(0, 0, 0, 0.2);
+    }
+
+    #home-event-button span {
+        position: absolute;
+        font-family: 'Comfortaa-Bold' !important;
+        color: #5CDB95;
+        font-size: 1.5vw;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+    }
+
 
 .home-info-container {
     width: 100%;
