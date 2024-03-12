@@ -9,12 +9,10 @@
     using SixLabors.ImageSharp.Formats.Jpeg;
     using SixLabors.ImageSharp.Processing;
 
+    using static LifeVenture.Common.InputConstants.InputImageConstants;
+
     public class ImageService : IImageService
     {
-        private const int ThumbnailWidth = 600;
-        private const int FullscreenWidth = 1000;
-        private const int Quality = 75;
-
         public async Task<LifeVenture.Data.Models.Common.Image> GetImageData(ImageInputModel image)
         {
             if (image.Content == null)
@@ -23,6 +21,9 @@
             }
 
             using var imageResult = await Image.LoadAsync(image.Content);
+
+            //var aspectRatio = (double)imageResult.Width / imageResult.Height;
+            //var is16To9 = Math.Abs(aspectRatio - (16.0 / 9.0)) < double.Epsilon;
 
             var originalData = await this.GetImageData(imageResult, imageResult.Width);
             var fullscreenData = await this.GetImageData(imageResult, FullscreenWidth);
@@ -47,7 +48,8 @@
 
             if (width > resizeWidth)
             {
-                height = (int)((double)resizeWidth / width * height);
+                //height = (int)((double)resizeWidth / width * height);
+                height = (int)((double)resizeWidth / AspectRatioNumber);
                 width = resizeWidth;
             }
 
