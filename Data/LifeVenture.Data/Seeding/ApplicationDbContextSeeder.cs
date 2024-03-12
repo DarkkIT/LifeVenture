@@ -29,7 +29,7 @@
                 new SettingsSeeder(),
                 new CountryPhoneCodesSeeder(),
                 new EventsCategoriesSeeder(),
-                new LocationsSeeder(),
+                //new LocationsSeeder(),
             };
 
             foreach (var seeder in seeders)
