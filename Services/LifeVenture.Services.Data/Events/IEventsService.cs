@@ -5,13 +5,14 @@
 
     using LifeVenture.Web.ViewModels.Events;
     using LifeVenture.Web.ViewModels.Home;
-    using LifeVenture.Web.ViewModels.Image;
 
     public interface IEventsService
     {
         Task CreateEvent(CreateEventInputModel input, string userId);
 
-        Task<IEnumerable<T>> GetAll<T>();
+        Task<IEnumerable<T>> GetAll<T>(int page, int itemsPerPage);
+
+        Task<int> GetEventsCount();
 
         Task<IEnumerable<KeyValuePair<string, string>>> GetAllCategories();
 

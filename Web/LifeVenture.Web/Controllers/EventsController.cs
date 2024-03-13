@@ -1,6 +1,5 @@
 ﻿namespace LifeVenture.Web.Controllers
 {
-    using System;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -24,9 +23,13 @@
             this.eventsService = eventsService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id = 1)
         {
-            var events = await this.eventsService.GetAll<EventViewModel>();
+            var itemsPerPage = 8;
+
+            var eventsCount = await this.eventsService.GetEventsCount();
+            var events = await this.eventsService.GetAll<EventViewModel>(id, itemsPerPage);
+
             return this.View(events);
         }
 
