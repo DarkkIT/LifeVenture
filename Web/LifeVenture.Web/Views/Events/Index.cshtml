@@ -1,4 +1,5 @@
-﻿@model List<LifeVenture.Web.ViewModels.Events.EventViewModel>
+﻿@using LifeVenture.Web.ViewModels.Events;
+@model EventsListingViewModel
 @{
     this.ViewData["Title"] = "Събития";
 }
@@ -17,19 +18,19 @@
             Промени света, създай добро дело - събития с цел помощ
             за добри каузи, достъпни само с един клик!
         </p>
-        <a id="event-newevent-button" asp-controller="Events" asp-action="Index" type="button" class="btn btn-primary">
+        <a id="event-newevent-button" asp-controller="Events" asp-action="Create" type="button" class="btn btn-primary">
             <span>Създай събитие</span>
         </a>
     </div>
 
     <div class="events-filter">
-        <a id="event-filter-new" asp-controller="Events" asp-action="Index" >
+        <a id="event-filter-new" asp-controller="Events" asp-action="Index">
             <span>НАЙ-НОВИ</span>
         </a>
-        <a id="event-filter-popular" asp-controller="Events" asp-action="Index" >
+        <a id="event-filter-popular" asp-controller="Events" asp-action="Index">
             <span>НАЙ-ПОПУЛЯРНИ</span>
         </a>
-        <a id="event-filter-visited" asp-controller="Events" asp-action="Index" >
+        <a id="event-filter-visited" asp-controller="Events" asp-action="Index">
             <span>НАЙ-ПОСЕЩАВАНИ</span>
         </a>
         <div class="custom-select">
@@ -43,23 +44,11 @@
         </div>
     </div>
 
-
-    @*@foreach (var eventObj in Model)
-    {
-    <div class="text-center">
-    <partial name="_EventCardPatrial" model="eventObj" />
-    </div>
-    }*@
-
     <div class="card-container row justify-content-center">
-        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
-        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
-        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
-        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
-        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
-        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
-        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
-        <partial name="_EventCardPatrial" model="@(new LifeVenture.Web.ViewModels.Events.EventViewModel())" />
+        @foreach (var eventModel in Model.Events)
+        {
+            <partial name="_EventCardPatrial" model="@eventModel" />
+        }
     </div>
 </div>
 
