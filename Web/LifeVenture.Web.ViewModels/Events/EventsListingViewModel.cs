@@ -4,6 +4,8 @@
 
     public class EventsListingViewModel
     {
+        public EventsFiltersInputViewModel Filters { get; set; }
+
         public int EventsCount { get; set; }
 
         public IEnumerable<EventViewModel> Events { get; set; }

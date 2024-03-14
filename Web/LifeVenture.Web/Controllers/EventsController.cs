@@ -24,15 +24,16 @@
             this.eventsService = eventsService;
         }
 
-        public async Task<IActionResult> Index(int id = 1)
+        public async Task<IActionResult> Index(EventsListingViewModel input, int id = 1)
         {
-            var eventsCount = await this.eventsService.GetEventsCount();
-            var events = await this.eventsService.GetAll<EventViewModel>(id, ItemsPerPage);
+            var eventsCount = await this.eventsService.GetEventsCount(input?.Filters?.CategoryId);
+            var events = await this.eventsService.GetAll<EventViewModel>(id, ItemsPerPage, input.Filters);
 
             var viewModel = new EventsListingViewModel
             {
                 EventsCount = eventsCount,
                 Events = events,
+                Filters = new EventsFiltersInputViewModel(),
             };
 
             return this.View(viewModel);

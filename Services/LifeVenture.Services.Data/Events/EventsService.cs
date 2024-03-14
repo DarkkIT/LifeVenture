@@ -75,18 +75,53 @@
             await this.eventsRepository.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAll<T>(int page, int itemsPerPage)
-            => await this.eventsRepository
-            .All()
-            .To<T>()
-            .Skip((page - 1) * itemsPerPage)
-            .Take(itemsPerPage)
-            .ToListAsync();
+        public async Task<IEnumerable<T>> GetAll<T>(int page, int itemsPerPage, EventsFiltersInputViewModel filters)
+        {
+            var query = this.eventsRepository
+                .All();
 
-        public async Task<int> GetEventsCount()
-            => await this.eventsRepository
-            .All()
-            .CountAsync();
+            if (filters?.CategoryId != null && filters?.CategoryId != 0)
+            {
+                query = query
+                    .Where(e => e.CategoryId == filters.CategoryId);
+            }
+            else if (filters?.Latest == true)
+            {
+                query = query
+                    .OrderByDescending(e => e.CreatedBy);
+            }
+            else if (filters?.MostPopular == true)
+            {
+            }
+            else if (filters?.MostVisited == true)
+            {
+            }
+
+            var result = await query
+                .To<T>()
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .ToListAsync();
+
+            return result;
+        }
+
+        public async Task<int> GetEventsCount(int? categoryId = 0)
+        {
+            var query = this.eventsRepository
+                .All();
+
+            if (categoryId.HasValue && categoryId != 0)
+            {
+                query = query
+                    .Where(e => e.CategoryId == categoryId);
+            }
+
+            var result = await query
+                .CountAsync();
+
+            return result;
+        }
 
         public async Task<EventStatisticalInfoViewModel> GetEventStatistics()
         {
