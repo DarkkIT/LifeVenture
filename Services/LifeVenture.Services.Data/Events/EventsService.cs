@@ -75,11 +75,18 @@
             await this.eventsRepository.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAll<T>()
+        public async Task<IEnumerable<T>> GetAll<T>(int page, int itemsPerPage)
             => await this.eventsRepository
             .All()
             .To<T>()
+            .Skip((page - 1) * itemsPerPage)
+            .Take(itemsPerPage)
             .ToListAsync();
+
+        public async Task<int> GetEventsCount()
+            => await this.eventsRepository
+            .All()
+            .CountAsync();
 
         public async Task<EventStatisticalInfoViewModel> GetEventStatistics()
         {
