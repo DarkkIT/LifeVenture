@@ -13,6 +13,7 @@
     using static LifeVenture.Common.ErrorConstants.ImageErrors;
     using static LifeVenture.Common.InputConstants.InputCommonConstants;
     using static LifeVenture.Common.InputConstants.InputImageConstants;
+    using static LifeVenture.Common.ViewConstants.EventsConstants;
 
     public class EventsController : BaseController
     {
@@ -25,12 +26,16 @@
 
         public async Task<IActionResult> Index(int id = 1)
         {
-            var itemsPerPage = 8;
-
             var eventsCount = await this.eventsService.GetEventsCount();
-            var events = await this.eventsService.GetAll<EventViewModel>(id, itemsPerPage);
+            var events = await this.eventsService.GetAll<EventViewModel>(id, ItemsPerPage);
 
-            return this.View(events);
+            var viewModel = new EventsListingViewModel
+            {
+                EventsCount = eventsCount,
+                Events = events,
+            };
+
+            return this.View(viewModel);
         }
 
         [HttpGet]
