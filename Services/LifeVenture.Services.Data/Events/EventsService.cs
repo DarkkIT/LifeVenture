@@ -88,7 +88,7 @@
             else if (filters?.Latest == true)
             {
                 query = query
-                    .OrderByDescending(e => e.CreatedBy);
+                    .OrderByDescending(e => e.CreatedOn);
             }
             else if (filters?.MostPopular == true)
             {

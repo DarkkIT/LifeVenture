@@ -24,16 +24,18 @@
             this.eventsService = eventsService;
         }
 
-        public async Task<IActionResult> Index(EventsListingViewModel input, int id = 1)
+        public async Task<IActionResult> Index(string sortOrder, int id = 1)
         {
-            var eventsCount = await this.eventsService.GetEventsCount(input?.Filters?.CategoryId);
-            var events = await this.eventsService.GetAll<EventViewModel>(id, ItemsPerPage, input.Filters);
+            var input = this.CreateSortOrder(sortOrder);
+
+            var eventsCount = await this.eventsService.GetEventsCount(input?.CategoryId);
+            var events = await this.eventsService.GetAll<EventViewModel>(id, ItemsPerPage, input);
 
             var viewModel = new EventsListingViewModel
             {
                 EventsCount = eventsCount,
                 Events = events,
-                Filters = new EventsFiltersInputViewModel(),
+                //Filters = new EventsFiltersInputViewModel(),
             };
 
             return this.View(viewModel);
@@ -107,5 +109,40 @@
         }
 
         public IActionResult Success() => this.View();
+
+        private EventsFiltersInputViewModel CreateSortOrder(string sortOrder)
+        {
+            this.ViewData["Latest"] = string.IsNullOrEmpty(sortOrder) ? "latest" : string.Empty;
+            this.ViewData["MostPopular"] = sortOrder == "MostPopular" ? "most_popular" : "MostPopular";
+            this.ViewData["MostVisited"] = sortOrder == "MostVisited" ? "most_visited" : "MostVisited";
+
+            var input = new EventsFiltersInputViewModel();
+
+            if (!string.IsNullOrEmpty(sortOrder))
+            {
+                if (sortOrder == "latest")
+                {
+                    input.Latest = true;
+                }
+                else if (sortOrder == "MostPopular")
+                {
+                    input.MostPopular = false;
+                }
+                else if (sortOrder == "most_popular")
+                {
+                    input.MostPopular = true;
+                }
+                else if (sortOrder == "MostVisited")
+                {
+                    input.MostVisited = false;
+                }
+                else if (sortOrder == "most_visited")
+                {
+                    input.MostVisited = true;
+                }
+            }
+
+            return input;
+        }
     }
 }
