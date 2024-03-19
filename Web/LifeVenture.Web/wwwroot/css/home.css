@@ -62,6 +62,11 @@
         /*box-shadow: 0px 0px 15px 17px rgba(0, 0, 0, 0.2);*/
     }
 
+    #home-event-button:active {
+        transform: scale(1);
+        /*box-shadow: 0px 0px 15px 17px rgba(0, 0, 0, 0.2);*/
+    }
+
     #home-event-button span {
         position: absolute;
         font-family: 'Comfortaa-Bold' !important;
