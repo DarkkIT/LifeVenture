@@ -1,17 +1,41 @@
-# ASP.NET Core
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+pool: OSS_AgentPool
 
-trigger:
-- main
+parameters:
+  - name: environment
+    displayName: Environment
+    type: string
+    default: oss-test
+    values:
+      - oss-test
+      - oss-dev
+      - oss-uat
+      - oss-prod    
 
-pool:
-  vmImage: ubuntu-latest
+  - name: branch
+    displayName: Branch or Tag
+    type: string
+    default: master
 
-variables:
-  buildConfiguration: 'Release'
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: "OSS DevOps/Openshift.Pipelines"
 
-steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+trigger: none
+
+stages:
+  - template: Pipelines/dotnet.yml@templates
+    parameters:
+      environment: ${{ parameters.environment }}
+      service_name: life-venture-web
+      branch:  ${{ parameters.branch }}
+      clear: true
+      settings:
+        dotnetContext: "LifeVenture.Web"
+        dotnetImage: "8.0"
+        maxCpu: "1"
+        maxMemory: "2Gi"
+        timeoutInSeconds: "180"
+        replicas: "1"
+        customDeploymentConfig: OSS
