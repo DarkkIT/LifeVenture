@@ -1,0 +1,41 @@
+pool: OSS_AgentPool
+
+parameters:
+  - name: environment
+    displayName: Environment
+    type: string
+    default: oss-test
+    values:
+      - oss-test
+      - oss-dev
+      - oss-uat
+      - oss-prod    
+
+  - name: branch
+    displayName: Branch or Tag
+    type: string
+    default: master
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: "OSS DevOps/Openshift.Pipelines"
+
+trigger: none
+
+stages:
+  - template: Pipelines/dotnet.yml@templates
+    parameters:
+      environment: ${{ parameters.environment }}
+      service_name: life-venture-web
+      branch:  ${{ parameters.branch }}
+      clear: true
+      settings:
+        dotnetContext: "LifeVenture.Web"
+        dotnetImage: "8.0"
+        maxCpu: "1"
+        maxMemory: "2Gi"
+        timeoutInSeconds: "180"
+        replicas: "1"
+        customDeploymentConfig: OSS
