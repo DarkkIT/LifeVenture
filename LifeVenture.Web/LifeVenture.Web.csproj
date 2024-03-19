@@ -7,14 +7,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
   </ItemGroup>
 	<ItemGroup>
-		<AdditionalFiles Include="..\..\stylecop.json" />
+		<AdditionalFiles Include="..\stylecop.json" />
 	</ItemGroup>
 	
 	<ItemGroup>
@@ -38,13 +38,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\LifeVenture.Common\LifeVenture.Common.csproj" />
-    <ProjectReference Include="..\..\Data\LifeVenture.Data.Models\LifeVenture.Data.Models.csproj" />
-    <ProjectReference Include="..\..\Data\LifeVenture.Data\LifeVenture.Data.csproj" />
-    <ProjectReference Include="..\..\Services\LifeVenture.Services.Data\LifeVenture.Services.Data.csproj" />
-    <ProjectReference Include="..\..\Services\LifeVenture.Services.Mapping\LifeVenture.Services.Mapping.csproj" />
-    <ProjectReference Include="..\..\Services\LifeVenture.Services.Messaging\LifeVenture.Services.Messaging.csproj" />
-    <ProjectReference Include="..\..\Services\LifeVenture.Services\LifeVenture.Services.csproj" />
+    <ProjectReference Include="..\LifeVenture.Common\LifeVenture.Common.csproj" />
+    <ProjectReference Include="..\Data\LifeVenture.Data.Models\LifeVenture.Data.Models.csproj" />
+    <ProjectReference Include="..\Data\LifeVenture.Data\LifeVenture.Data.csproj" />
+    <ProjectReference Include="..\Services\LifeVenture.Services.Data\LifeVenture.Services.Data.csproj" />
+    <ProjectReference Include="..\Services\LifeVenture.Services.Mapping\LifeVenture.Services.Mapping.csproj" />
+    <ProjectReference Include="..\Services\LifeVenture.Services.Messaging\LifeVenture.Services.Messaging.csproj" />
+    <ProjectReference Include="..\Services\LifeVenture.Services\LifeVenture.Services.csproj" />
     <ProjectReference Include="..\LifeVenture.Web.Infrastructure\LifeVenture.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\LifeVenture.Web.ViewModels\LifeVenture.Web.ViewModels.csproj" />
   </ItemGroup>

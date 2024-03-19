@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
@@ -22,7 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\LifeVenture.Data.Common\LifeVenture.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\LifeVenture.Data.Models\LifeVenture.Data.Models.csproj" />
-    <ProjectReference Include="..\..\Web\LifeVenture.Web.ViewModels\LifeVenture.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\..\LifeVenture.Web.ViewModels\LifeVenture.Web.ViewModels.csproj" />
     <ProjectReference Include="..\LifeVenture.Services.Mapping\LifeVenture.Services.Mapping.csproj" />
   </ItemGroup>
 

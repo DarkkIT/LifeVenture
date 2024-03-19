@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{E389DEB6-5F90-444B-A054-12A10D39C76F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeVenture.Web", "Web\LifeVenture.Web\LifeVenture.Web.csproj", "{B90D1067-FE4C-400E-BA78-5413E30AB9ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeVenture.Web", "LifeVenture.Web\LifeVenture.Web.csproj", "{B90D1067-FE4C-400E-BA78-5413E30AB9ED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{ACBE44C4-E198-45E2-BA02-6655250A0006}"
 EndProject
@@ -25,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeVenture.Data.Common", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeVenture.Common", "LifeVenture.Common\LifeVenture.Common.csproj", "{A2288C46-0FBF-43B6-80B6-3072FD65BC32}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeVenture.Web.Infrastructure", "Web\LifeVenture.Web.Infrastructure\LifeVenture.Web.Infrastructure.csproj", "{7A7A7986-1F5B-4EBD-9B17-8B41F8FABA58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeVenture.Web.Infrastructure", "LifeVenture.Web.Infrastructure\LifeVenture.Web.Infrastructure.csproj", "{7A7A7986-1F5B-4EBD-9B17-8B41F8FABA58}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeVenture.Services.Data", "Services\LifeVenture.Services.Data\LifeVenture.Services.Data.csproj", "{4D39C126-3FB5-4B26-B08C-1BF48EFFA23E}"
 EndProject
@@ -37,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeVenture.Services.Data.T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeVenture.Web.Tests", "Tests\LifeVenture.Web.Tests\LifeVenture.Web.Tests.csproj", "{3EE06C6E-C8F3-418A-A309-8AC81976A074}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeVenture.Web.ViewModels", "Web\LifeVenture.Web.ViewModels\LifeVenture.Web.ViewModels.csproj", "{13B7AACB-9C85-4409-8D4B-95A67D0DFFF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeVenture.Web.ViewModels", "LifeVenture.Web.ViewModels\LifeVenture.Web.ViewModels.csproj", "{13B7AACB-9C85-4409-8D4B-95A67D0DFFF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
