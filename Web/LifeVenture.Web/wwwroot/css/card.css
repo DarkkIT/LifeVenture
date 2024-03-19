@@ -14,14 +14,19 @@
     border-radius: 0 0 20px 20px;
 }
 
+.progress {
+    height: 1.1vw;
+    font-size: 1vw;
+}
+
 .progress-bar {
-    background-color: #8EE4AF;
-    color: #05386B;
+    background-color: #A0A0A0;
+    color: #1A1A1D;
 }
 
 .event-header {
-    background-color: #8EE4AF;
-    color: #1A1A1D;
+    background-color: #4E4E50;
+    color: #EDF5E1;
     text-align: center;
     font-family: 'Comfortaa-Bold' !important;
     font-size: 1.2vw;
@@ -29,24 +34,24 @@
 }
 
 .card-list-group {
-    --bs-list-group-bg: #1A1A1D;
+    --bs-list-group-bg: #5CDB95;
     text-align: left;
-    --bs-list-group-color: #EDF5E1;
+    --bs-list-group-color: #1A1A1D;
     font-family: 'Comfortaa-Bold' !important;
     font-size: 1vw;
     font-weight: 700;
 }
 
-.event-footer, a {
-    background-color: #1A1A1D;
+.event-footer, .card-link {
+    background-color: #5CDB95;
     text-align: center;
     font-size: 1vw;
-    --bs-list-group-color: #EDF5E1;
-    color: #8EE4AF;
+    --bs-list-group-color: #1A1A1D;
+    color: #1A1A1D;
     font-family: 'Comfortaa-Bold' !important;
     text-decoration: none;
 }
 
-.event-bar-header {
-    text-align: center;
+.card-title {
+    margin: 0;
 }

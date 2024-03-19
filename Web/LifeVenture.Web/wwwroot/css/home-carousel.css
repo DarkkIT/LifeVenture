@@ -98,11 +98,28 @@
     border: 0.3vw solid #4E4E50;
     border-radius: 50%;
     font-size: 1.5vw;
+
+    opacity: 0.1;
+    transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
 }
 
     #prev:hover, #next:hover {
         transform: scale(1.1);
+        opacity: 1.0;
+        transition: opacity .55s ease-in-out;
+        -moz-transition: opacity .55s ease-in-out;
+        -webkit-transition: opacity .55s ease-in-out;
     }
+
+/*#prev-body {
+    position: absolute;
+    width: 8vw;
+    height: 8vw;
+    top: 45.5%;
+    left: 4.2%;
+}*/
 
 #prev {
     position: absolute;
