@@ -5,6 +5,6 @@
 
     public class ImageViewModel : IMapFrom<Image>
     {
-        public byte[] Data { get; set; }
+        public byte[] ThumbnailData { get; set; }
     }
 }

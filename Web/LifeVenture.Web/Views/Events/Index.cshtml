@@ -24,13 +24,13 @@
     </div>
 
     <div class="events-filter">
-        <a id="event-filter-new" asp-controller="Events" asp-action="Index">
+        <a id="event-filter-new" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["Latest"]">
             <span>НАЙ-НОВИ</span>
         </a>
-        <a id="event-filter-popular" asp-controller="Events" asp-action="Index">
+        <a id="event-filter-popular" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["MostPopular"]">
             <span>НАЙ-ПОПУЛЯРНИ</span>
         </a>
-        <a id="event-filter-visited" asp-controller="Events" asp-action="Index">
+        <a id="event-filter-visited" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["MostVisited"]">
             <span>НАЙ-ПОСЕЩАВАНИ</span>
         </a>
         <div class="custom-select">

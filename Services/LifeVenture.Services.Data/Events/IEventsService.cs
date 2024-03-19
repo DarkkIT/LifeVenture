@@ -10,9 +10,9 @@
     {
         Task CreateEvent(CreateEventInputModel input, string userId);
 
-        Task<IEnumerable<T>> GetAll<T>(int page, int itemsPerPage);
+        Task<IEnumerable<T>> GetAll<T>(int page, int itemsPerPage, EventsFiltersInputViewModel filters);
 
-        Task<int> GetEventsCount();
+        Task<int> GetEventsCount(int? categoryId = null);
 
         Task<IEnumerable<KeyValuePair<string, string>>> GetAllCategories();
 
