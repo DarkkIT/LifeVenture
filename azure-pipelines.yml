@@ -32,7 +32,7 @@ stages:
       branch:  ${{ parameters.branch }}
       clear: true
       settings:
-        dotnetContext: "DarkkIT/LifeVenture.Web"
+        dotnetContext: "/LifeVenture.Web"
         dotnetImage: "8.0"
         maxCpu: "1"
         maxMemory: "2Gi"
