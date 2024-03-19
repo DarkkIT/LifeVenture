@@ -1,5 +1,5 @@
 ﻿.card {
-    width: 24vw !important;
+    width: 21vw !important;
     height: auto;
     margin: 0 1vw 2vw 1vw;
     padding: 0;
@@ -21,7 +21,7 @@
 
 .event-header {
     background-color: #8EE4AF;
-    color: #05386B;
+    color: #1A1A1D;
     text-align: center;
     font-family: 'Comfortaa-Bold' !important;
     font-size: 1.2vw;
@@ -29,7 +29,7 @@
 }
 
 .card-list-group {
-    --bs-list-group-bg: #05386B;
+    --bs-list-group-bg: #1A1A1D;
     text-align: left;
     --bs-list-group-color: #EDF5E1;
     font-family: 'Comfortaa-Bold' !important;
@@ -38,7 +38,7 @@
 }
 
 .event-footer, a {
-    background-color: #05386B;
+    background-color: #1A1A1D;
     text-align: center;
     font-size: 1vw;
     --bs-list-group-color: #EDF5E1;

@@ -21,17 +21,17 @@
         width: 0;
         height: 0;
         border: 6px solid transparent;
-        border-color: #05386b transparent transparent transparent;
+        border-color: #1A1A1D transparent transparent transparent;
     }
 
     .select-selected.select-arrow-active:after {
-        border-color: transparent transparent #05386b transparent;
+        border-color: transparent transparent #1A1A1D transparent;
         top: 38%;
         left: 100%;
     }
 
 .select-items div, .select-selected {
-    color: #05386b;
+    color: #1A1A1D;
     padding: 8px 16px;
     border: 1px solid transparent;
     border-color: transparent transparent rgba(0, 0, 0, 0) transparent;
