@@ -21,8 +21,6 @@
 
         public byte[] FullscreenData { get; set; }
 
-        public int EventId { get; set; }
-
         public Event Event { get; set; }
 
         public ApplicationUser User { get; set; }

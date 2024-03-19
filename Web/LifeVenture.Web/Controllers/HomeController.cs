@@ -1,5 +1,6 @@
 ﻿namespace LifeVenture.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
@@ -7,6 +8,7 @@
     using LifeVenture.Data.Models;
     using LifeVenture.Services.Data;
     using LifeVenture.Web.ViewModels;
+    using LifeVenture.Web.ViewModels.Events;
     using LifeVenture.Web.ViewModels.Home;
     using LifeVenture.Web.ViewModels.Users;
     using Microsoft.AspNetCore.Identity;
@@ -44,7 +46,10 @@
                 UserStatistic = userStatistics,
             };
 
+            var events = await this.eventsService.GetEventsForHomePage();
+
             viewModel.StatisticalInfo = statisticalInfoViewModel;
+            viewModel.Events = events;
 
             return this.View(viewModel);
         }

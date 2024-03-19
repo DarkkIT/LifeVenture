@@ -58,56 +58,108 @@
     <div id="home-carousel-container">
 
         <div id="carousel">
-
-            <div class="hideLeft inner-div">
-                <img src="~/images/3.jpg">
-                <div class="carusel-inner-header" style="opacity: 0;">
-                    <div class="inner-header-text">ЗАГЛАВИЕ</div>
+            @if (Model.Events.Count > 0)
+            {
+                <div id="carousel-element" class="hideLeft inner-div">
+                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Events[0].ThumbnailData))" />
+                    <div class="carusel-inner-header" style="opacity: 0;">
+                        <div class="inner-header-text">@Model.Events[0].Title</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="prevLeftSecond inner-div">
-                <img src="~/images/3.jpg">
-                <div class="carusel-inner-header" style="opacity: 0;">
-                    <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                <div id="carousel-element" class="prevLeftSecond inner-div">
+                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Events[0].ThumbnailData))" />
+                    <div class="carusel-inner-header" style="opacity: 0;">
+                        <div class="inner-header-text">@Model.Events[0].Title</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="prev inner-div">
-                <img src="~/images/3.jpg">
-                <div class="carusel-inner-header" style="opacity: 0;">
-                    <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                <div id="carousel-element" class="prev inner-div">
+                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Events[0].ThumbnailData))" />
+                    <div class="carusel-inner-header" style="opacity: 0;">
+                        <div class="inner-header-text">@Model.Events[0].Title</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="selected inner-div">
-                <img src="~/images/3.jpg">
-                <div class="carusel-inner-header">
-                    <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                <div id="carousel-element" class="selected inner-div">
+                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Events[0].ThumbnailData))" />
+                    <div class="carusel-inner-header">
+                        <div class="inner-header-text">@Model.Events[0].Title</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="next inner-div">
-                <img src="~/images/3.jpg">
-                <div class="carusel-inner-header" style="opacity: 0;">
-                    <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                <div id="carousel-element" class="next inner-div">
+                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Events[0].ThumbnailData))" />
+                    <div class="carusel-inner-header" style="opacity: 0;">
+                        <div class="inner-header-text">@Model.Events[0].Title</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="nextRightSecond inner-div">
-                <img src="~/images/3.jpg">
-                <div class="carusel-inner-header" style="opacity: 0;">
-                    <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                <div id="carousel-element" class="nextRightSecond inner-div">
+                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Events[0].ThumbnailData))" />
+                    <div class="carusel-inner-header" style="opacity: 0;">
+                        <div class="inner-header-text">@Model.Events[0].Title</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="hideRight inner-div">
-                <img src="~/images/3.jpg">
-                <div class="carusel-inner-header" style="opacity: 0;">
-                    <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                <div id="carousel-element" class="hideRight inner-div">
+                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Events[0].ThumbnailData))" />
+                    <div class="carusel-inner-header" style="opacity: 0;">
+                        <div class="inner-header-text">@Model.Events[0].Title</div>
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div id="carousel-element" class="hideLeft inner-div">
+                    <img src="~/images/81C81CB44922409EA3C99FA3E42369CD.jpg" />
+                    <div class="carusel-inner-header" style="opacity: 0;">
+                        <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                    </div>
+                </div>
 
+                <div id="carousel-element" class="prevLeftSecond inner-div">
+                    <img src="~/images/81C81CB44922409EA3C99FA3E42369CD.jpg" />
+                    <div class="carusel-inner-header" style="opacity: 0;">
+                        <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                    </div>
+                </div>
+
+                <div id="carousel-element" class="prev inner-div">
+                    <img src="~/images/81C81CB44922409EA3C99FA3E42369CD.jpg" />
+                    <div class="carusel-inner-header" style="opacity: 0;">
+                        <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                    </div>
+                </div>
+
+                <div id="carousel-element" class="selected inner-div">
+                    <img src="~/images/81C81CB44922409EA3C99FA3E42369CD.jpg" />
+                    <div class="carusel-inner-header">
+                        <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                    </div>
+                </div>
+
+                <div id="carousel-element" class="next inner-div">
+                    <img src="~/images/81C81CB44922409EA3C99FA3E42369CD.jpg" />
+                    <div class="carusel-inner-header" style="opacity: 0;">
+                        <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                    </div>
+                </div>
+
+                <div id="carousel-element" class="nextRightSecond inner-div">
+                    <img src="~/images/81C81CB44922409EA3C99FA3E42369CD.jpg" />
+                    <div class="carusel-inner-header" style="opacity: 0;">
+                        <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                    </div>
+                </div>
+
+                <div id="carousel-element" class="hideRight inner-div">
+                    <img src="~/images/81C81CB44922409EA3C99FA3E42369CD.jpg" />
+                    <div class="carusel-inner-header" style="opacity: 0;">
+                        <div class="inner-header-text">ЗАГЛАВИЕ</div>
+                    </div>
+                </div>
+            }
         </div>
 
         <button id="prev"></button>
@@ -118,5 +170,4 @@
 
 @section Scripts {
     <script src="~/js/home.js" asp-append-version="true"></script>
-    @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>*@
 }

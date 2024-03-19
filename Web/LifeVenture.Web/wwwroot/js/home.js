@@ -1,13 +1,6 @@
 ﻿
 function moveToSelected(element) {
-
     let innerTexts = document.querySelectorAll('.carusel-inner-header');
-    innerTexts.forEach(x => {
-        let opacity = window.getComputedStyle(x).getPropertyValue("opacity");
-        if (opacity > 0) {
-            fade(x);
-        }
-    })
 
     if (element == "next") {
         var selected = $(".selected").next();
@@ -21,6 +14,17 @@ function moveToSelected(element) {
     var prev = $(selected).prev();
     var prevSecond = $(prev).prev();
     var nextSecond = $(next).next();
+
+    if (selected.length == 0) {
+        return;
+    }
+
+    if (element == 'prev' || element == 'next') {
+        fadeOutElements(innerTexts);
+    }
+    else if (!element.hasClass('selected')) {
+        fadeOutElements(innerTexts);
+    }
 
     $(selected).removeClass().addClass("selected");
 
@@ -55,7 +59,7 @@ $(document).keydown(function (e) {
     e.preventDefault();
 });
 
-$('#carousel div').click(function () {
+$('#carousel #carousel-element').click(function () {
     moveToSelected($(this));
 });
 
@@ -66,6 +70,15 @@ $('#prev').click(function () {
 $('#next').click(function () {
     moveToSelected('next');
 });
+
+function fadeOutElements(innerTexts) {
+    innerTexts.forEach(x => {
+        let opacity = window.getComputedStyle(x).getPropertyValue("opacity");
+        if (opacity > 0) {
+            fade(x);
+        }
+    });
+}
 
 function unfade(element) {
     var op = 0.1;
