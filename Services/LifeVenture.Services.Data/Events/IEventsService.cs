@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using LifeVenture.Web.ViewModels.Common;
     using LifeVenture.Web.ViewModels.Events;
     using LifeVenture.Web.ViewModels.Home;
 
@@ -10,7 +11,7 @@
     {
         Task CreateEvent(CreateEventInputModel input, string userId);
 
-        Task<IEnumerable<T>> GetAll<T>(int page, int itemsPerPage, EventsFiltersInputViewModel filters);
+        Task<PaginatedList<T>> GetAll<T>(int page, int itemsPerPage, EventsFiltersInputViewModel filters);
 
         Task<int> GetEventsCount(int? categoryId = null);
 

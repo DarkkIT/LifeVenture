@@ -2,14 +2,14 @@
 {
     using System.Collections.Generic;
 
-    public class EventsListingViewModel
+    using LifeVenture.Web.ViewModels.Common;
+
+    public class EventsListingViewModel<T>
     {
-        public EventsFiltersInputViewModel Filters { get; set; }
+        //public EventsFiltersInputViewModel Filters { get; set; }
 
-        public int EventsCount { get; set; }
+        public PaginatedList<EventViewModel> PaginatedEvents { get; set; }
 
-        public IEnumerable<EventViewModel> Events { get; set; }
-
-        public IEnumerable<KeyValuePair<string, string>> Categories { get; set; }
+        public IEnumerable<T> Categories { get; set; }
     }
 }
