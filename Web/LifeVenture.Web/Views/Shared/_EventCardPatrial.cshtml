@@ -1,27 +1,34 @@
 ﻿@using LifeVenture.Web.ViewModels.Events;
 @model EventViewModel
 
+@{
+    var continuationOfTheString = "...";
+}
+
 <div class="card">
-    <img class="card-img-top" src="~/images/3.jpg" alt="Card image cap">
+    <img class="card-img-top" src="data:image/jpeg;base64,@Model.Image.ThumbnailAsBase64" alt="Card image cap">
     <div class="event-header card-body">
-        <div class="card-title">ЗАГЛАВИЕ НА СЪБИТИЕТО</div>
+        <div class="card-title">@Model.Title</div>
     </div>
     <ul class="card-list-group list-group list-group-flush">
         <li class="event-bar-header list-group-item">
-            Участници: 3 от 10
+            Участници: @Model.VolunteersCount от @Model.MaxParticipantsCount
         </li>
         <li class="list-group-item">
             <div class="progress">
-                <div id="card-progress-bar" class="progress-bar" role="progressbar" style="width: 32%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0">32%</div>
+                <div id="card-progress-bar" class="progress-bar" role="progressbar" style="width: @Model.ParticipationsPercentage%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0"> @Model.ParticipationsPercentage%</div>
             </div>
         </li>
         <li class="list-group-item">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna ali.
-            Excepteur sint occaecat non.
+            @Model.ShortDescription
+            @if(Model.Description.Length > 100)
+            {
+                @continuationOfTheString;
+            }
         </li>
     </ul>
     <div class="event-footer card-body">
-        <a href="#" class="card-link">Оставащи 5 дни</a>
-        <a href="#" class="card-link">Прегледи 248</a>
+        <a href="#" class="card-link">Оставащи @Model.DaysLeft дни</a>
+        <a href="#" class="card-link">Прегледи @Model.ViewsCount</a>
     </div>
 </div>

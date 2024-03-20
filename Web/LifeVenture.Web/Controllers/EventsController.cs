@@ -30,11 +30,13 @@
 
             var eventsCount = await this.eventsService.GetEventsCount(input?.CategoryId);
             var events = await this.eventsService.GetAll<EventViewModel>(id, ItemsPerPage, input);
+            var categories = await this.eventsService.GetAllCategories();
 
             var viewModel = new EventsListingViewModel
             {
                 EventsCount = eventsCount,
                 Events = events,
+                Categories = categories,
                 //Filters = new EventsFiltersInputViewModel(),
             };
 

@@ -4,6 +4,7 @@ using LifeVenture.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LifeVenture.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240320064617_AddViewsCountToEvent")]
+    partial class AddViewsCountToEvent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,21 +38,6 @@ namespace LifeVenture.Data.Migrations
                     b.HasIndex("VolunteersId");
 
                     b.ToTable("ApplicationUserEvent");
-                });
-
-            modelBuilder.Entity("ApplicationUserEvent1", b =>
-                {
-                    b.Property<int>("LikedEventsId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserLikesId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("LikedEventsId", "UserLikesId");
-
-                    b.HasIndex("UserLikesId");
-
-                    b.ToTable("ApplicationUserEvent1");
                 });
 
             modelBuilder.Entity("EventLocation", b =>
@@ -783,21 +771,6 @@ namespace LifeVenture.Data.Migrations
                     b.HasOne("LifeVenture.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("VolunteersId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ApplicationUserEvent1", b =>
-                {
-                    b.HasOne("LifeVenture.Data.Models.Events.Event", null)
-                        .WithMany()
-                        .HasForeignKey("LikedEventsId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("LifeVenture.Data.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserLikesId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

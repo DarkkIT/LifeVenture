@@ -18,6 +18,7 @@
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.EventsТоАttend = new HashSet<Event>();
             this.UserEvents = new HashSet<Event>();
+            this.LikedEvents = new HashSet<Event>();
         }
 
         public string FirstName { get; set; }
@@ -51,5 +52,7 @@
         public virtual ICollection<Event> UserEvents { get; set; }
 
         public virtual ICollection<Event> EventsТоАttend { get; set; }
+
+        public virtual ICollection<Event> LikedEvents { get; set; }
     }
 }

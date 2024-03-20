@@ -1,5 +1,6 @@
 ﻿namespace LifeVenture.Services.Data
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -78,7 +79,8 @@
         public async Task<IEnumerable<T>> GetAll<T>(int page, int itemsPerPage, EventsFiltersInputViewModel filters)
         {
             var query = this.eventsRepository
-                .All();
+                .All()
+                .Where(e => e.EndDate > DateTime.UtcNow);
 
             if (filters?.CategoryId != null && filters?.CategoryId != 0)
             {
@@ -92,9 +94,13 @@
             }
             else if (filters?.MostPopular == true)
             {
+                query = query
+                    .OrderByDescending(e => e.UserLikes.Count);
             }
             else if (filters?.MostVisited == true)
             {
+                query = query
+                    .OrderByDescending(e => e.ViewsCount);
             }
 
             var result = await query
@@ -155,7 +161,7 @@
 
         public async Task<IEnumerable<KeyValuePair<string, string>>> GetAllCategories()
         {
-            var defaultCategory = this.GetDefaultOption();
+            var defaultCategory = this.GetDefaultCategoryOption();
 
             var categories = await this.categoriesRepository
                 .All()
@@ -205,5 +211,8 @@
 
         private KeyValuePair<string, string> GetDefaultOption()
             => new KeyValuePair<string, string>("0", "ИЗБЕРИ");
+
+        private KeyValuePair<string, string> GetDefaultCategoryOption()
+            => new KeyValuePair<string, string>("0", "КАТЕГОРИИ");
     }
 }

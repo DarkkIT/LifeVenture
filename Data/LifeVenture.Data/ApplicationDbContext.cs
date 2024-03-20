@@ -95,6 +95,10 @@
                 .WithOne(i => i.User)
                 .HasForeignKey<ApplicationUser>(u => u.ImageId);
 
+            builder.Entity<ApplicationUser>()
+                .HasMany(u => u.LikedEvents)
+                .WithMany(e => e.UserLikes);
+
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 

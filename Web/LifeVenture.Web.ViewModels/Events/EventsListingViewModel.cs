@@ -9,5 +9,7 @@
         public int EventsCount { get; set; }
 
         public IEnumerable<EventViewModel> Events { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> Categories { get; set; }
     }
 }
