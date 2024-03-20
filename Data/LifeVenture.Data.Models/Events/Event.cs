@@ -13,6 +13,7 @@
         public Event()
         {
             this.Locations = new HashSet<Location>();
+            this.UserLikes = new HashSet<ApplicationUser>();
         }
 
         [Required]
@@ -39,6 +40,8 @@
 
         public int MaxParticipantsCount { get; set; }
 
+        public int ViewsCount { get; set; }
+
         public int PhoneId { get; set; }
 
         public virtual Phone Phone { get; set; }
@@ -58,5 +61,7 @@
         public virtual ICollection<Location> Locations { get; set; }
 
         public virtual ICollection<ApplicationUser> Volunteers { get; set; }
+
+        public virtual ICollection<ApplicationUser> UserLikes { get; set; }
     }
 }

@@ -2,6 +2,11 @@
 @model EventsListingViewModel
 @{
     this.ViewData["Title"] = "Събития";
+    //var asd = false;
+    var categories = this.Model.Categories.Select(x => new SelectListItem(x.Value, x.Key));
+    // var category = categories.FirstOrDefault();
+    // category.Selected = true;
+
 }
 
 <head>
@@ -34,13 +39,7 @@
             <span>НАЙ-ПОСЕЩАВАНИ</span>
         </a>
         <div class="custom-select">
-            <select id="custom-select-select">
-                <option value="0">КАТЕГОРИИ</option>
-                <option value="1">ЖИВОТНИ</option>
-                <option value="2">СОЦИАЛНИ</option>
-                <option value="3">ПРИРОДА</option>с
-                <option value="4">СПЕШНИ</option>
-            </select>
+            <select class="form-control" asp-items="categories"></select>
         </div>
     </div>
 
