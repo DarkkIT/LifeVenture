@@ -144,15 +144,20 @@
 
             var goodDeedsCount = eventsVolunteers.Count();
 
-            var distinctVolunteersCount = eventsVolunteers
-                .Distinct()
-                .ToList()
-                .Count;
+            var activeEventsCount = await this.eventsRepository
+                .All()
+                .Where(e => e.EndDate >= DateTime.UtcNow)
+                .CountAsync();
+
+            var pastEventsCount = await this.eventsRepository
+               .All()
+               .Where(e => e.EndDate < DateTime.UtcNow)
+               .CountAsync();
 
             var result = new EventStatisticalInfoViewModel
             {
-                EventsCount = eventsInfo.Count,
-                VolunteersCount = distinctVolunteersCount,
+                ActiveEventsCount = activeEventsCount,
+                PastEventsCount = pastEventsCount,
                 GoodDeedsCount = goodDeedsCount,
             };
 

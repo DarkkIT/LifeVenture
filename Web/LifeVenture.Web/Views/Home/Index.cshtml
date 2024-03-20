@@ -33,24 +33,24 @@
     <div class="home-info-container">
         <div id="nums-container">
             <div class="item1">
-                <div class="home-number">@Model.StatisticalInfo.EventStatistic.EventsCount</div>
-                <div class="home-label">Събития</div>
+                <div class="home-number">@Model.StatisticalInfo.EventStatistic.ActiveEventsCount</div>
+                <div class="home-label">Активни събития</div>
             </div>
             <div class="item2">
+                <div class="home-number">@Model.StatisticalInfo.EventStatistic.PastEventsCount</div>
+                <div class="home-label">Минали събития</div>
+            </div>
+            <div class="item3">
                 <div class="home-number">@Model.StatisticalInfo.EventStatistic.VolunteersCount</div>
                 <div class="home-label">Доброволци</div>
             </div>
-            <div class="item3">
+            <div class="item4">
                 <div class="home-number">@Model.StatisticalInfo.EventStatistic.GoodDeedsCount</div>
                 <div class="home-label">Добри дела</div>
             </div>
-            <div class="item4">
+            <div class="item5">
                 <div class="home-number">@Model.StatisticalInfo.UserStatistic.HeroesCount</div>
                 <div class="home-label">Герои</div>
-            </div>
-            <div class="item5">
-                <div class="home-number">@Model.StatisticalInfo.UserStatistic.UsersCount</div>
-                <div class="home-label">Потребители</div>
             </div>
         </div>
     </div>

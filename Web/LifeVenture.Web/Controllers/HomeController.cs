@@ -1,14 +1,12 @@
 ﻿namespace LifeVenture.Web.Controllers
 {
-    using System.Collections.Generic;
     using System.Diagnostics;
-    using System.Linq;
     using System.Threading.Tasks;
+
     using LifeVenture.Common;
     using LifeVenture.Data.Models;
     using LifeVenture.Services.Data;
     using LifeVenture.Web.ViewModels;
-    using LifeVenture.Web.ViewModels.Events;
     using LifeVenture.Web.ViewModels.Home;
     using LifeVenture.Web.ViewModels.Users;
     using Microsoft.AspNetCore.Identity;
@@ -35,14 +33,16 @@
 
             var userStatistics = new UserStatisticalInfoViewModel
             {
-                UsersCount = users.Count,
                 HeroesCount = usersWithRoleCount,
             };
 
             var viewModel = new HomeViewModel();
+            var eventStatistic = await this.eventsService.GetEventStatistics();
+            eventStatistic.VolunteersCount = users.Count;
+
             var statisticalInfoViewModel = new StatisticalInfoViewModel
             {
-                EventStatistic = await this.eventsService.GetEventStatistics(),
+                EventStatistic = eventStatistic,
                 UserStatistic = userStatistics,
             };
 
