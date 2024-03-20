@@ -1,0 +1,8 @@
+﻿
+#previous {
+    background-color: pink;
+}
+
+.disabled-link {
+    pointer-events: none;
+}
