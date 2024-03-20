@@ -2,9 +2,6 @@
 @model EventsListingViewModel<SelectListItem>
 @{
     this.ViewData["Title"] = "Събития";
-
-    var prevDisabled = !Model.PaginatedEvents.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.PaginatedEvents.HasNextPage ? "disabled" : "";
 }
 
 <head>
@@ -50,20 +47,7 @@
             <partial name="_EventCardPartial" model="@eventModel" />
         }
 
-        <a asp-action="Index"
-           asp-route-sortOrder="@ViewData["CurrentSort"]"
-           asp-route-pageNumber="@(Model.PaginatedEvents.PageIndex - 1)"
-           asp-route-currentFilter="@ViewData["CurrentFilter"]"
-           class="btn btn-default @prevDisabled">
-            Previous
-        </a>
-        <a asp-action="Index"
-           asp-route-sortOrder="@ViewData["CurrentSort"]"
-           asp-route-pageNumber="@(Model.PaginatedEvents.PageIndex + 1)"
-           asp-route-currentFilter="@ViewData["CurrentFilter"]"
-           class="btn btn-default @nextDisabled">
-            Next
-        </a>
+        <partial name="_PaginationPartial" model="@Model.PaginatedEvents" />
     </div>
 </div>
 

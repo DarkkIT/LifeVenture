@@ -119,6 +119,10 @@
     grid-area: first6;
 }
 
+.item1, .item2, .item3, .item4, .item5 {
+    width: 15vw;
+}
+
 .home-number {
     font-family: 'Comfortaa-Bold' !important;
     font-weight: 700;
