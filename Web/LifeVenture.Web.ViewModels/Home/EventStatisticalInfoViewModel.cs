@@ -2,7 +2,9 @@
 {
     public class EventStatisticalInfoViewModel
     {
-        public int EventsCount { get; set; }
+        public int ActiveEventsCount { get; set; }
+
+        public int PastEventsCount { get; set; }
 
         public int VolunteersCount { get; set; }
 
