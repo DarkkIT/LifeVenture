@@ -1,12 +1,10 @@
 ﻿@using LifeVenture.Web.ViewModels.Events;
-@model EventsListingViewModel
+@model EventsListingViewModel<SelectListItem>
 @{
     this.ViewData["Title"] = "Събития";
-    //var asd = false;
-    var categories = this.Model.Categories.Select(x => new SelectListItem(x.Value, x.Key));
-    // var category = categories.FirstOrDefault();
-    // category.Selected = true;
 
+    var prevDisabled = !Model.PaginatedEvents.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.PaginatedEvents.HasNextPage ? "disabled" : "";
 }
 
 <head>
@@ -29,25 +27,43 @@
     </div>
 
     <div class="events-filter">
-        <a id="event-filter-new" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["Latest"]">
+        <a id="event-filter-new" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["Latest"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
             <span>НАЙ-НОВИ</span>
         </a>
-        <a id="event-filter-popular" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["MostPopular"]">
+        <a id="event-filter-popular" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["MostPopular"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
             <span>НАЙ-ПОПУЛЯРНИ</span>
         </a>
-        <a id="event-filter-visited" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["MostVisited"]">
+        <a id="event-filter-visited" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["MostVisited"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
             <span>НАЙ-ПОСЕЩАВАНИ</span>
         </a>
-        <div class="custom-select">
-            <select class="form-control" asp-items="categories"></select>
-        </div>
+        <form asp-action="Index" method="get">
+            <div class="custom-select">
+                <select name="CategoryId" class="form-control" asp-items="@Model.Categories"></select>
+            </div>
+            <input type="submit" value="Search" class="btn btn-secondary" />
+        </form>
     </div>
 
     <div class="card-container row justify-content-center">
-        @foreach (var eventModel in Model.Events)
+        @foreach (var eventModel in Model.PaginatedEvents)
         {
-            <partial name="_EventCardPatrial" model="@eventModel" />
+            <partial name="_EventCardPartial" model="@eventModel" />
         }
+
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PaginatedEvents.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PaginatedEvents.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
     </div>
 </div>
 

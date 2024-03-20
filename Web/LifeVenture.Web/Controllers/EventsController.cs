@@ -1,5 +1,6 @@
 ﻿namespace LifeVenture.Web.Controllers
 {
+    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -8,6 +9,7 @@
     using LifeVenture.Web.ViewModels.Image;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
 
     using static LifeVenture.Common.ErrorConstants.EventErrors;
     using static LifeVenture.Common.ErrorConstants.ImageErrors;
@@ -24,20 +26,35 @@
             this.eventsService = eventsService;
         }
 
-        public async Task<IActionResult> Index(string sortOrder, int id = 1)
+        public async Task<IActionResult> Index(string sortOrder, string categoryId, string currentFilter, int pageNumber = 1)
         {
             var input = this.CreateSortOrder(sortOrder);
 
-            var eventsCount = await this.eventsService.GetEventsCount(input?.CategoryId);
-            var events = await this.eventsService.GetAll<EventViewModel>(id, ItemsPerPage, input);
+            if (categoryId != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                categoryId = currentFilter;
+            }
+
+            this.ViewData["CurrentFilter"] = categoryId;
+
+            if (!string.IsNullOrEmpty(categoryId))
+            {
+                input.CategoryId = int.Parse(categoryId);
+            }
+
+            var events = await this.eventsService.GetAll<EventViewModel>(pageNumber, ItemsPerPage, input);
             var categories = await this.eventsService.GetAllCategories();
 
-            var viewModel = new EventsListingViewModel
+            var categoriesAsSelectListItem = categories.Select(x => new SelectListItem(x.Value, x.Key, x.Key == categoryId ? true : false));
+
+            var viewModel = new EventsListingViewModel<SelectListItem>
             {
-                EventsCount = eventsCount,
-                Events = events,
-                Categories = categories,
-                //Filters = new EventsFiltersInputViewModel(),
+                PaginatedEvents = events,
+                Categories = categoriesAsSelectListItem,
             };
 
             return this.View(viewModel);
@@ -114,6 +131,7 @@
 
         private EventsFiltersInputViewModel CreateSortOrder(string sortOrder)
         {
+            this.ViewData["CurrentSort"] = sortOrder;
             this.ViewData["Latest"] = string.IsNullOrEmpty(sortOrder) ? "latest" : string.Empty;
             this.ViewData["MostPopular"] = sortOrder == "MostPopular" ? "most_popular" : "MostPopular";
             this.ViewData["MostVisited"] = sortOrder == "MostVisited" ? "most_visited" : "MostVisited";
