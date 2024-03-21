@@ -15,7 +15,7 @@
         <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow">
             <div class="custom-body">
 
-                <a id="leayout-logo" class="navbar-brand" asp-controller="Home" asp-action="Index">
+                <a id="leayout-logo" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <div id="logo">LIFE<span id="logo2">VENTURE</span></div>
                 </a>
 @*
@@ -27,19 +27,19 @@
                 <div id="navbar-buttons" class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1 justify-content-center">
                         <li class="nav-item">
-                            <a class="menu-button nav-link" asp-controller="Home" asp-action="Index">Начало</a>
+                            <a class="menu-button nav-link" asp-area="" asp-controller="Home" asp-action="Index">Начало</a>
                         </li>
                         <li class="nav-item">
-                            <a class="menu-button nav-link" asp-controller="Events" asp-action="Index">Събития</a>
+                            <a class="menu-button nav-link" asp-area="" asp-controller="Events" asp-action="Index">Събития</a>
                         </li>
                         <li class="nav-item">
-                            <a class="menu-button nav-link" asp-controller="PeopleOfGoodness" asp-action="Index">Герои</a>
+                            <a class="menu-button nav-link" asp-area="" asp-controller="PeopleOfGoodness" asp-action="Index">Герои</a>
                         </li>
                         @*<li class="nav-item">
                         <a class="header-button nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>*@
                         <li class="nav-item">
-                            <a class="menu-button nav-link" asp-controller="AboutUs" asp-action="Index">За Нас</a>
+                            <a class="menu-button nav-link" asp-area="" asp-controller="AboutUs" asp-action="Index">За Нас</a>
                         </li>
                     </ul>
                 </div>
