@@ -18,7 +18,7 @@
             Промени света, създай добро дело - събития с цел помощ
             за добри каузи, достъпни само с един клик!
         </p>
-        <a id="event-newevent-button" asp-controller="Events" asp-action="Create" type="button" class="btn btn-primary">
+        <a id="event-newevent-button" asp-area="" asp-controller="Events" asp-action="Create" type="button" class="btn btn-primary">
             <span>Създай събитие</span>
         </a>
     </div>
@@ -37,7 +37,7 @@
             <div class="custom-select">
                 <select name="CategoryId" class="form-control" asp-items="@Model.Categories"></select>
             </div>
-            <input type="submit" value="Search" class="btn btn-secondary" />
+            <input type="submit" value="Търси по категория" class="btn btn-secondary" />
         </form>
     </div>
 
@@ -47,7 +47,7 @@
             <partial name="_EventCardPartial" model="@eventModel" />
         }
 
-        <partial name="_PaginationPartial" model="@Model.PaginatedEvents" />
+        <partial name="_EventsPaginationPartial" model="@Model.PaginatedEvents" />
     </div>
 </div>
 
