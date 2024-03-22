@@ -24,13 +24,13 @@
     </div>
 
     <div class="events-filter">
-        <a id="event-filter-new" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["Latest"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+        <a class="card-anchor" id="event-filter-new" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["Latest"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
             <span>НАЙ-НОВИ</span>
         </a>
-        <a id="event-filter-popular" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["MostPopular"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+        <a class="card-anchor" id="event-filter-popular" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["MostPopular"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
             <span>НАЙ-ПОПУЛЯРНИ</span>
         </a>
-        <a id="event-filter-visited" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["MostVisited"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+        <a class="card-anchor" id="event-filter-visited" asp-controller="Events" asp-action="Index" asp-route-sortOrder="@this.ViewData["MostVisited"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
             <span>НАЙ-ПОСЕЩАВАНИ</span>
         </a>
         <form asp-action="Index" method="get">
