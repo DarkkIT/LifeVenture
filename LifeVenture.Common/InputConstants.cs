@@ -25,7 +25,7 @@
 
             public const string EventEndDate = "Крайна дата";
 
-            public const string EventUrgency = "Спешен евент";
+            public const string EventUrgency = "Спешно събитие";
 
             public const string EventMaxParticipants = "Максимален брой участници";
 

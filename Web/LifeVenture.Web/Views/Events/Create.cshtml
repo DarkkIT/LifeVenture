@@ -1,7 +1,7 @@
 ﻿@model LifeVenture.Web.ViewModels.Events.CreateEventViewModel
 
 @{
-    this.ViewData["Title"] = "Дейности";
+    this.ViewData["Title"] = "Създай ново събитие";
     var categories = this.Model.Categories.Select(x => new SelectListItem(x.Value, x.Key));
     var phoneCodes = this.Model.Phone.Codes.Select(x => new SelectListItem(x.Value, x.Key));
     var regions = this.Model.Regions.Select(x => new SelectListItem(x.Value, x.Key));
@@ -16,7 +16,7 @@
 
 <div class="text-center form-container row justify-content-center">
     <div>
-        <h1>Нов евент</h1>
+        <h1>Новo събитие</h1>
     </div>
     <form id="events-form" class="col col-md-6" method="post" asp-controller="Events" asp-action="Create" enctype="multipart/form-data">
         <div class="row">
@@ -95,7 +95,7 @@
                     <label asp-for="Locations[0].AddressNote"></label>
                     <textarea asp-for="Locations[0].AddressNote" id="address-note-0" class="form-control new-event-element" rows="4"></textarea>
                     <span asp-validation-for="Locations[0].AddressNote" class="text-danger"></span>
-                    <input type="submit" id="location-btn-0" value="Добави локация" />
+                    @* <input type="submit" id="location-btn-0" value="Добави адрес" /> *@
                 </div>
             </div>
         </div>
@@ -129,7 +129,7 @@
 
         <div class="new-event-element">
             <div class="text-center">
-                <input type="submit" id="submit-btn" class="btn btn-secondary" value="Създай евент" />
+                <input type="submit" id="submit-btn" class="btn btn-secondary" value="Създай събитие" />
             </div>
         </div>
     </form>
