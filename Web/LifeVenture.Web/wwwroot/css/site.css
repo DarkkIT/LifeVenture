@@ -243,3 +243,7 @@ body {
 #user-name {
     color: #5CDB95 !important;
 }
+
+.card-anchor {
+    text-decoration: none;
+}
