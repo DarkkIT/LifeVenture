@@ -15,7 +15,7 @@
 
         public class EventErrors
         {
-            public const string MaxParticipantsCountErr = "Участниците могат да бъдат между 1 и 2 милиярда души!";
+            public const string MaxParticipantsCountErr = "Броят на участниците трябва да бъде не по-малко от 1 човек и не повече от 2 милиарда души!";
 
             public const string DescriptionMaxLength = "Описанието трябва да бъде до 3000 символа!";
 
