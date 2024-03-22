@@ -206,7 +206,7 @@
         }
 
         public async Task<List<HomeEventViewModel>> GetEventsForHomePage()
-         => await this.eventsRepository
+            => await this.eventsRepository
                 .All()
                 .Select(e => new HomeEventViewModel
                 {
@@ -217,6 +217,13 @@
                 .OrderByDescending(e => e.Id)
                 .Take(7)
                 .ToListAsync();
+
+        public async Task<T> GetEventById<T>(int id)
+            => await this.eventsRepository
+                .AllAsNoTracking()
+                .Where(e => e.Id == id)
+                .To<T>()
+                .FirstOrDefaultAsync();
 
         private KeyValuePair<string, string> GetDefaultOption()
             => new KeyValuePair<string, string>("0", "ИЗБЕРИ");

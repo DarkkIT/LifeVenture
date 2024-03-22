@@ -8,18 +8,18 @@
 
     public class CategoryViewModel : IMapFrom<Category>
     {
-        public CategoryViewModel()
-        {
-            this.Events = new HashSet<EventDetailsViewModel>();
-        }
+        //public CategoryViewModel()
+        //{
+        //    this.Events = new HashSet<EventDetailsViewModel>();
+        //}
 
-        [Required]
-        [MaxLength(100)]
+        //[Required]
+        //[MaxLength(100)]
         public string Name { get; set; }
 
-        [MaxLength(1000)]
+        //[MaxLength(1000)]
         public string Description { get; set; }
 
-        public virtual ICollection<EventDetailsViewModel> Events { get; set; }
+        //public virtual ICollection<EventDetailsViewModel> Events { get; set; }
     }
 }

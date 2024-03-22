@@ -24,5 +24,7 @@
         Task<List<HomeEventViewModel>> GetEventsForHomePage();
 
         Task<EventStatisticalInfoViewModel> GetEventStatistics();
+
+        Task<T> GetEventById<T>(int id);
     }
 }

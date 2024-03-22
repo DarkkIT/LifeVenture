@@ -6,6 +6,7 @@
 
     using LifeVenture.Services.Data;
     using LifeVenture.Web.ViewModels.Events;
+    using LifeVenture.Web.ViewModels.Events.Details;
     using LifeVenture.Web.ViewModels.Image;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -127,7 +128,26 @@
             return this.RedirectToAction(nameof(this.Success));
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            if (id == 0)
+            {
+                return this.RedirectToAction(nameof(this.EventDetailsError));
+            }
+
+            var eventDetails = await this.eventsService.GetEventById<EventDetailsViewModel>(id);
+
+            if (eventDetails == null)
+            {
+                return this.RedirectToAction(nameof(this.EventDetailsError));
+            }
+
+            return this.View(eventDetails);
+        }
+
         public IActionResult Success() => this.View();
+
+        public IActionResult EventDetailsError() => this.View();
 
         private EventsFiltersInputViewModel CreateSortOrder(string sortOrder)
         {
