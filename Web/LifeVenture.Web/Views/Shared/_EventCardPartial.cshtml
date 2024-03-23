@@ -22,7 +22,7 @@
                 <div id="card-progress-bar" class="progress-bar" role="progressbar" style="width: @percentageWidth%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0"> @Model.ParticipationsPercentage%</div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item card-text-body">
             @Model.ShortDescription
             @if (Model.Description.Length > 100)
             {
@@ -32,7 +32,13 @@
         </li>
     </ul>
     <div class="event-footer card-body">
-        <a href="#" class="card-link">Оставащи @Model.DaysLeft дни</a>
-        <a href="#" class="card-link">Прегледи @Model.ViewsCount</a>
+        <div class="card-link card-footer-element">
+            <div id="card-clock"></div>
+            <div class="card-footer-text">Остават @Model.DaysLeft дни</div>
+        </div>
+        <div class="card-link card-footer-element">
+            <div id="card-eye"></div>
+            <div class="card-footer-text">Прегледи @Model.ViewsCount</div>
+        </div>
     </div>
 </div>

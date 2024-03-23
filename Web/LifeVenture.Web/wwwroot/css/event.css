@@ -134,3 +134,7 @@
     .custom-select:hover {
         transform: scale(1.1);
     }
+
+.card-text-body {
+    height: 7vw;
+}

@@ -4,6 +4,7 @@
     margin: 0 1vw 2vw 1vw;
     padding: 0;
     border: none;
+    border-radius: 20px 20px 20px 20px;
 }
 
 .card-img-top {
@@ -12,6 +13,8 @@
 
 .event-footer {
     border-radius: 0 0 20px 20px;
+    display: inline-flex;
+    justify-content: space-around;
 }
 
 .progress {
@@ -31,6 +34,10 @@
     font-family: 'Comfortaa-Bold' !important;
     font-size: 1.2vw;
     font-weight: 700;
+    height: 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-list-group {
@@ -54,4 +61,34 @@
 
 .card-title {
     margin: 0;
+}
+
+.card-footer-text {
+    font-size: 0.8vw;
+    color: #4E4E50;
+}
+
+.card-footer-element {
+    display: flex;
+    align-items: center;
+}
+
+#card-clock {
+    background-image: url("../images/icons/schedule.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    width: 2vw;
+    height: 2vw;
+    margin-right: 0.3vw;
+}
+
+#card-eye {
+    background-image: url("../images/icons/visibility.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    width: 2vw;
+    height: 2vw;
+    margin-right: 0.3vw;
 }

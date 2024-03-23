@@ -1,8 +1,73 @@
 ﻿
-#previous {
-    background-color: pink;
-}
-
 .disabled-link {
     pointer-events: none;
+}
+
+.pagination-element {
+    font-family: 'Comfortaa-Bold' !important;
+    display: inline;
+    margin-right: 1vw;
+    width: auto;
+    width: 1.7vw;
+    height: 1.7vw;
+    font-size: 1vw;
+    line-height: 130%;
+    border-radius: 50%;
+}
+
+#pagination-previous {
+    background-image: url("../images/icons/chevron_left.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    margin-right: 2vw;
+}
+
+#pagination-next {
+    background-image: url("../images/icons/chevron_right.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    margin-left: 1vw;
+}
+
+#pagination-lastpage {
+    background-image: url("../images/icons/last_page.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    margin: 0;
+}
+
+#pagination-firstpage {
+    background-image: url("../images/icons/first_page.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+#pagination-current {
+    background-color: #A0A0A0;
+    color: #EDF5E1;
+}
+
+.page-num {
+    display: flex;
+    text-decoration: none;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: 900;
+    color: #4E4E50;
+}
+
+#pagination-body {
+    display: flex;
+    justify-content: center;
+    margin-bottom: .5vw;
+}
+
+.pagination-element:hover {
+    transform: scale(1.2);
+    color: #5CDB95;
 }
