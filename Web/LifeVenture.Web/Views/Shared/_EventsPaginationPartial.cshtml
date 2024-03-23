@@ -13,74 +13,76 @@
 <head>
     <link href="~/css/pagination.css" rel="stylesheet" asp-append-version="true" />
 </head>
+
 <div>
-    <a asp-action="Index"
-       asp-route-sortOrder="@ViewData["CurrentSort"]"
-       asp-route-pageNumber="@(1)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       class="@firstDisabled">
-        First
-    </a>
+    <div id="pagination-body" class="">
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           id="pagination-firstpage"
+           class="@firstDisabled pagination-element">
+        </a>
 
-    <a asp-action="Index"
-       asp-route-sortOrder="@ViewData["CurrentSort"]"
-       asp-route-pageNumber="@(Model.PageIndex - 1)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       id="previous"
-       class=" @prevDisabled">
-        Previous
-    </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           id="pagination-previous"
+           class="@prevDisabled pagination-element">
+        </a>
 
-    @for (var i = 3; i >= 1; i--)
-    {
-        @if (Model.PageIndex - i >= 1)
+        @for (var i = 3; i >= 1; i--)
         {
-            <a asp-action="Index"
-               asp-route-sortOrder="@ViewData["CurrentSort"]"
-               asp-route-pageNumber="@(Model.PageIndex - i)"
-               asp-route-currentFilter="@ViewData["CurrentFilter"]"
-               class="">
-                @(Model.PageIndex - i)
-            </a>
+            @if (Model.PageIndex - i >= 1)
+            {
+                <a asp-action="Index"
+                   asp-route-sortOrder="@ViewData["CurrentSort"]"
+                   asp-route-pageNumber="@(Model.PageIndex - i)"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                   class="pagination-element page-num">
+                   @(Model.PageIndex - i)
+                </a>
+            }
         }
-    }
 
-    <a asp-action="Index"
-       asp-route-sortOrder="@ViewData["CurrentSort"]"
-       asp-route-pageNumber="@(Model.PageIndex)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       class="disabled-link page-num">
-        @(Model.PageIndex)
-    </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           id="pagination-current"
+           class="disabled-link page-num pagination-element">
+            @(Model.PageIndex)
+        </a>
 
-    @for (var i = 1; i <= 3; i++)
-    {
-        @if (Model.PageIndex + i <= Model.TotalPages)
+        @for (var i = 1; i <= 3; i++)
         {
-            <a asp-action="Index"
-               asp-route-sortOrder="@ViewData["CurrentSort"]"
-               asp-route-pageNumber="@(Model.PageIndex + i)"
-               asp-route-currentFilter="@ViewData["CurrentFilter"]"
-               class=" @nextDisabled page-num">
-                @(Model.PageIndex + i)
-            </a>
+            @if (Model.PageIndex + i <= Model.TotalPages)
+            {
+                <a asp-action="Index"
+                   asp-route-sortOrder="@ViewData["CurrentSort"]"
+                   asp-route-pageNumber="@(Model.PageIndex + i)"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                   class=" @nextDisabled page-num pagination-element">
+                    @(Model.PageIndex + i)
+                </a>
+            }
         }
-    }
 
-    <a asp-action="Index"
-       asp-route-sortOrder="@ViewData["CurrentSort"]"
-       asp-route-pageNumber="@(Model.PageIndex + 1)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       id="next"
-       class=" @nextDisabled">
-        Next
-    </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           id="pagination-next"
+           class=" @nextDisabled pagination-element">
+        </a>
 
-    <a asp-action="Index"
-       asp-route-sortOrder="@ViewData["CurrentSort"]"
-       asp-route-pageNumber="@(Model.TotalPages)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       class="@lastDisabled">
-        Last
-    </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.TotalPages)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           id="pagination-lastpage"
+           class="@lastDisabled pagination-element">
+        </a>
+    </div>
 </div>

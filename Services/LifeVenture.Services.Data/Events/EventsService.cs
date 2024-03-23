@@ -82,6 +82,7 @@
             var query = this.eventsRepository
                 .All()
                 .Where(e => e.EndDate > DateTime.UtcNow);
+            ////
 
             if (filters?.CategoryId != null && filters?.CategoryId != 0)
             {
