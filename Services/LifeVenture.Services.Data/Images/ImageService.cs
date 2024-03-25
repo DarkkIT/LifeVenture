@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
 
     using LifeVenture.Web.ViewModels.Image;
-
     using SixLabors.ImageSharp;
     using SixLabors.ImageSharp.Formats.Jpeg;
     using SixLabors.ImageSharp.Processing;
@@ -22,8 +21,12 @@
 
             using var imageResult = await Image.LoadAsync(image.Content);
 
-            //var aspectRatio = (double)imageResult.Width / imageResult.Height;
-            //var is16To9 = Math.Abs(aspectRatio - (16.0 / 9.0)) < double.Epsilon;
+            var aspectRatio = (double)imageResult.Width / imageResult.Height;
+
+            if (aspectRatio < 1 || imageResult.Width < 600)
+            {
+                return new LifeVenture.Data.Models.Common.Image();
+            }
 
             var originalData = await this.GetImageData(imageResult, imageResult.Width);
             var fullscreenData = await this.GetImageData(imageResult, FullscreenWidth);
@@ -46,9 +49,8 @@
             var width = imageResult.Width;
             var height = imageResult.Height;
 
-            if (width > resizeWidth)
+            if (width >= resizeWidth)
             {
-                //height = (int)((double)resizeWidth / width * height);
                 height = (int)((double)resizeWidth / AspectRatioNumber);
                 width = resizeWidth;
             }
