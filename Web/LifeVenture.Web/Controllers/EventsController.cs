@@ -93,9 +93,7 @@
 
             if (!this.ModelState.IsValid)
             {
-                eventInput.Categories = await this.eventsService.GetAllCategories();
-                eventInput.Phone.Codes = await this.eventsService.GetAllPhoneCodes();
-                eventInput.Regions = await this.eventsService.GetAllRegions();
+                eventInput = await this.eventsService.GetEventData();
 
                 return this.View(eventInput);
             }
@@ -123,11 +121,20 @@
             };
 
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            await this.eventsService.CreateEvent(eventInputModel, userId);
+            var isCreated = await this.eventsService.CreateEvent(eventInputModel, userId);
+
+            if (!isCreated)
+            {
+                this.ModelState.AddModelError(Image, ImageAspectRatioErr);
+                eventInput = await this.eventsService.GetEventData();
+
+                return this.View(eventInput);
+            }
 
             return this.RedirectToAction(nameof(this.Success));
         }
 
+        [Authorize]
         public async Task<IActionResult> Details(int id)
         {
             if (id == 0)
@@ -141,6 +148,8 @@
             {
                 return this.RedirectToAction(nameof(this.EventDetailsError));
             }
+
+            await this.eventsService.AddViewsCount(id);
 
             return this.View(eventDetails);
         }

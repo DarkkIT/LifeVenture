@@ -9,7 +9,7 @@
 
     public interface IEventsService
     {
-        Task CreateEvent(CreateEventInputModel input, string userId);
+        Task<bool> CreateEvent(CreateEventInputModel input, string userId);
 
         Task<PaginatedList<T>> GetAll<T>(int page, int itemsPerPage, EventsFiltersInputViewModel filters);
 
@@ -26,5 +26,9 @@
         Task<EventStatisticalInfoViewModel> GetEventStatistics();
 
         Task<T> GetEventById<T>(int id);
+
+        Task AddViewsCount(int id);
+
+        Task<CreateEventViewModel> GetEventData();
     }
 }

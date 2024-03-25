@@ -36,7 +36,7 @@
             this.imageService = imageService;
         }
 
-        public async Task CreateEvent(CreateEventInputModel input, string userId)
+        public async Task<bool> CreateEvent(CreateEventInputModel input, string userId)
         {
             var eventModel = new Event
             {
@@ -68,13 +68,19 @@
 
             var imageModel = await this.imageService.GetImageData(input.Image);
 
-            if (imageModel != null)
+            if (imageModel.OriginalData == null)
+            {
+                return false;
+            }
+            else if (imageModel != null)
             {
                 eventModel.Image = imageModel;
             }
 
             await this.eventsRepository.AddAsync(eventModel);
             await this.eventsRepository.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<PaginatedList<T>> GetAll<T>(int page, int itemsPerPage, EventsFiltersInputViewModel filters)
@@ -184,6 +190,18 @@
             return categories;
         }
 
+        public async Task<CreateEventViewModel> GetEventData()
+        {
+            var eventInput = new CreateEventViewModel();
+            eventInput.Categories = await this.GetAllCategories();
+            eventInput.Regions = await this.GetAllRegions();
+
+            eventInput.Phone = new PhoneViewModel();
+            eventInput.Phone.Codes = await this.GetAllPhoneCodes();
+
+            return eventInput;
+        }
+
         public async Task<IEnumerable<KeyValuePair<string, string>>> GetAllPhoneCodes()
             => await this.countryPhoneCodesRepository
                 .All()
@@ -221,10 +239,21 @@
 
         public async Task<T> GetEventById<T>(int id)
             => await this.eventsRepository
-                .AllAsNoTracking()
+            .AllAsNoTracking()
+            .Where(e => e.Id == id)
+            .To<T>()
+            .FirstOrDefaultAsync();
+
+        public async Task AddViewsCount(int id)
+        {
+            var @event = await this.eventsRepository
+                .All()
                 .Where(e => e.Id == id)
-                .To<T>()
                 .FirstOrDefaultAsync();
+
+            @event.ViewsCount++;
+            await this.eventsRepository.SaveChangesAsync();
+        }
 
         private KeyValuePair<string, string> GetDefaultOption()
             => new KeyValuePair<string, string>("0", "ИЗБЕРИ");
