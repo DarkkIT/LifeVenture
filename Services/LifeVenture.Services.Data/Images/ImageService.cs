@@ -23,9 +23,9 @@
 
             var aspectRatio = (double)imageResult.Width / imageResult.Height;
 
-            if (aspectRatio < 1 || imageResult.Width < 600)
+            if (aspectRatio < 1 || imageResult.Width < FullscreenWidth)
             {
-                return new LifeVenture.Data.Models.Common.Image();
+                return null;
             }
 
             var originalData = await this.GetImageData(imageResult, imageResult.Width);

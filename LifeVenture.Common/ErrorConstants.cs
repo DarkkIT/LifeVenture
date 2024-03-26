@@ -35,7 +35,9 @@
 
             public const string ImageMaxSizeErr = "Снимката не може да бъде по-голяма от 10 MB.";
 
-            public const string ImageAspectRatioErr = "Широчината на снимката не може да бъде по-малка от 600 px, както и не може да е по-малка от височината на снимката.";
+            public const string ImageWidthErr = "Широчината на снимката не може да бъде по-малка от 1000 px.";
+
+            public const string ImageAspectRatioErr = "Широчината на снимката не може да е по-малка от нейната височина.";
         }
     }
 }
