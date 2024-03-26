@@ -12,7 +12,6 @@
     {
         public Event()
         {
-            this.Locations = new HashSet<Location>();
             this.UserLikes = new HashSet<ApplicationUser>();
         }
 
@@ -58,7 +57,9 @@
 
         public virtual Category Category { get; set; }
 
-        public virtual ICollection<Location> Locations { get; set; }
+        public virtual int? LocationId { get; set; }
+
+        public virtual Location Location { get; set; }
 
         public virtual ICollection<ApplicationUser> Volunteers { get; set; }
 

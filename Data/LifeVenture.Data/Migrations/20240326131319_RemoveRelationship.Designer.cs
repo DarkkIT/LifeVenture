@@ -4,6 +4,7 @@ using LifeVenture.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LifeVenture.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240326131319_RemoveRelationship")]
+    partial class RemoveRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -387,9 +390,6 @@ namespace LifeVenture.Data.Migrations
                     b.Property<bool>("IsUrgent")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("LocationId")
-                        .HasColumnType("int");
-
                     b.Property<int>("MaxParticipantsCount")
                         .HasColumnType("int");
 
@@ -420,8 +420,6 @@ namespace LifeVenture.Data.Migrations
                         .IsUnique();
 
                     b.HasIndex("IsDeleted");
-
-                    b.HasIndex("LocationId");
 
                     b.HasIndex("PhoneId");
 
@@ -819,10 +817,6 @@ namespace LifeVenture.Data.Migrations
                         .WithOne("Event")
                         .HasForeignKey("LifeVenture.Data.Models.Events.Event", "ImageId");
 
-                    b.HasOne("LifeVenture.Data.Models.Locations.Location", "Location")
-                        .WithMany("Events")
-                        .HasForeignKey("LocationId");
-
                     b.HasOne("LifeVenture.Data.Models.Events.Phone", "Phone")
                         .WithMany("Events")
                         .HasForeignKey("PhoneId")
@@ -834,8 +828,6 @@ namespace LifeVenture.Data.Migrations
                     b.Navigation("CreatedBy");
 
                     b.Navigation("Image");
-
-                    b.Navigation("Location");
 
                     b.Navigation("Phone");
                 });
@@ -983,11 +975,6 @@ namespace LifeVenture.Data.Migrations
                 });
 
             modelBuilder.Entity("LifeVenture.Data.Models.Events.Phone", b =>
-                {
-                    b.Navigation("Events");
-                });
-
-            modelBuilder.Entity("LifeVenture.Data.Models.Locations.Location", b =>
                 {
                     b.Navigation("Events");
                 });

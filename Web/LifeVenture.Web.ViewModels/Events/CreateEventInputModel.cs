@@ -12,6 +12,6 @@
 
         public ImageInputModel Image { get; set; }
 
-        public IList<LocationViewModel> Locations { get; set; }
+        public LocationViewModel Location { get; set; }
     }
 }
