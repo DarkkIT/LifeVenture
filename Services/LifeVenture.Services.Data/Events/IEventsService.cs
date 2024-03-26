@@ -21,6 +21,10 @@
 
         Task<IEnumerable<KeyValuePair<string, string>>> GetAllRegions();
 
+        Task<IEnumerable<KeyValuePair<string, string>>> GetMunicipalitiesByRegionId(int? regionId);
+
+        Task<IEnumerable<KeyValuePair<string, string>>> GetSettlementsByMunicipalityId(int? municipalityId);
+
         Task<List<HomeEventViewModel>> GetEventsForHomePage();
 
         Task<EventStatisticalInfoViewModel> GetEventStatistics();
@@ -29,6 +33,6 @@
 
         Task AddViewsCount(int id);
 
-        Task<CreateEventViewModel> GetEventData();
+        Task<CreateEventViewModel> GetEventData(CreateEventViewModel input);
     }
 }

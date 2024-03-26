@@ -72,6 +72,8 @@
             viewModel.Phone = new PhoneViewModel();
             viewModel.Phone.Codes = phoneCodes;
             viewModel.Regions = await this.eventsService.GetAllRegions();
+            viewModel.Municipalities = await this.eventsService.GetMunicipalitiesByRegionId(null);
+            viewModel.Settlements = await this.eventsService.GetSettlementsByMunicipalityId(null);
 
             return this.View(viewModel);
         }
@@ -93,7 +95,7 @@
 
             if (!this.ModelState.IsValid)
             {
-                eventInput = await this.eventsService.GetEventData();
+                eventInput = await this.eventsService.GetEventData(eventInput);
 
                 return this.View(eventInput);
             }
@@ -117,7 +119,7 @@
                 MaxParticipantsCount = eventInput.MaxParticipantsCount,
                 Phone = eventInput.Phone,
                 Image = imageInputModel,
-                Locations = eventInput.Locations,
+                Location = eventInput.Location,
             };
 
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -128,7 +130,7 @@
                 this.ModelState.AddModelError(Image, ImageWidthErr);
                 this.ModelState.AddModelError(Image, ImageAspectRatioErr);
 
-                eventInput = await this.eventsService.GetEventData();
+                eventInput = await this.eventsService.GetEventData(eventInput);
                 return this.View(eventInput);
             }
 

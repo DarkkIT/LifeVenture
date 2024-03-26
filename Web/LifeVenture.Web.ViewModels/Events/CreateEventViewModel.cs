@@ -21,14 +21,14 @@
         [Required(ErrorMessage = ImageIsRequired)]
         public IFormFile Image { get; set; }
 
-        public IList<LocationViewModel> Locations { get; set; }
+        public LocationViewModel Location { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> Categories { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> Regions { get; set; }
 
-        public IEnumerable<KeyValuePair<string, string>> Municipalities => new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("0", "ИЗБЕРИ") };
+        public IEnumerable<KeyValuePair<string, string>> Municipalities { get; set; } /* => new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("0", "ИЗБЕРИ") };*/
 
-        public IEnumerable<KeyValuePair<string, string>> Settlements => new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("0", "ИЗБЕРИ") };
+        public IEnumerable<KeyValuePair<string, string>> Settlements { get; set; } /* => new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("0", "ИЗБЕРИ") };*/
     }
 }

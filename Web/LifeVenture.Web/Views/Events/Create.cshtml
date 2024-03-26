@@ -1,4 +1,5 @@
-﻿@model LifeVenture.Web.ViewModels.Events.CreateEventViewModel
+﻿@using static LifeVenture.Common.ErrorConstants.ImageErrors;
+@model LifeVenture.Web.ViewModels.Events.CreateEventViewModel
 
 @{
     this.ViewData["Title"] = "Създай ново събитие";
@@ -75,27 +76,26 @@
         <div id="place-0">
             <div class="row">
                 <div class="col new-event-element">
-                    <label asp-for="Locations[0].RegionId"></label>
-                    <select asp-for="Locations[0].RegionId" id="region-0" class="form-control" asp-items="regions"></select>
-                    <span asp-validation-for="Locations[0].RegionId" class="text-danger"></span>
+                    <label asp-for="Location.RegionId"></label>
+                    <select asp-for="Location.RegionId" id="region-0" class="form-control" asp-items="regions"></select>
+                    <span asp-validation-for="Location.RegionId" class="text-danger"></span>
                 </div>
                 <div class="col new-event-element">
-                    <label asp-for="Locations[0].MunicipalityId"></label>
-                    <select asp-for="Locations[0].MunicipalityId" id="municipality-0" class="form-control" asp-items="municipalities" disabled></select>
-                    <span asp-validation-for="Locations[0].MunicipalityId" class="text-danger"></span>
+                    <label asp-for="Location.MunicipalityId"></label>
+                    <select asp-for="Location.MunicipalityId" id="municipality-0" class="form-control" asp-items="municipalities"></select>
+                    <span asp-validation-for="Location.MunicipalityId" class="text-danger"></span>
                 </div>
                 <div class="col new-event-element">
-                    <label asp-for="Locations[0].SettlementId"></label>
-                    <select asp-for="Locations[0].SettlementId" id="settlement-0" class="form-control" asp-items="settlements" disabled></select>
-                    <span asp-validation-for="Locations[0].SettlementId" class="text-danger"></span>
+                    <label asp-for="Location.SettlementId"></label>
+                    <select asp-for="Location.SettlementId" id="settlement-0" class="form-control" asp-items="settlements"></select>
+                    <span asp-validation-for="Location.SettlementId" class="text-danger"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col new-event-element">
-                    <label asp-for="Locations[0].AddressNote"></label>
-                    <textarea asp-for="Locations[0].AddressNote" id="address-note-0" class="form-control new-event-element" rows="4"></textarea>
-                    <span asp-validation-for="Locations[0].AddressNote" class="text-danger"></span>
-                    @* <input type="submit" id="location-btn-0" value="Добави адрес" /> *@
+                    <label asp-for="Location.AddressNote"></label>
+                    <textarea asp-for="Location.AddressNote" id="address-note-0" class="form-control new-event-element" rows="4"></textarea>
+                    <span asp-validation-for="Location.AddressNote" class="text-danger"></span>
                 </div>
             </div>
         </div>
@@ -122,9 +122,12 @@
             <div class="col new-event-element">
                 <label>Снимка</label>
                 <input asp-for="Image" class="form-control-file" id="exampleInputFile" />
-                @foreach (var error in ViewData.ModelState[nameof(this.Model.Image)].Errors)
+                @if (ViewData.ModelState[nameof(this.Model.Image)]?.Errors != null)
                 {
-                    <div class="text-danger">@error.ErrorMessage</div>
+                    @foreach (var error in ViewData.ModelState[nameof(this.Model.Image)]?.Errors)
+                    {
+                        <div class="text-danger">@error.ErrorMessage</div>
+                    }
                 }
             </div>
 

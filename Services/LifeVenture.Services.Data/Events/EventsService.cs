@@ -20,6 +20,8 @@
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
         private readonly IRepository<CountryPhoneCode> countryPhoneCodesRepository;
         private readonly IDeletableEntityRepository<Region> regionsRepository;
+        private readonly IDeletableEntityRepository<Municipality> municipalitiesRepository;
+        private readonly IDeletableEntityRepository<Settlement> settlementsRepository;
         private readonly IImageService imageService;
 
         public EventsService(
@@ -27,12 +29,16 @@
             IDeletableEntityRepository<Category> categoriesRepository,
             IRepository<CountryPhoneCode> countryPhoneCodesRepository,
             IDeletableEntityRepository<Region> regionsRepository,
+            IDeletableEntityRepository<Municipality> municipalitiesRepository,
+            IDeletableEntityRepository<Settlement> settlementsRepository,
             IImageService imageService)
         {
             this.eventsRepository = eventsRepository;
             this.categoriesRepository = categoriesRepository;
             this.countryPhoneCodesRepository = countryPhoneCodesRepository;
             this.regionsRepository = regionsRepository;
+            this.municipalitiesRepository = municipalitiesRepository;
+            this.settlementsRepository = settlementsRepository;
             this.imageService = imageService;
         }
 
@@ -54,17 +60,14 @@
                 MaxParticipantsCount = input.MaxParticipantsCount,
             };
 
-            foreach (var location in input.Locations)
+            var modelLocation = new Location
             {
-                var modelLocation = new Location
-                {
-                    MunicipalityId = location.MunicipalityId,
-                    SettlementId = location.SettlementId,
-                    RegionId = location.RegionId,
-                };
+                MunicipalityId = input.Location.MunicipalityId,
+                SettlementId = input.Location.SettlementId,
+                RegionId = input.Location.RegionId,
+            };
 
-                eventModel.Locations.Add(modelLocation);
-            }
+            eventModel.Location = modelLocation;
 
             var imageModel = await this.imageService.GetImageData(input.Image);
 
@@ -88,7 +91,6 @@
             var query = this.eventsRepository
                 .All()
                 .Where(e => e.EndDate > DateTime.UtcNow);
-            ////
 
             if (filters?.CategoryId != null && filters?.CategoryId != 0)
             {
@@ -190,16 +192,25 @@
             return categories;
         }
 
-        public async Task<CreateEventViewModel> GetEventData()
+        public async Task<CreateEventViewModel> GetEventData(CreateEventViewModel input)
         {
-            var eventInput = new CreateEventViewModel();
-            eventInput.Categories = await this.GetAllCategories();
-            eventInput.Regions = await this.GetAllRegions();
+            input.Categories = await this.GetAllCategories();
+            input.Regions = await this.GetAllRegions();
 
-            eventInput.Phone = new PhoneViewModel();
-            eventInput.Phone.Codes = await this.GetAllPhoneCodes();
+            if (input.Location?.RegionId != 0)
+            {
+                input.Municipalities = await this.GetMunicipalitiesByRegionId(input.Location.RegionId);
+            }
 
-            return eventInput;
+            if (input.Location?.MunicipalityId != 0)
+            {
+                input.Settlements = await this.GetSettlementsByMunicipalityId(input.Location.MunicipalityId);
+            }
+
+            input.Phone = new PhoneViewModel();
+            input.Phone.Codes = await this.GetAllPhoneCodes();
+
+            return input;
         }
 
         public async Task<IEnumerable<KeyValuePair<string, string>>> GetAllPhoneCodes()
@@ -224,9 +235,40 @@
             return regions;
         }
 
+        public async Task<IEnumerable<KeyValuePair<string, string>>> GetMunicipalitiesByRegionId(int? regionId)
+        {
+            var defaultOption = this.GetDefaultOption();
+            var municipalities = await this.municipalitiesRepository
+                .All()
+                .Where(m => m.RegionId == regionId)
+                .OrderBy(m => m.Name)
+                .Select(m => new KeyValuePair<string, string>(m.Id.ToString(), $"{m.Name}"))
+                .ToListAsync();
+
+            municipalities.Insert(0, defaultOption);
+
+            return municipalities;
+        }
+
+        public async Task<IEnumerable<KeyValuePair<string, string>>> GetSettlementsByMunicipalityId(int? municipalityId)
+        {
+            var defaultOption = this.GetDefaultOption();
+            var settlements = await this.settlementsRepository
+                .All()
+                .Where(s => s.MunicipalityId == municipalityId)
+                .OrderBy(s => s.Name)
+                .Select(s => new KeyValuePair<string, string>(s.Id.ToString(), $"{s.Name}"))
+                .ToListAsync();
+
+            settlements.Insert(0, defaultOption);
+
+            return settlements;
+        }
+
         public async Task<List<HomeEventViewModel>> GetEventsForHomePage()
             => await this.eventsRepository
                 .All()
+                .Where(e => e.EndDate > DateTime.UtcNow)
                 .Select(e => new HomeEventViewModel
                 {
                     Id = e.Id,

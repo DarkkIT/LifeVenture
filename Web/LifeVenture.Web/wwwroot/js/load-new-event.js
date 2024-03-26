@@ -4,65 +4,10 @@
 
     let firstMunicipality = document.getElementById('municipality-0');
     firstMunicipality.addEventListener('change', loadSettlements);
-
-    let locationBtn = document.getElementById('location-btn-0');
-
-    if (locationBtn) {
-        locationBtn.addEventListener('click', createNewLocationFields);
-    }
-}
-
-let createNewLocationFields = function (event) {
-    event.preventDefault();
-    let btn = event.target;
-    btn.style.display = 'none';
-    let btnIdAsArray = btn.id.split('-');
-    let btnId = btnIdAsArray[btnIdAsArray.length - 1];
-    let nextNumber = parseInt(btnId) + 1;
-    let removeLocationsBtn = document.getElementById(`remove-location-btn-${btnId}`);
-
-    if (removeLocationsBtn) {
-        removeLocationsBtn.style.display = 'none';
-    }
-
-    let newParentDiv = document.createElement('div');
-    newParentDiv.id = `place-${nextNumber}`;
-
-    let selectFiedsRow = createSelectFieldsRow(nextNumber);
-    let textAreaRow = createTextAreaRow(nextNumber);
-
-    newParentDiv.appendChild(selectFiedsRow);
-    newParentDiv.appendChild(textAreaRow);
-
-    let existingNode = document.getElementById(`place-${btnId}`);
-    insertAfter(newParentDiv, existingNode);
 }
 
 let insertAfter = function (newNode, existingNode) {
     existingNode.after(newNode);
-}
-
-let createSelectFieldsRow = function (btnId) {
-    let selectFieldsRow = document.createElement('div');
-    selectFieldsRow.classList.add('row');
-    selectFieldsRow.classList.add('new-event-element');
-
-    let regionCol = createColumn('Област', `region-${btnId}`, `Locations[${btnId}].RegionId`);
-    let regionSelect = regionCol.children[regionCol.children.length - 1];
-    regionSelect.addEventListener('change', loadMunicipality);
-    addValuesToSelect(regionSelect);
-
-    let municipalityCol = createColumn('Община', `municipality-${btnId}`, `Locations[${btnId}].MunicipalityId`, true);
-    let municipalitySelect = municipalityCol.children[municipalityCol.children.length - 1];
-    municipalitySelect.addEventListener('change', loadSettlements);
-
-    let settlementCol = createColumn('Населено място', `settlement-${btnId}`, `Locations[${btnId}].SettlementId`, true);
-
-    selectFieldsRow.appendChild(regionCol);
-    selectFieldsRow.appendChild(municipalityCol);
-    selectFieldsRow.appendChild(settlementCol);
-
-    return selectFieldsRow;
 }
 
 let addValuesToSelect = function (select) {
@@ -186,14 +131,6 @@ let loadMunicipality = function (event) {
     let municipalitySelect = getSelect('municipality-' + splittedSelectId[1]);
     let settlementsSelect = getSelect('settlement-' + splittedSelectId[1]);
 
-    if (regionId === '0') {
-        municipalitySelect.disabled = true;
-        settlementsSelect.disabled = true;
-        return;
-    }
-
-    settlementsSelect.disabled = true;
-
     let municipalitiesUrl = "/api/LocationsApi/GetMunicipalities" + '?regionId=' + regionId;
     getValuesForSelect(municipalitiesUrl, municipalitySelect);
 }
@@ -204,11 +141,6 @@ let loadSettlements = function (event) {
 
     let splittedSelectId = select.id.split('-');
     let settlementsSelect = getSelect('settlement-' + splittedSelectId[1]);
-
-    if (municipalityId === '0') {
-        settlementsSelect.disabled = true;
-        return;
-    }
 
     let settlementsUrl = "/api/LocationsApi/GetSettlements" + '?municipalityId=' + municipalityId;
     getValuesForSelect(settlementsUrl, settlementsSelect);
