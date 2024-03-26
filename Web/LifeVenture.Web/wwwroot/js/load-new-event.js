@@ -6,7 +6,10 @@
     firstMunicipality.addEventListener('change', loadSettlements);
 
     let locationBtn = document.getElementById('location-btn-0');
-    locationBtn.addEventListener('click', createNewLocationFields);
+
+    if (locationBtn) {
+        locationBtn.addEventListener('click', createNewLocationFields);
+    }
 }
 
 let createNewLocationFields = function (event) {
