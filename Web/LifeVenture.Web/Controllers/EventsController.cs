@@ -125,6 +125,7 @@
 
             if (!isCreated)
             {
+                this.ModelState.AddModelError(Image, ImageWidthErr);
                 this.ModelState.AddModelError(Image, ImageAspectRatioErr);
                 eventInput = await this.eventsService.GetEventData();
 

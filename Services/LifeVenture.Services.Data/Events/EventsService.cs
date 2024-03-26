@@ -68,11 +68,11 @@
 
             var imageModel = await this.imageService.GetImageData(input.Image);
 
-            if (imageModel.OriginalData == null)
+            if (imageModel == null)
             {
                 return false;
             }
-            else if (imageModel != null)
+            else
             {
                 eventModel.Image = imageModel;
             }
