@@ -1,0 +1,135 @@
+﻿
+.login-body {
+    background-color: #EDF5E1;
+}
+
+#login-form {
+    width: 60%;
+    height: 100vh;
+    position: relative;
+}
+
+#login-image {
+    width: 40%;
+    height: 50vw;
+    position: relative;
+}
+
+#login-header {
+    font-family: 'Comfortaa-Bold' !important;
+    position: absolute;
+    font-size: 3vw;
+    color: #5CDB95;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#login-header-first {
+    color: #4E4E50;
+}
+
+#login-sub-header {
+    font-family: 'Comfortaa-Bold' !important;
+    position: absolute;
+    font-size: 1.5vw;
+    color: #4E4E50;
+    top: 27%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#login-inputs {
+    position: absolute;
+    font-family: 'Comfortaa-Bold' !important;
+    position: absolute;
+    width: 50%;
+    font-size: 1vw;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.login-input-base {
+    width: 100%;
+}
+
+.login-input {
+    height: 3vw;
+    border: 3px solid #4E4E50;
+    background-color: #EDF5E1 !important;
+    border-radius: 5vw;
+    margin-bottom: 1vw;
+    text-align: center;
+    font-size: 1vw
+}
+
+    .login-input:-webkit-autofill,
+    .login-input:-webkit-autofill:focus,
+    .login-input:-webkit-autofill:active {
+        transition: background-color 0s 600000s, color 0s 600000s !important;
+    }
+
+#login-submit {
+    width: 10vw;
+    height: 3vw;
+    background-color: #5CDB95;
+    border: 3px solid #5CDB95;
+    border-radius: 5vw;
+}
+
+.form-check-input {
+    color: #4E4E50 !important;
+    font-size: 1vw;
+}
+
+.checkboxes-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkbox-one {
+    width: 50%;
+    display: flex;
+    align-items: stretch;
+}
+
+#checkbox-title {
+    font-size: 0.7vw;
+    width: 50%;
+}
+
+.checkbox-one > input {
+    margin: 0 0.5vw 0 0.5vw;
+}
+
+.checkbox-two {
+    display: flex;
+    align-items: stretch;
+}
+
+.checkbox-two > a {
+    margin-right: 0.5vw;
+    text-decoration: none;
+    color: #4E4E50 !important;
+    font-size: 0.7vw;
+}
+
+#login-register {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+}
+
+    #login-register > div > a {
+        text-decoration: none;
+        color: #4E4E50 !important;
+        font-size: 0.7vw;
+    }
+
+        #login-register > div > a > span {
+            text-decoration: underline;
+            font-size: 0.8vw;
+            font-weight: 900;
+        }
