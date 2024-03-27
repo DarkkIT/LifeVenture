@@ -30,7 +30,15 @@
                 </div>
                 <div class="checkboxes-body mb-3">
                     <label asp-for="Input.RememberMe" class="form-label checkbox-one">
-                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        @*<input class="form-check-input checkbox-rememberme" asp-for="Input.RememberMe" />*@
+                        <div class="checkbox-wrapper-31">
+                            <input type="checkbox" asp-for="Input.RememberMe" />
+                            <svg viewBox="0 0 35.6 35.6">
+                                <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                                <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                                <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+                            </svg>
+                        </div>
                         <div id="checkbox-title">Запомни ме</div>
                     </label>
                     <div class="checkbox-two">
