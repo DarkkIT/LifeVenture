@@ -1,0 +1,94 @@
+﻿@page
+@model Login
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<head>
+    <link href="~/css/login.css" rel="stylesheet" asp-append-version="true" />
+</head>
+
+<div class="row login-body">
+    <div id="login-form">
+
+        <div id="login-header"><span id="login-header-first">LIFE</span> VENTURE</div>
+
+        <div id="login-sub-header">Вход</div>
+
+        <div id="login-inputs">
+            <form id="" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <div class="login-input-base">
+                    <input asp-for="Input.Email" class="form-control login-input" autocomplete="username"/>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="login-input-base">
+                    <input asp-for="Input.Password" class="form-control login-input" autocomplete="current-password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="checkboxes-body mb-3">
+                    <label asp-for="Input.RememberMe" class="form-label checkbox-one">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        <div id="checkbox-title">Запомни ме</div>
+                    </label>
+                    <div class="checkbox-two">
+                        <a id="forgot-password" asp-page="./ForgotPassword">Забравена парола?</a>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <button id="login-submit" type="submit" class="">Вход</button>
+                </div>
+            </form>
+        </div>
+        <div id="login-register">
+            <div>
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Нямате профил? <span>Регистрирайте се тук</span></a>
+            </div>
+            @*<p>
+            <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+            </p>*@
+        </div>
+    </div>
+
+    <div id="login-image">
+    </div>
+
+    @*<div>
+    <section>
+    <h3>Use another service to log in.</h3>
+    <hr />
+    @{
+    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+    {
+    <div>
+    <p>
+    There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
+    article
+    about setting up this ASP.NET application to support logging in via external services
+    </a>.
+    </p>
+    </div>
+    }
+    else
+    {
+    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+    <div>
+    <p>
+    @foreach (var provider in Model.ExternalLogins!)
+    {
+    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+    }
+    </p>
+    </div>
+    </form>
+    }
+    }
+    </section>
+    </div>*@
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
