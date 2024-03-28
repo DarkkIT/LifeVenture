@@ -27,8 +27,8 @@
 
         public IEnumerable<KeyValuePair<string, string>> Regions { get; set; }
 
-        public IEnumerable<KeyValuePair<string, string>> Municipalities { get; set; } /* => new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("0", "ИЗБЕРИ") };*/
+        public IEnumerable<KeyValuePair<string, string>> Municipalities { get; set; }
 
-        public IEnumerable<KeyValuePair<string, string>> Settlements { get; set; } /* => new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("0", "ИЗБЕРИ") };*/
+        public IEnumerable<KeyValuePair<string, string>> Settlements { get; set; }
     }
 }
